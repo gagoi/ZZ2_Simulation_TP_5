@@ -30,3 +30,15 @@
 *.exe
 *.out
 *.app
+
+# Latex
+.aux
+.fdb_latexmk
+.fls
+.log
+.syntex.gz
+.toc
+
+# Doxygen
+html/
+latex/
