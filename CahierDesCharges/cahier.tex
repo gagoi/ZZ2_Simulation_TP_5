@@ -144,7 +144,11 @@ L'environnement sera une matrice (20x20 à la base). Une case de cette matrice p
 
 Une ressource a une position dans l'espace 2D et a un type : faible, moyen ou fort et
 correspond à une quantité pour les bases. Tous les certains temps du système, un certain
-nombre de ressources apparaissent aléatoirement dans l'espace avec un certain temps
-d'écart
+nombre de ressources apparaissent aléatoirement dans l'espace.
+
+Une base intéragit avec des agents \emph{récolteurs}. Elle possède une position fixe
+dans l'espace 2D et s'occupe de créer des \emph{récolteurs}. En effet ceux-ci rapporte
+à la base des ressources qui, au dessus d'un certain seuil, sont consommées afin de
+générer un nouvel agent \emph{récolteur}.
 
 \end{document}
