@@ -3,4 +3,6 @@
 \contentsline {section}{\numberline {2}Mod\IeC {\'e}lisation}{3}{section.2}% 
 \contentsline {subsection}{\numberline {2.1}Agents}{3}{subsection.2.1}% 
 \contentsline {subsubsection}{\numberline {2.1.1}R\IeC {\'e}colteurs}{3}{subsubsection.2.1.1}% 
-\contentsline {subsection}{\numberline {2.2}Environnement}{3}{subsection.2.2}% 
+\contentsline {subsection}{\numberline {2.2}Mangeurs}{3}{subsection.2.2}% 
+\contentsline {subsection}{\numberline {2.3}Environnement}{3}{subsection.2.3}% 
+\contentsline {subsubsection}{\numberline {2.3.1}}{4}{subsubsection.2.3.1}% 

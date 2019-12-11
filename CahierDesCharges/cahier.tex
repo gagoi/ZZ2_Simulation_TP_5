@@ -83,7 +83,7 @@
 
 \section{Introduction}
 L'objectif ici est de réaliser un système multi-agents simple, afin d'en
-comprendre et d'en expérimenter les difficultés et les intérêts.
+comprendre et d'expérimenter les difficultés et les intérêts.
 
 \section{Modélisation}
 \subsection{Agents}
@@ -92,23 +92,40 @@ Notre système se composera de 2 types d'agents:
   \item les \emph{récolteurs}
   \item les \emph{mangeurs}
 \end{itemize}
-Il y a également dans l'environnement
-\begin{itemize}
-  \item les ressources
-  \item les bases (concernants les récolteurs)
-\end{itemize}
-Une ressources a juste une position dans l'espace 2D et une quantité.
 
 \subsubsection{Récolteurs}
 L'objectif de cet agent est récolter des ressources et de les ramener à sa base. Chaque
 agent de ce type a été créé par une \emph{case particulière} de l'environnment qu'on
-appelera sa \emph{base}. Les \emph{récolteurs} bougent aléatoirement dans l'espace
-en 2 dimensions. Lorqu'ils trouvent des ressources, ils la prennent et se déplacent alors
-vers leur base (ce qui implique qu'ils savent à tous moments l'endroit de leur base).
-Une fois dessus, ils déposent leurs ressources et se remettent en recherche.
+appelera sa \emph{base}. Un \emph{récolteur} bouge aléatoirement dans l'espace
+en 2 dimensions. Lorqu'il trouve une case avec des ressources, il la prend et se déplace
+alors vers leur base (ce qui implique que ces agents savent à tous moments l'endroit de
+leur base). Une fois dessus, il dépose ses ressources et se remet en recherche.
 
 Les \emph{récolteurs} naissent grâce à une base. Lorsqu'une base possède assez de ressources,
 elle les consomme et créé un nouvel agent \emph{récolteur}.
+
+\begin{figure}[!ht]
+  \centering
+  \caption{Diagramme état-transition de l'agent \emph{récolteur}}
+  \includegraphics[scale=0.70]{img/etat-transition_recolteur.png}
+\end{figure}
+
+\subsection{Mangeurs}
+L'objectif de cet agent est de manger des agents \emph{récolteurs} afin de survivre.
+Il se déplace aléatoirement jusqu'à ce qu'il trouve dans un voisinage de Moore d'ordre 3
+un agent \emph{récolteur}. Dès lors, il se déplace vers celui-ci (ses déplacements se
+font dans un voisinage de Moore d'ordre 2). Si il atteint un \emph{récolteur} (être
+sur la même case de l'esapce 2D) alors il le détruit.
+
+Le \emph{mangeur} possède une "barre de vie" qui diminue à chaque nouvel état du système.
+Manger un \emph{récolteur} permet de regagner de la vie. Si il en mange un alors que sa
+vie était assez haute (exemple: > 90\%) alors il créé un nouvel agent \emph{mangeur}.
+
+\begin{figure}[!ht]
+  \centering
+  \caption{Diagramme état-transition de l'agent \emph{mangeur}}
+  \includegraphics[scale=0.75]{img/etat-transition_mangeur.png}
+\end{figure}
 
 \subsection{Environnement}
 L'environnement sera une matrice (20x20 à la base). Une case de cette matrice peut:
@@ -118,5 +135,16 @@ L'environnement sera une matrice (20x20 à la base). Une case de cette matrice p
   \item contenir une ressource
   \item contenir une base
 \end{itemize}
+
+\subsubsection{}
+\begin{itemize}
+  \item les ressources
+  \item les bases
+\end{itemize}
+
+Une ressource a une position dans l'espace 2D et a un type : faible, moyen ou fort et
+correspond à une quantité pour les bases. Tous les certains temps du système, un certain
+nombre de ressources apparaissent aléatoirement dans l'espace avec un certain temps
+d'écart
 
 \end{document}
