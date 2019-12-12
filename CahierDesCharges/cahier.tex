@@ -13,6 +13,7 @@
 \usepackage{titling}
 \usepackage{graphicx}
 \usepackage{pgfplots}
+\usepackage{csquotes}
 \usepackage[colorlinks = true,
             linkcolor = black,
             urlcolor  = black,
@@ -66,7 +67,7 @@
 \lstset{style=c++}
 
 
-\title{Simulation TP5\\Système Multi-Agents}
+\title{Simulation TP5\\Cahier des charges Système Multi-Agents}
 \author{Arquillière Mathieu - Zangla Jérémy}
 \date{\today}
 
@@ -77,13 +78,19 @@
 \end{titlepage}
 
 \tableofcontents
-\newpage
 \listoffigures
 \newpage
 
 \section{Introduction}
 L'objectif ici est de réaliser un système multi-agents simple, afin d'en
 comprendre et d'expérimenter les difficultés et les intérêts.
+
+Notre problèmatique est donc :
+
+\enquote{Quels agents créer et comment les intégrer dans un système afin
+qu'ils interagissent entre eux et avec l'environnement}.
+Cette problèmatique implique de comprendre comment un ensemble d'agents doit agir
+en simultané dans un même espace (en 2 dimensions dans notre cas).
 
 \section{Modélisation}
 \subsection{Agents}
@@ -110,7 +117,7 @@ elle les consomme et créé un nouvel agent \emph{récolteur}.
   \includegraphics[scale=0.70]{img/etat-transition_recolteur.png}
 \end{figure}
 
-\subsection{Mangeurs}
+\subsubsection{Mangeurs}
 L'objectif de cet agent est de manger des agents \emph{récolteurs} afin de survivre.
 Il se déplace aléatoirement jusqu'à ce qu'il trouve dans un voisinage de Moore d'ordre 3
 un agent \emph{récolteur}. Dès lors, il se déplace vers celui-ci (ses déplacements se
@@ -124,7 +131,7 @@ vie était assez haute (exemple: > 90\%) alors il créé un nouvel agent \emph{m
 \begin{figure}[!ht]
   \centering
   \caption{Diagramme état-transition de l'agent \emph{mangeur}}
-  \includegraphics[scale=0.75]{img/etat-transition_mangeur.png}
+  \includegraphics[scale=0.70]{img/etat-transition_mangeur.png}
 \end{figure}
 
 \subsection{Environnement}
@@ -136,11 +143,7 @@ L'environnement sera une matrice (20x20 à la base). Une case de cette matrice p
   \item contenir une base
 \end{itemize}
 
-\subsubsection{}
-\begin{itemize}
-  \item les ressources
-  \item les bases
-\end{itemize}
+\subsubsection{Elements de l'environnement utiles au agents}
 
 Une ressource a une position dans l'espace 2D et a un type : faible, moyen ou fort et
 correspond à une quantité pour les bases. Tous les certains temps du système, un certain
@@ -150,5 +153,35 @@ Une base intéragit avec des agents \emph{récolteurs}. Elle possède une positi
 dans l'espace 2D et s'occupe de créer des \emph{récolteurs}. En effet ceux-ci rapporte
 à la base des ressources qui, au dessus d'un certain seuil, sont consommées afin de
 générer un nouvel agent \emph{récolteur}.
+
+\subsection{Diagramme de classe}
+Afin de mieux comprendre les relations entre les agents et leur environnement, on
+réalise un diagramme de classe non détaillé, qui sera ensuite complété et modifié
+lors de l'implémentation.
+
+\begin{figure}[!ht]
+  \centering
+  \caption{Diagramme de classe du système multi-agents}
+  \includegraphics[scale=0.70]{img/class_agents.png}
+\end{figure}
+
+\newpage
+\section{Interface}
+Le système multi-agents pourra être utilisé de manière très simple. C'est-à-dire
+que l'interface consistera à pouvoir lancer une simulation en réglant des paramètres
+comme l'endroit d'apparition des agents / bases / ressources et de leurs nombres. On
+pourra également modifier la vie des agents \emph{mangeurs} et les probabilitées des
+types de ressources.
+
+Une autre partie importante est de pouvoir récuperer des informations, des statistiques
+sur les systèmes qu'on observe. Ainsi notre système enregistrera certaines données
+au fur et à mesure de son évolution et pourra les exporter (sous forme de fichier
+par exemple).
+
+\begin{figure}[!ht]
+  \centering
+  \caption{Diagramme cas d'utilisation}
+  \includegraphics[scale=0.70]{img/usecase.png}
+\end{figure}
 
 \end{document}
