@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2019.12.7)  12 DEC 2019 18:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2019.12.7)  16 DEC 2019 16:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -702,11 +702,11 @@ LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 2.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 4.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 5.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7.4> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 4.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 5.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <6> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 4.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 5.
 )
 \tf@toc=\write5
 \openout5 = `cahier.toc'.
@@ -720,38 +720,38 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has b
                    \relax 
 l.82 \newpage
               [1]
-LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `T1/ptm/b/n' tried instead on input line 96.
-<img/etat-transition_recolteur.png, id=71, 693.59125pt x 271.0125pt>
-File: img/etat-transition_recolteur.png Graphic file (type png)
-<use img/etat-transition_recolteur.png>
-Package pdftex.def Info: img/etat-transition_recolteur.png  used on input line 117.
-(pdftex.def)             Requested size: 485.51056pt x 189.70744pt.
-<img/etat-transition_mangeur.png, id=73, 613.29124pt x 323.2075pt>
-File: img/etat-transition_mangeur.png Graphic file (type png)
-<use img/etat-transition_mangeur.png>
-Package pdftex.def Info: img/etat-transition_mangeur.png  used on input line 134.
-(pdftex.def)             Requested size: 429.30093pt x 226.2437pt.
- [2 </home/wiyochi/Etudes/ZZ2/Simulation/tp5/CahierDesCharges/img/etat-transition_recolteur.png>]
-<img/class_agents.png, id=79, 693.59125pt x 310.15875pt>
-File: img/class_agents.png Graphic file (type png)
-<use img/class_agents.png>
-Package pdftex.def Info: img/class_agents.png  used on input line 165.
-(pdftex.def)             Requested size: 485.51056pt x 217.10963pt.
- [3 </home/wiyochi/Etudes/ZZ2/Simulation/tp5/CahierDesCharges/img/etat-transition_mangeur.png>]
-<img/usecase.png, id=85, 474.77374pt x 392.46625pt>
+<img/usecase.png, id=71, 474.77374pt x 392.46625pt>
 File: img/usecase.png Graphic file (type png)
 <use img/usecase.png>
-Package pdftex.def Info: img/usecase.png  used on input line 184.
+Package pdftex.def Info: img/usecase.png  used on input line 110.
 (pdftex.def)             Requested size: 332.33936pt x 274.72449pt.
- [4 </home/wiyochi/Etudes/ZZ2/Simulation/tp5/CahierDesCharges/img/class_agents.png> </home/wiyochi/Etudes/ZZ2/Simulation/tp5/CahierDesCharges/img/usecase.png>]
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 114.
+ [2 </home/wiyochi/Etudes/ZZ2/Simulation/tp5/CahierDesCharges/img/usecase.png>]
+<img/etat-transition_recolteur.png, id=78, 693.59125pt x 271.0125pt>
+File: img/etat-transition_recolteur.png Graphic file (type png)
+<use img/etat-transition_recolteur.png>
+Package pdftex.def Info: img/etat-transition_recolteur.png  used on input line 135.
+(pdftex.def)             Requested size: 485.51056pt x 189.70744pt.
+<img/etat-transition_mangeur.png, id=79, 613.29124pt x 323.2075pt>
+File: img/etat-transition_mangeur.png Graphic file (type png)
+<use img/etat-transition_mangeur.png>
+Package pdftex.def Info: img/etat-transition_mangeur.png  used on input line 152.
+(pdftex.def)             Requested size: 429.30093pt x 226.2437pt.
+ [3 </home/wiyochi/Etudes/ZZ2/Simulation/tp5/CahierDesCharges/img/etat-transition_recolteur.png>]
+<img/class_agents.png, id=85, 693.59125pt x 310.15875pt>
+File: img/class_agents.png Graphic file (type png)
+<use img/class_agents.png>
+Package pdftex.def Info: img/class_agents.png  used on input line 184.
+(pdftex.def)             Requested size: 485.51056pt x 217.10963pt.
+ [4 </home/wiyochi/Etudes/ZZ2/Simulation/tp5/CahierDesCharges/img/etat-transition_mangeur.png> </home/wiyochi/Etudes/ZZ2/Simulation/tp5/CahierDesCharges/img/class_agents.png>]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 187.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 187.
  (/home/wiyochi/Etudes/ZZ2/Simulation/tp5/CahierDesCharges/cahier.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 187.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 187.
 Package rerunfilecheck Info: File `cahier.out' has not changed.
-(rerunfilecheck)             Checksum: 49EDDBFA7870A4AF16050112922F5BF2;568.
+(rerunfilecheck)             Checksum: D95F86207C4A08D107464026C7367C76;568.
  ) 
 Here is how much of TeX's memory you used:
  30320 strings out of 492609
@@ -762,7 +762,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  62i,7n,96p,882b,620s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on /home/wiyochi/Etudes/ZZ2/Simulation/tp5/CahierDesCharges/cahier.pdf (5 pages, 105387 bytes).
+Output written on /home/wiyochi/Etudes/ZZ2/Simulation/tp5/CahierDesCharges/cahier.pdf (5 pages, 105283 bytes).
 PDF statistics:
  110 PDF objects out of 1000 (max. 8388607)
  91 compressed objects within 1 object stream
