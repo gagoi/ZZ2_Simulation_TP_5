@@ -1,7 +1,7 @@
 #ifndef AGENT_HPP
 #define AGENT_HPP
 
-#include "Entity.hpp"
+#include "../Entity.hpp"
 
 class Agent : public Entity
 {
