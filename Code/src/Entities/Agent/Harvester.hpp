@@ -1,6 +1,7 @@
 #ifndef HARVESTER_HPP
 #define HARVESTER_HPP
 
+#include <random>
 #include "Agent.hpp"
 
 class Harvester : public Agent
@@ -21,6 +22,9 @@ private:
 
     Point _basePosition;
     STATE _state;
+
+    static std::mt19937 gen;
+    static std::uniform_int_distribution<> move_distribution;
 };
 
 #endif

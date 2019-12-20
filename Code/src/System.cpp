@@ -16,12 +16,37 @@ System::System(int w, int h) :
 
 System::~System()
 {
+    for (auto &&agent : _agents)
+    {
+        delete agent;
+    }    
 }
 
-void System::addEntity(Entity* entity)
+void System::addAgent(Agent* agent)
 {
-    _entities.push_back(entity);
-    _entities[_entities.size() - 1]->draw(_display);
+    _agents.push_back(agent);
+}
+
+void System::update()
+{
+    // Updates
+    for (auto &&agent : _agents)
+    {
+        agent->update();
+    }
+    
+    // Clear
+    for (auto &&line : _display)
+        for (auto &&c : line)
+            c = '.';
+
+    // Render
+    for (auto &&agent : _agents)
+    {
+        agent->draw(_display);
+    }
+
+    std::cout << "------------------------------------------------------" << std::endl;
 }
 
 char& System::operator[](Point const & p)
@@ -31,11 +56,18 @@ char& System::operator[](Point const & p)
 
 std::ostream& operator<<(std::ostream& out, System const & sys)
 {
+    int i = 0;
+    std::cout << "   ";
+    for (int j = 0; j < sys._width; j++)
+        std::cout << std::setw(3) << j;
+    
+    std::cout << std::endl;
     for (auto &&line : sys._display)
     {
+        std::cout << std::setw(2) << i++ << " ";
         for (auto &&c : line)
         {
-            std::cout << c << ' ';
+            std::cout << std::setw(3) << c;
         }
         std::cout << std::endl;
     }
