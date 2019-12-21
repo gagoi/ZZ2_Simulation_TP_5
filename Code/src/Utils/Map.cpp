@@ -18,6 +18,7 @@ Map::~Map()
 {
 }
 
+
 char& Map::operator[](Point const & p)
 {
     int x = p.x < 0 ? _width - (-p.x % _width) : p.x % _width;
@@ -32,6 +33,33 @@ char const & Map::operator[](Point const & p) const
     int y = p.y < 0 ? _height - (-p.y % _height) : p.y % _height;
 
     return _map[x][y];
+}
+
+char& Map::operator[](Point & p)
+{
+    p.x = p.x < 0 ? _width - (-p.x % _width) : p.x % _width;
+    p.y = p.y < 0 ? _height - (-p.y % _height) : p.y % _height;
+
+    return _map[p.x][p.y];
+}
+
+char const & Map::operator[](Point & p) const
+{
+    p.x = p.x < 0 ? _width - (-p.x % _width) : p.x % _width;
+    p.y = p.y < 0 ? _height - (-p.y % _height) : p.y % _height;
+
+    return _map[p.x][p.y];
+}
+
+void Map::clear()
+{
+    for (auto &&line : _map)
+    {
+        for (auto &&c : line)
+        {
+            c = '.';
+        }
+    }
 }
 
 std::ostream& operator<<(std::ostream& out, Map const & m)

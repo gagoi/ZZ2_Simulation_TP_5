@@ -2,16 +2,9 @@
 
 System::System(int w, int h) :
     _width(w),
-    _height(h)
+    _height(h),
+    _map(_width, _height)
 {
-    for (int i = 0; i < _width; i++)
-    {
-        _display.push_back(std::vector<char>());
-        for (int j = 0; j < _height; j++)
-        {
-            _display[i].push_back('.');
-        }
-    }
 }
 
 System::~System()
@@ -36,40 +29,19 @@ void System::update()
     }
     
     // Clear
-    for (auto &&line : _display)
-        for (auto &&c : line)
-            c = '.';
+    _map.clear();
 
     // Render
     for (auto &&agent : _agents)
     {
-        agent->draw(_display);
+        agent->draw(_map);
     }
 
     std::cout << "------------------------------------------------------" << std::endl;
 }
 
-char& System::operator[](Point const & p)
-{
-    return _display[p.x][p.y];
-}
-
 std::ostream& operator<<(std::ostream& out, System const & sys)
 {
-    int i = 0;
-    std::cout << "   ";
-    for (int j = 0; j < sys._width; j++)
-        std::cout << std::setw(3) << j;
-    
-    std::cout << std::endl;
-    for (auto &&line : sys._display)
-    {
-        std::cout << std::setw(2) << i++ << " ";
-        for (auto &&c : line)
-        {
-            std::cout << std::setw(3) << c;
-        }
-        std::cout << std::endl;
-    }
+    out << sys._map;
     return out;
 }

@@ -4,6 +4,7 @@
 #include <vector>
 #include <iostream>
 #include <iomanip>
+#include "Utils/Map.hpp"
 #include "Entities/Entity.hpp"
 #include "Entities/Agent/Agent.hpp"
 
@@ -17,13 +18,12 @@ public:
     void update();
 
     friend std::ostream& operator<<(std::ostream& out, System const & sys);
-    char& operator[](Point const & p);
 
 private:
-    std::vector<std::vector<char>> _display;
     std::vector<Agent*> _agents;
     int _width;
     int _height;
+    Map _map;
 };
 
 #endif

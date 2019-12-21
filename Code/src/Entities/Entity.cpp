@@ -10,7 +10,7 @@ Entity::~Entity()
 {
 }
 
-void Entity::draw(std::vector<std::vector<char>>& frame)
+void Entity::draw(Map & map)
 {
-    frame[_position.x][_position.y] = _shellChar;
+    map[_position] = _shellChar;
 }

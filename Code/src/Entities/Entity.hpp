@@ -3,6 +3,7 @@
 
 #include <vector>
 #include "../Utils/Point.hpp"
+#include "../Utils/Map.hpp"
 
 class Entity
 {
@@ -14,7 +15,7 @@ public:
     Point& getPosition() { return _position; }
     char getChar() const { return _shellChar; }
 
-    void draw(std::vector<std::vector<char>>& frame);
+    void draw(Map & map);
 
 protected:
     Point _position;

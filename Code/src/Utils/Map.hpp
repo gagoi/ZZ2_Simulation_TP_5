@@ -15,8 +15,13 @@ public:
     int getWidth() const { return _width; }
     int getHeight() const { return _height; }
 
+    
     char& operator[](Point const & p);
     char const & operator[](Point const & p) const;
+    char& operator[](Point & p);
+    char const & operator[](Point & p) const;
+
+    void clear();
 
     friend std::ostream& operator<<(std::ostream& out, Map const & m);
 
