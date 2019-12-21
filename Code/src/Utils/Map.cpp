@@ -1,3 +1,13 @@
+/**
+ * @file Map.cpp
+ * @author Mathieu Arquilliere (mathieu.arquilliere@etu.uca.fr)
+ * @brief Fichier d'implémentation de la classe Map
+ * @version 0.1
+ * @date 2019-12-21
+ * 
+ * @copyright Copyright (c) 2019
+ * 
+ */
 #include "Map.hpp"
 
 Map::Map(int a, int b) :
@@ -17,7 +27,6 @@ Map::Map(int a, int b) :
 Map::~Map()
 {
 }
-
 
 char& Map::operator[](Point const & p)
 {

@@ -1,9 +1,17 @@
+/**
+ * @file System.cpp
+ * @author Mathieu Arquilliere (mathieu.arquilliere@etu.uca.fr)
+ * @brief Fichier d'implémentation de la classe System
+ * @version 0.1
+ * @date 2019-12-21
+ * 
+ * @copyright Copyright (c) 2019
+ * 
+ */
 #include "System.hpp"
 
 System::System(int w, int h) :
-    _width(w),
-    _height(h),
-    _map(_width, _height)
+    _map(w, h)
 {
 }
 
