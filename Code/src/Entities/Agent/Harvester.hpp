@@ -12,17 +12,18 @@
 #define HARVESTER_HPP
 
 #include <random>
-#include "Agent.hpp"
+#include "../Entity.hpp"
+#include "../Resource.hpp"
 
 /**
- * @brief Classe de l'agent récolteur (héritant de la classe Agent)
+ * @brief Classe de l'agent récolteur (héritant de la classe Agent) TODO: /!\ Héritage classe Entity
  * L'agent est créé par une base et est lié à celle-ci.
  * Comportement :
  *      L'Harvester a 2 états, recherche et livraison
  *      Dans le premier, l'agent se déplace aléatoirement dans un voisinage de Moore d'ordre 1. Il le fait jusqu'à se trouver sur une case contenant une ressource
  *      Une fois sur une ressource, il prends celle-ci et se déplace au plus court vers sa base où il dépose ses ressources.
  */
-class Harvester : public Agent
+class Harvester : public Entity
 {
 public:
     /**
@@ -44,12 +45,14 @@ public:
      *      Aléatoirement si il est dans l'état SEARCHING
      *      Vers sa base si il est dans l'état BRINGING 
      */
-    void move() override;
+    void move(Map const & map);
 
     /**
      * @brief Méthode définissant le comportement de l'agent à chaque étape du système
+     * 
+     * @param[in] resources Tableau d'entité contenant les ressources
      */
-    void update() override;
+    void update(std::vector<Resource*> & resources, Map const & map);
 
 private:
     /**
@@ -57,8 +60,8 @@ private:
      */
     enum class STATE
     {
-        SEARCHING,
-        BRINGING
+        SEARCH,
+        BRING
     };
 
     Point _basePosition; /*!< Coordonnées de la base de l'agent */

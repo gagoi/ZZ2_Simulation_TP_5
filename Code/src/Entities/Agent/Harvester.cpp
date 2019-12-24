@@ -14,9 +14,9 @@ std::mt19937 Harvester::gen(253);
 std::uniform_int_distribution<> Harvester::move_distribution(-1, 1);
 
 Harvester::Harvester(Point const & p, Point const & basePos, char c) :
-    Agent(p, c),
+    Entity(p, c),
     _basePosition(basePos),
-    _state(STATE::SEARCHING)
+    _state(STATE::SEARCH)
 {
 }
 
@@ -24,27 +24,41 @@ Harvester::~Harvester()
 {
 }
 
-void Harvester::move()
+void Harvester::move(Map const & map)
 {
     switch (_state)
     {
-    case STATE::SEARCHING:
+    case STATE::SEARCH:
         _position += Point(move_distribution(gen), move_distribution(gen));
         break;
-    case STATE::BRINGING:
+    case STATE::BRING:
         break;
     }
 }
 
-void Harvester::update()
+void Harvester::update(std::vector<Resource*> & resources, Map const & map)
 {
-    move();
     switch (_state)
     {
-    case STATE::SEARCHING:
-        
+    case STATE::SEARCH:
+        for (std::vector<Resource*>::iterator it = resources.begin(); it != resources.end(); it++)
+        {
+            if (map.pointInNeighborhood(getPosition(), (*it)->getPosition(), 1))
+            {
+                _state = STATE::BRING;
+                delete *it;
+                resources.erase(it);
+                break;
+            }
+        }
         break;
-    case STATE::BRINGING:
+    case STATE::BRING:
+        if (_basePosition == _position)
+        {
+            // TODO: incrémenter la base
+            _state = STATE::SEARCH;
+        }
         break;
     }
+    move(map);
 }

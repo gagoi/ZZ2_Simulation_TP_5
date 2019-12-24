@@ -11,6 +11,8 @@
 #ifndef POINT_HPP
 #define POINT_HPP
 
+#include <iostream>
+
 /**
  * @brief Classe permettant de simplifier les coordonnées d'un environnement 2D
  * Cette classe surcharge les opérateurs de base permettant de manipuler des Points facilement.
@@ -44,11 +46,16 @@ struct Point
 
     Point& operator=(Point const & p) { x = p.x; y = p.y; return *this; }
     bool operator==(Point const & p) { return x == p.x && y == p.y; }
-    bool operator!=(Point const & p) { return !(*this != p); }
+    bool operator!=(Point const & p) { return x != p.x || y != p.y; }
     Point& operator+=(Point const & p) { x += p.x; y += p.y; return *this; }
     Point operator+(Point const & p) { return Point(x + p.x, y + p.y); }
     Point& operator-=(Point const & p) { x -= p.x; y -= p.y; return *this; }
     Point operator-(Point const & p) { return Point(x - p.x, y - p.y); }
+
+    friend std::ostream& operator<<(std::ostream& out, Point const & p) {
+        out << "(" << p.x << "," << p.y << ")";
+        return out;
+    }
 };
 
 

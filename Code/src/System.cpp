@@ -17,33 +17,44 @@ System::System(int w, int h) :
 
 System::~System()
 {
-    for (auto &&agent : _agents)
-    {
-        delete agent;
-    }    
+    for (auto &&h : _harvesters)
+        delete h;
+
+    for (auto &&h : _hunters)
+        delete h;
+
+    for (auto &&r : _resources)
+        delete r;     
 }
 
-void System::addAgent(Agent* agent)
+void System::addHarvester(Harvester* h)
 {
-    _agents.push_back(agent);
+    _harvesters.push_back(h);
+}
+
+void System::addHunter(Hunter* h)
+{
+    _hunters.push_back(h);
 }
 
 void System::update()
 {
     // Updates
-    for (auto &&agent : _agents)
-    {
-        agent->update();
-    }
+    for (auto &&h : _harvesters)
+        h->update(_resources, _map);
+
+    for (auto &&h : _hunters)
+        h->update(_harvesters, _map);
     
     // Clear
     _map.clear();
 
     // Render
-    for (auto &&agent : _agents)
-    {
-        agent->draw(_map);
-    }
+    for (auto &&h : _harvesters)
+        h->draw(_map);
+
+    for (auto &&h : _hunters)
+        h->draw(_map);
 
     std::cout << "------------------------------------------------------" << std::endl;
 }

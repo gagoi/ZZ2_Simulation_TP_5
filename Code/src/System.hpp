@@ -16,7 +16,9 @@
 #include <iomanip>
 #include "Utils/Map.hpp"
 #include "Entities/Entity.hpp"
-#include "Entities/Agent/Agent.hpp"
+#include "Entities/Agent/Harvester.hpp"
+#include "Entities/Agent/Hunter.hpp"
+#include "Entities/Resource.hpp"
 
 /**
  * @brief Classe représentant un système multi-agent
@@ -39,11 +41,18 @@ public:
     ~System();
 
     /**
-     * @brief Ajoute un agent dans le système
+     * @brief Ajoute un récolteur dans le système
      * 
-     * @param[in] agent Pointeur sur l'agent à ajouter
+     * @param[in] h Pointeur sur l'agent à ajouter
      */
-    void addAgent(Agent* agent);
+    void addHarvester(Harvester* h);
+
+    /**
+     * @brief Ajoute un mangeur dans le système
+     * 
+     * @param[in] h Pointeur sur l'agent à ajouter
+     */
+    void addHunter(Hunter* h);
 
     /**
      * @brief Méthode qui actualise tous les agents et donc les fais bouger et intéragir avec leur environnement
@@ -61,7 +70,10 @@ public:
     friend std::ostream& operator<<(std::ostream& out, System const & sys);
 
 private:
-    std::vector<Agent*> _agents; /*!< Tableau contenant tous les agents du système */
+    std::vector<Harvester*> _harvesters;
+    std::vector<Hunter*>    _hunters;
+    std::vector<Resource*>  _resources;
+    //std::vector<Agent*> _agents; /*!< Tableau contenant tous les agents du système */
     Map _map; /*!< Objet map sur lequel on affiche l'ensemble du système */
 };
 

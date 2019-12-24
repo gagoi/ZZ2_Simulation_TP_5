@@ -71,6 +71,43 @@ void Map::clear()
     }
 }
 
+bool Map::pointInNeighborhood(Point const & point, Point const & center, int n) const
+{
+    int dx = std::min(abs(point.x - center.x), (center.x > point.x ? (abs(_width - center.x) + point.x) : (abs(_width - point.x) + center.x)));
+    int dy = std::min(abs(point.y - center.y), (center.y > point.y ? (abs(_height - center.y) + point.y) : (abs(_height - point.y) + center.y)));
+    return dx <= n && dy <= n;
+}
+
+Point Map::getDirection(Point const & point, Point const & dest) const
+{
+    int dx_1 = abs(point.x - dest.x);
+    int dy_1 = abs(point.y - dest.y);
+    int dx_2 = dest.x > point.x ? (_width - dest.x + point.x) : (_width - point.x + dest.x);
+    int dy_2 = dest.y > point.y ? (_height - dest.y + point.y) : (_height - point.y + dest.y);
+
+    Point dir(0, 0);
+    if ((dx_1 > dx_2 ? dx_2 : dx_1) == (dy_1 > dy_2 ? dy_2 : dy_1))
+    {
+        dir.x = point.x > dest.x ? -1 : (point.x < dest.x ? 1 : 0);
+        dir.y = point.y > dest.y ? -1 : (point.y < dest.y ? 1 : 0);
+    }
+    else if ((dx_1 > dx_2 ? dx_2 : dx_1) > (dy_1 > dy_2 ? dy_2 : dy_1))
+    {
+        dir.x = point.x > dest.x ? -1 : (point.x < dest.x ? 1 : 0);
+    }
+    else
+    {
+        dir.y = point.y > dest.y ? -1 : (point.y < dest.y ? 1 : 0);
+    }
+
+    if (dx_2 < dx_1)
+        dir.x *= -1;
+    if (dy_2 < dy_1)
+        dir.y *= -1;
+
+    return dir;
+}
+
 std::ostream& operator<<(std::ostream& out, Map const & m)
 {
     int i = 0;
