@@ -71,11 +71,11 @@ void Map::clear()
     }
 }
 
-bool Map::pointInNeighborhood(Point const & point, Point const & center, int n) const
+Point Map::getDistances(Point const & p1, Point const & p2) const
 {
-    int dx = std::min(abs(point.x - center.x), (center.x > point.x ? (abs(_width - center.x) + point.x) : (abs(_width - point.x) + center.x)));
-    int dy = std::min(abs(point.y - center.y), (center.y > point.y ? (abs(_height - center.y) + point.y) : (abs(_height - point.y) + center.y)));
-    return dx <= n && dy <= n;
+    int dx = std::min(abs(p1.x - p2.x), (p2.x > p1.x ? (abs(_width - p2.x) + p1.x) : (abs(_width - p1.x) + p2.x)));
+    int dy = std::min(abs(p1.y - p2.y), (p2.y > p1.y ? (abs(_height - p2.y) + p1.y) : (abs(_height - p1.y) + p2.y)));
+    return Point(dx, dy);
 }
 
 Point Map::getDirection(Point const & point, Point const & dest) const

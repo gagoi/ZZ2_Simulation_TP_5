@@ -12,18 +12,22 @@ std::uniform_int_distribution<> dis_y(0, SYS_H);
 
 int main()
 {
-    /*
     System s(SYS_W, SYS_H);
 
     for (int i = 0; i < 15; i++)    
         s.addHarvester(new Harvester(Point(dis_x(gen), dis_y(gen)), Point(2, 2)));
+    s.addHunter(new Hunter(Point(0, 0)));
     for (int i = 0; i < 20; i++)
     {
         s.update();
         std::cout << s;
     }
-    */
+    
+    return 0;
+}
 
+void testGetDirection()
+{
     Map m(10, 10);
 
     Point c(6, 6);
@@ -41,6 +45,4 @@ int main()
         m[p] = 'p';
         std::cout << m;
     }
-
-    return 0;
 }

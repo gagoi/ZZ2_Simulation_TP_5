@@ -24,6 +24,8 @@
  *  - de décrémentation (-=)
  *  - de somme
  *  - de différence
+ *  - de multiplication (par un entier)
+ *  - de flux
  */
 struct Point
 {
@@ -51,6 +53,7 @@ struct Point
     Point operator+(Point const & p) { return Point(x + p.x, y + p.y); }
     Point& operator-=(Point const & p) { x -= p.x; y -= p.y; return *this; }
     Point operator-(Point const & p) { return Point(x - p.x, y - p.y); }
+    Point& operator*(int mul) { x *= mul; y *= mul; return *this; }
 
     friend std::ostream& operator<<(std::ostream& out, Point const & p) {
         out << "(" << p.x << "," << p.y << ")";

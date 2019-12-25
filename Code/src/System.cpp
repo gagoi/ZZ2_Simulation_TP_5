@@ -40,11 +40,11 @@ void System::addHunter(Hunter* h)
 void System::update()
 {
     // Updates
-    for (auto &&h : _harvesters)
-        h->update(_resources, _map);
-
     for (auto &&h : _hunters)
         h->update(_harvesters, _map);
+
+    for (auto &&h : _harvesters)
+        h->update(_resources, _map);
     
     // Clear
     _map.clear();

@@ -94,15 +94,13 @@ public:
     void clear();
 
     /**
-     * @brief Méthode qui permet de savoir si un point donné est dans une zone de la map
+     * @brief Méthode permettant d'obtenir les distances les plus courtes en x,y entre deux points 
      * 
-     * @param[in] point Coordonnées d'un point
-     * @param[in] center Centre de la zone
-     * @param[in] n Taille du voisinage
-     * @return true Le point est dans la zone
-     * @return false Le point n'est pas dans la zone
+     * @param[in] p1 premier point
+     * @param[in] p2 deuxième point
+     * @return Point x: distance entre p1.x et p2.x, y: distance entre p1.y et p2.y
      */
-    bool pointInNeighborhood(Point const & point, Point const & center, int n) const;
+    Point getDistances(Point const & p1, Point const & p2) const;
 
     /**
      * @brief Méthode pour obtenir la direction vers une destination donnée

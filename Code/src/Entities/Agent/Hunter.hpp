@@ -11,19 +11,9 @@ public:
     Hunter(Point const & p, char c = 'M');
     ~Hunter();
 
-    void move();
     void update(std::vector<Harvester*> & harvesters, Map const & map);
 
-private:
-    enum class STATE
-    {
-        SEARCH,
-        AIM
-    };
-
-    STATE _state;
-    Point _food;
-    
+private:    
     static std::mt19937 gen;
     static std::uniform_int_distribution<> move_distribution;
 };

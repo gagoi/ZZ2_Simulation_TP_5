@@ -32,6 +32,7 @@ void Harvester::move(Map const & map)
         _position += Point(move_distribution(gen), move_distribution(gen));
         break;
     case STATE::BRING:
+        _position += map.getDirection(_position, _basePosition);
         break;
     }
 }
@@ -43,7 +44,8 @@ void Harvester::update(std::vector<Resource*> & resources, Map const & map)
     case STATE::SEARCH:
         for (std::vector<Resource*>::iterator it = resources.begin(); it != resources.end(); it++)
         {
-            if (map.pointInNeighborhood(getPosition(), (*it)->getPosition(), 1))
+            Point d = map.getDistances(getPosition(), (*it)->getPosition());
+            if (d.x <= 1 && d.y <= 1)
             {
                 _state = STATE::BRING;
                 delete *it;

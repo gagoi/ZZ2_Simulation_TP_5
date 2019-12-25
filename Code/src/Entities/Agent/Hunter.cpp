@@ -4,8 +4,7 @@ std::mt19937 Hunter::gen(253);
 std::uniform_int_distribution<> Hunter::move_distribution(-2, 2);
 
 Hunter::Hunter(Point const & p, char c) :
-    Entity(p, c),
-    _state(STATE::SEARCH)
+    Entity(p, c)
 {
 }
 
@@ -13,46 +12,28 @@ Hunter::~Hunter()
 {
 }
 
-void Hunter::move()
-{
-    switch (_state)
-    {
-    case STATE::SEARCH:
-        _position = Point(move_distribution(gen), move_distribution(gen));
-        break;
-    case STATE::AIM:
-        // TODO: déplacement le plus rapide vers _food
-        break;
-    }
-}
-
 void Hunter::update(std::vector<Harvester*> & harvesters, Map const & map)
 {
-    switch (_state)
+    bool moved = false;
+    for (auto it = harvesters.begin(); it != harvesters.end() && !moved; it++)
     {
-    case STATE::SEARCH:
-        for (auto &&har : harvesters)
+        Point d = map.getDistances(getPosition(), (*it)->getPosition());
+        if (d.x <= 2 && d.y <= 2) // Si il y a un Harvester dans un voisinage de Moore d'ordre 2
         {
-            if (map.pointInNeighborhood(getPosition(), har->getPosition(), 3))
-            {
-                _state = STATE::AIM;
-                _food = har->getPosition();
-            }
+            // On se déplace et on mange le récolteur
+            _position = (*it)->getPosition();
+            delete *it;
+            harvesters.erase(it);
+            // TODO: Système de barre de vie
+            moved = true;
         }
-        break;
-    case STATE::AIM:
-        for (auto it = harvesters.begin(); it != harvesters.end(); it++)
+        else if (d.x <= 3 && d.y <= 3) // Sinon si on voit le Harvester (voisinage de Moore d'ordre 3) mais qu'on est trop loin pour le manger
         {
-            if (getPosition() == (*it)->getPosition())
-            {
-                _state = STATE::SEARCH;
-                delete *it;
-                harvesters.erase(it);
-                // TODO: Système de barre de vie
-            }
+            // On se déplace vers lui
+            _position += map.getDirection(_position, (*it)->getPosition()) * 2;
+            moved = true;
         }
-        
-        break;
     }
-    move();
+    if (!moved)
+        _position = Point(move_distribution(gen), move_distribution(gen));
 }
