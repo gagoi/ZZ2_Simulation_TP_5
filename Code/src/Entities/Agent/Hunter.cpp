@@ -1,10 +1,21 @@
+/**
+ * @file Hunter.cpp
+ * @author Mathieu Arquilliere (mathieu.arquilliere@etu.uca.fr)
+ * @brief Fichier d'implémentation de la classe Hunter
+ * @version 0.1
+ * @date 2019-12-26
+ * 
+ * @copyright Copyright (c) 2019
+ * 
+ */
 #include "Hunter.hpp"
 
 std::mt19937 Hunter::gen(253);
 std::uniform_int_distribution<> Hunter::move_distribution(-2, 2);
 
 Hunter::Hunter(Point const & p, char c) :
-    Entity(p, c)
+    Entity(p, c),
+    _life(100)
 {
 }
 
@@ -35,5 +46,5 @@ void Hunter::update(std::vector<Harvester*> & harvesters, Map const & map)
         }
     }
     if (!moved)
-        _position = Point(move_distribution(gen), move_distribution(gen));
+        _position += Point(move_distribution(gen), move_distribution(gen));
 }

@@ -20,7 +20,7 @@ Entity::~Entity()
 {
 }
 
-void Entity::draw(Map & map)
+void Entity::draw(Map & map) const
 {
     map[_position] = _shellChar;
 }

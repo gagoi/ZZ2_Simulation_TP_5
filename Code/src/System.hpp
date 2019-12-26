@@ -19,6 +19,7 @@
 #include "Entities/Agent/Harvester.hpp"
 #include "Entities/Agent/Hunter.hpp"
 #include "Entities/Resource.hpp"
+#include "Entities/Base.hpp"
 
 /**
  * @brief Classe représentant un système multi-agent
@@ -70,10 +71,10 @@ public:
     friend std::ostream& operator<<(std::ostream& out, System const & sys);
 
 private:
-    std::vector<Harvester*> _harvesters;
-    std::vector<Hunter*>    _hunters;
-    std::vector<Resource*>  _resources;
-    //std::vector<Agent*> _agents; /*!< Tableau contenant tous les agents du système */
+    std::vector<Harvester*> _harvesters; /*!< Tableau contenant les agents récolteurs du système */
+    std::vector<Hunter*>    _hunters; /*!< Tableau contenant les agents mangeurs du système */
+    std::vector<Resource*>  _resources; /*!< Tableau contenant les ressources présentes dans le système */
+    std::vector<Base*>      _bases; /*!< Tableau contenant les bases des agents Harvester du système */
     Map _map; /*!< Objet map sur lequel on affiche l'ensemble du système */
 };
 
