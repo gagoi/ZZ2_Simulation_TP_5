@@ -60,7 +60,7 @@ public:
      * 
      * @param[in] map Tableau de caractères représentant le système
      */
-    void draw(Map & map);
+    void draw(Map & map) const;
 
 protected:
     Point _position; /*!< Position de l'entité dans le système */

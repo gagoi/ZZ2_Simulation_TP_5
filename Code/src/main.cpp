@@ -14,8 +14,10 @@ int main()
 {
     System s(SYS_W, SYS_H);
 
+    Base* base = new Base(Point(5, 5), 5);
+
     for (int i = 0; i < 15; i++)    
-        s.addHarvester(new Harvester(Point(dis_x(gen), dis_y(gen)), Point(2, 2)));
+        s.addHarvester(new Harvester(Point(dis_x(gen), dis_y(gen)), base));
     s.addHunter(new Hunter(Point(0, 0)));
     for (int i = 0; i < 20; i++)
     {

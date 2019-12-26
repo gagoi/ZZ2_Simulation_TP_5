@@ -14,9 +14,12 @@
 #include <random>
 #include "../Entity.hpp"
 #include "../Resource.hpp"
+#include "../Base.hpp"
+
+class Base;
 
 /**
- * @brief Classe de l'agent récolteur (héritant de la classe Agent) TODO: /!\ Héritage classe Entity
+ * @brief Classe de l'agent récolteur (héritant de la classe Entity)
  * L'agent est créé par une base et est lié à celle-ci.
  * Comportement :
  *      L'Harvester a 2 états, recherche et livraison
@@ -30,10 +33,10 @@ public:
      * @brief Construit un nouvel agent Harvester
      * 
      * @param[in] p Coordonnées où est créé l'agent
-     * @param[in] basePos Coordonnées de la base de l'agent 
+     * @param[in] base Base de l'agent
      * @param[in] c Caractère à afficher sur la map pour représenter un Harvester
      */
-    Harvester(Point const & p, Point const & basePos, char c = 'H');
+    Harvester(Point const & p, Base* base, char c = 'H');
 
     /**
      * @brief Détruit l'objet Harvester
@@ -51,8 +54,16 @@ public:
      * @brief Méthode définissant le comportement de l'agent à chaque étape du système
      * 
      * @param[in] resources Tableau d'entité contenant les ressources
+     * @param[in] map Map représentant l'environnement (sert pour les méthodes de distances)
      */
     void update(std::vector<Resource*> & resources, Map const & map);
+
+    /**
+     * @brief Getter de la base de l'agent
+     * 
+     * @return Base* const Pointeur sur la base de l'agent
+     */
+    Base* const getBase() const;
 
 private:
     /**
@@ -64,7 +75,7 @@ private:
         BRING
     };
 
-    Point _basePosition; /*!< Coordonnées de la base de l'agent */
+    Base* _base; /*!< Base de l'agent */
     STATE _state; /*!< Etat de l'agent */
 
     static std::mt19937 gen; /*!< générateur de nombre aléatoire Mersenne Twister (pour le déplacement aléatoire) */

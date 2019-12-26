@@ -24,12 +24,17 @@ System::~System()
         delete h;
 
     for (auto &&r : _resources)
-        delete r;     
+        delete r;
+
+    for (auto &&b : _bases)
+        delete b;
 }
 
 void System::addHarvester(Harvester* h)
 {
     _harvesters.push_back(h);
+    if (std::find(_bases.begin(), _bases.end(), h->getBase()) == _bases.end())
+        _bases.push_back(h->getBase());
 }
 
 void System::addHunter(Hunter* h)
@@ -45,6 +50,9 @@ void System::update()
 
     for (auto &&h : _harvesters)
         h->update(_resources, _map);
+
+    for (auto &&b : _bases)
+        b->update(_harvesters);
     
     // Clear
     _map.clear();
@@ -55,6 +63,9 @@ void System::update()
 
     for (auto &&h : _hunters)
         h->draw(_map);
+
+    for (auto &&b : _bases)
+        b->draw(_map);
 
     std::cout << "------------------------------------------------------" << std::endl;
 }
