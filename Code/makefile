@@ -1,19 +1,3 @@
-#===========================================================
-#
-#  Makefile du projet ................
-#
-#  Auteur               : .................
-#  Date de création     : ................
-#  Date de modification : ................
-#
-#  Version Actuelle du projet: ................
-#
-#  Histoire:
-#    - ver  -- date -- comment
-#    - ..... -- ...... -- .....................................
-#
-#===========================================================
- 
 #variables
 SRCDIR = src/
 OBJDIR = bin/obj/
@@ -74,5 +58,17 @@ $(OBJ):
 
 clean:
 	$(RM) $(OBJ) $(DEPFILE)
+
+draw:
+	$(EXEC) --draw;
+
+log:
+	$(EXEC) --log;
+
+log-draw:
+	$(EXEC) --log-draw
+
+log-file:
+	$(EXEC) --log-file
 
 #============ fin du makefile ========================
