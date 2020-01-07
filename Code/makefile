@@ -19,10 +19,9 @@ SRCDIR = src/
 OBJDIR = bin/obj/
 EXEC    = bin/sma
 DEPFILE = $(OBJDIR)mk.depend
-INCDIR = -I"."
-LIBDIR = 
-INCLIB = 
-#-lsfml-graphics -lsfml-window -lsfml-system
+INCDIR = -I"." -I./lib/SFML-2.5.1/include
+LIBDIR = -L./lib/SFML-2.5.1/lib
+LIBFLAGS = -lsfml-graphics -lsfml-window -lsfml-system
  
 #les programmes et leurs options
 MSQ = @
@@ -55,7 +54,7 @@ endif
 
 $(EXEC): $(OBJ)
 	$(MSG) "==== édition de liens ===== "
-	$(CC) $(LFLAGS) $(OBJ) -o $(EXEC) $(LIBDIR) $(INCLIB)
+	$(CC) $(LFLAGS) $(OBJ) -o $(EXEC) $(LIBDIR) $(LIBFLAGS)
 	$(MSG_BUILDOK)
 	$(EXEC)
 
