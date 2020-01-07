@@ -42,4 +42,9 @@ bin/
 
 # Doxygen
 html/
-latex/
+latex/*.toc
+*.gz
+*.log
+*.fls
+*.fdb_latexmk
+*.aux
