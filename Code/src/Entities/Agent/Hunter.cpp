@@ -15,7 +15,8 @@ std::uniform_int_distribution<> Hunter::move_distribution(-2, 2);
 
 Hunter::Hunter(Point const & p, char c) :
     Entity(p, c),
-    _life(100)
+    _lifeState(LIFE_STATE::ORANGE),
+    _stepsBeforeChange(ORANGE_STATE_DURATION)
 {
 }
 
@@ -36,6 +37,19 @@ void Hunter::update(std::vector<Harvester*> & harvesters, Map const & map)
             delete *it;
             harvesters.erase(it);
             // TODO: Système de barre de vie
+            /*
+            switch (_lifeState)
+            {
+            case LIFE_STATE::RED:
+                _lifeState = LIFE_STATE::ORANGE;
+                break;
+            case LIFE_STATE::ORANGE:
+                _lifeState = LIFE_STATE::GREEN;
+                break;
+            case LIFE_STATE::GREEN:
+                break;
+            }*/
+
             moved = true;
         }
         else if (d.x <= 3 && d.y <= 3) // Sinon si on voit le Harvester (voisinage de Moore d'ordre 3) mais qu'on est trop loin pour le manger
@@ -47,4 +61,9 @@ void Hunter::update(std::vector<Harvester*> & harvesters, Map const & map)
     }
     if (!moved)
         _position += Point(move_distribution(gen), move_distribution(gen));
+}
+
+bool Hunter::isDead() const
+{
+    return _lifeState == LIFE_STATE::RED && _stepsBeforeChange <= 0;
 }
