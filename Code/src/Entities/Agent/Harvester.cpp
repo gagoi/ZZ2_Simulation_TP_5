@@ -39,7 +39,7 @@ void Harvester::move()
 
 void Harvester::update()
 {
-    std::vector<Entity*&> environment;
+    std::vector<Entity*> environment;
     switch (_state)
     {
     case STATE::SEARCH:
@@ -50,8 +50,8 @@ void Harvester::update()
             if (e != nullptr && e->getType() == ENTITY_TYPE::RESOURCE)
             {
                 _state = STATE::BRING;
+                World::getInstance()[e->getPosition()] = nullptr;
                 delete e;
-                e = nullptr;
                 break;
             }
         }

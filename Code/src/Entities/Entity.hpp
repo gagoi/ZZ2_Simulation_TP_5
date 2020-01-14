@@ -13,7 +13,6 @@
 
 #include <vector>
 #include "../Utils/Point.hpp"
-#include "../Utils/World.hpp"
 
 /**
  * @brief Classe Entity, définit un objet simple existant dans l'environnement du système
@@ -26,7 +25,8 @@ public:
         HARVESTER,
         HUNTER,
         BASE,
-        RESOURCE
+        RESOURCE,
+        NONE
     };
 
     /**
@@ -68,7 +68,6 @@ public:
     friend std::ostream& operator<<(std::ostream& out, Entity const & e);
 
 protected:
-    World & _world;
     Point _position; /*!< Position de l'entité dans le système */
     char _shellChar; /*!< Caractère représentant l'entité */
 };

@@ -23,6 +23,7 @@ System::~System()
 void System::addAgent(Agent* a)
 {
     _agents.push_back(a);
+    World::getInstance().add(a);
 }
 
 void System::update()
@@ -30,7 +31,7 @@ void System::update()
     // Updates
     for (auto it = _agents.begin(); it != _agents.end(); it++)
     {
-        if (World::getInstance()[(*it)->getPosition()] == nullptr)
+        if (*it == nullptr)
             _agents.erase(it);
         else
             (*it)->update();

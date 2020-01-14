@@ -26,7 +26,7 @@ Hunter::~Hunter()
 void Hunter::update()
 {
     // Environnement du Hunter (voisinage de Moore d'ordre 3)
-    std::vector<Entity*&> environment = World::getInstance().getEnvironment(_position, 3);
+    std::vector<Entity*> environment = World::getInstance().getEnvironment(_position, 3);
     bool moved = false;
 
     for (auto &&e : environment)
@@ -38,17 +38,17 @@ void Hunter::update()
             {
                 // On se déplace et on mange le récolteur
                 _position = e->getPosition();
+                World::getInstance()[e->getPosition()] = nullptr;
                 delete e;
-                e = nullptr;
                 // TODO: Système de barre de vie
                 moved = true;
             }
-        }
-        else
-        {
-            // On se déplace vers lui
-            _position += World::getInstance().getDirection(_position, e->getPosition()) * 2;
-            moved = true;
+            else
+            {
+                // On se déplace vers lui
+                _position += World::getInstance().getDirection(_position, e->getPosition()) * 2;
+                moved = true;
+            }
         }
         if (!moved)
             _position += Point(move_distribution(gen), move_distribution(gen));

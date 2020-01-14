@@ -20,13 +20,6 @@
 #include "Point.hpp"
 #include "../Entities/Entity.hpp"
 
-constexpr int WORLD_WIDTH = 20;
-constexpr int WORLD_HEIGHT = 20;
-
-extern std::mt19937 gen;
-
-std::vector<Entity*&>::iterator findRandomInVector(std::vector<Entity*&>& env, Entity* toFind);
-
 /**
  * @brief Classe World
  * 
@@ -40,9 +33,10 @@ private:
     static World* instance;
 
 public:
-    static World& getInstance();
+    static constexpr int WORLD_WIDTH = 20;
+    static constexpr int WORLD_HEIGHT = 20;
 
-    static std::vector<Entity*>::iterator getRandomInEnvironment(std::vector<Entity*>& env, Entity* toFind);
+    static World& getInstance();
 
     /**
      * @brief Construit un nouvel objet World
@@ -59,7 +53,7 @@ public:
 
     void add(Entity* entity);
 
-    std::vector<Entity*&> getEnvironment(Point & origin, int range);
+    std::vector<Entity*> getEnvironment(Point & origin, int range);
 
     void refactorCoordonates(Point & p);
 

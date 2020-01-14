@@ -1,19 +1,6 @@
 #include "World.hpp"
 
-std::vector<Entity*&>::iterator findRandomInVector(std::vector<Entity*&>& env, Entity* toFind)
-{
-    std::vector<std::vector<Entity*&>::iterator> its;
-    for(auto it = env.begin(); it != env.end(); it++)
-    {
-        if (*it == toFind)
-            its.push_back(it);
-    }
-    std::shuffle(its.begin(), its.end(), gen);
-    return its.size() > 0 ? its[0] : env.end(); //TODO: fix
-}
-
 World* World::instance = nullptr;
-std::mt19937 gen(256);
 
 World& World::getInstance()
 {
@@ -43,13 +30,8 @@ void World::add(Entity* entity)
     Point p(entity->getPosition());
     if ((*this)[p] != nullptr) // Si la case est occupée
     {
-        std::vector<Entity*&> env = getEnvironment(p, 1); // On met l'entité dans une case au hasard dans un voisinage de Moore d'ordre 1
-        Entity* e = nullptr;
-        Entity*& ref = e;
-        auto place = findRandomInVector(env, nullptr);
-
-        if (place != env.end())
-            *place = entity;
+        // TODO: Gerer le cas où la case est occupée
+        delete entity;
     }
     else
     {
@@ -57,9 +39,9 @@ void World::add(Entity* entity)
     }
 }
 
-std::vector<Entity*&> World::getEnvironment(Point & origin, int range)
+std::vector<Entity*> World::getEnvironment(Point & origin, int range)
 {
-    std::vector<Entity*&> env;
+    std::vector<Entity*> env;
     refactorCoordonates(origin);
 
     for (int i = origin.x - range; i < origin.x + range; i++)
@@ -161,7 +143,10 @@ std::ostream& operator<<(std::ostream& out, World const & m)
         std::cout << std::setw(2) << i++ << " ";
         for (auto &&o : line)
         {
-            std::cout << std::setw(3) << o;
+            if (o)
+                std::cout << std::setw(3) << *o;
+            else
+                std::cout << std::setw(3) << '.';
         }
         std::cout << std::endl;
     }

@@ -11,7 +11,6 @@
 #include "Entity.hpp"
 
 Entity::Entity(Point const & p, char c) :
-    _world(World::getInstance()),
     _position(p),
     _shellChar(c)
 {
