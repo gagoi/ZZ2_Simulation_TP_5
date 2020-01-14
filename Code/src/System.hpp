@@ -14,7 +14,7 @@
 #include <vector>
 #include <iostream>
 #include <iomanip>
-#include "Utils/Map.hpp"
+#include "Utils/World.hpp"
 #include "Entities/Entity.hpp"
 #include "Entities/Agent/Harvester.hpp"
 #include "Entities/Agent/Hunter.hpp"
@@ -34,26 +34,14 @@ public:
      * @param[in] w "hauteur" de la map du système
      * @param[in] h "longeur" de la map du système
      */
-    System(int w, int h);
+    System();
 
     /**
      * @brief Détruit l'objet System
      */
     ~System();
 
-    /**
-     * @brief Ajoute un récolteur dans le système
-     * 
-     * @param[in] h Pointeur sur l'agent à ajouter
-     */
-    void addHarvester(Harvester* h);
-
-    /**
-     * @brief Ajoute un mangeur dans le système
-     * 
-     * @param[in] h Pointeur sur l'agent à ajouter
-     */
-    void addHunter(Hunter* h);
+    void addAgent(Agent * a);
 
     /**
      * @brief Méthode qui actualise tous les agents et donc les fais bouger et intéragir avec leur environnement
@@ -71,11 +59,7 @@ public:
     friend std::ostream& operator<<(std::ostream& out, System const & sys);
 
 private:
-    std::vector<Harvester*> _harvesters; /*!< Tableau contenant les agents récolteurs du système */
-    std::vector<Hunter*>    _hunters; /*!< Tableau contenant les agents mangeurs du système */
-    std::vector<Resource*>  _resources; /*!< Tableau contenant les ressources présentes dans le système */
-    std::vector<Base*>      _bases; /*!< Tableau contenant les bases des agents Harvester du système */
-    Map _map; /*!< Objet map sur lequel on affiche l'ensemble du système */
+    std::vector<Agent*> _agents;
 };
 
 #endif

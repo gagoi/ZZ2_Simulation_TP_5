@@ -11,6 +11,7 @@
 #include "Entity.hpp"
 
 Entity::Entity(Point const & p, char c) :
+    _world(World::getInstance()),
     _position(p),
     _shellChar(c)
 {
@@ -20,7 +21,8 @@ Entity::~Entity()
 {
 }
 
-void Entity::draw(Map & map) const
+std::ostream& operator<<(std::ostream& out, Entity const & e)
 {
-    map[_position] = _shellChar;
+    out << e.getChar();
+    return out;
 }

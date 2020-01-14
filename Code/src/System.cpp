@@ -10,68 +10,37 @@
  */
 #include "System.hpp"
 
-System::System(int w, int h) :
-    _map(w, h)
+System::System()
 {
 }
 
 System::~System()
 {
-    for (auto &&h : _harvesters)
-        delete h;
-
-    for (auto &&h : _hunters)
-        delete h;
-
-    for (auto &&r : _resources)
-        delete r;
-
-    for (auto &&b : _bases)
-        delete b;
+    for (auto &&a : _agents)
+        delete a;
 }
 
-void System::addHarvester(Harvester* h)
+void System::addAgent(Agent* a)
 {
-    _harvesters.push_back(h);
-    if (std::find(_bases.begin(), _bases.end(), h->getBase()) == _bases.end())
-        _bases.push_back(h->getBase());
-}
-
-void System::addHunter(Hunter* h)
-{
-    _hunters.push_back(h);
+    _agents.push_back(a);
 }
 
 void System::update()
 {
     // Updates
-    for (auto &&h : _hunters)
-        h->update(_harvesters, _map);
-
-    for (auto &&h : _harvesters)
-        h->update(_resources, _map);
-
-    for (auto &&b : _bases)
-        b->update(_harvesters);
-    
-    // Clear
-    _map.clear();
-
-    // Render
-    for (auto &&h : _harvesters)
-        h->draw(_map);
-
-    for (auto &&h : _hunters)
-        h->draw(_map);
-
-    for (auto &&b : _bases)
-        b->draw(_map);
+    for (auto it = _agents.begin(); it != _agents.end(); it++)
+    {
+        if (World::getInstance()[(*it)->getPosition()] == nullptr)
+            _agents.erase(it);
+        else
+            (*it)->update();
+    }
 
     std::cout << "------------------------------------------------------" << std::endl;
 }
 
 std::ostream& operator<<(std::ostream& out, System const & sys)
 {
-    out << sys._map;
+    out << World::getInstance();
     return out;
 }

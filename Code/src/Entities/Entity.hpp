@@ -13,7 +13,7 @@
 
 #include <vector>
 #include "../Utils/Point.hpp"
-#include "../Utils/Map.hpp"
+#include "../Utils/World.hpp"
 
 /**
  * @brief Classe Entity, définit un objet simple existant dans l'environnement du système
@@ -21,6 +21,14 @@
 class Entity
 {
 public:
+    enum class ENTITY_TYPE
+    {
+        HARVESTER,
+        HUNTER,
+        BASE,
+        RESOURCE
+    };
+
     /**
      * @brief Construit un nouvel objet Entity
      * 
@@ -55,14 +63,12 @@ public:
      */
     char getChar() const { return _shellChar; }
 
-    /**
-     * @brief Méthode qui "dessine" l'entité sur une map donnée
-     * 
-     * @param[in] map Tableau de caractères représentant le système
-     */
-    void draw(Map & map) const;
+    virtual ENTITY_TYPE getType() const = 0;
+
+    friend std::ostream& operator<<(std::ostream& out, Entity const & e);
 
 protected:
+    World & _world;
     Point _position; /*!< Position de l'entité dans le système */
     char _shellChar; /*!< Caractère représentant l'entité */
 };

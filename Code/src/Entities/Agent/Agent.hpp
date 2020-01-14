@@ -33,11 +33,6 @@ public:
     ~Agent();
 
     /**
-     * @brief Méthode abstraite, un agent doit pouvoir se déplacer dans l'environnement 
-     */
-    virtual void move() = 0;
-
-    /**
      * @brief Méthode abstraite, doit définir le comportement à chaque étape du système
      */
     virtual void update() = 0;

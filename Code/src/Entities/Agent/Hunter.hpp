@@ -12,6 +12,7 @@
 #define HUNTER_HPP
 
 #include <random>
+#include "../../Utils/World.hpp"
 #include "../Entity.hpp"
 #include "Harvester.hpp"
 
@@ -25,7 +26,7 @@
  * celle-ci remonte. Si il mange un Harvester avec plus de 80% de sa vie, il donne naissance à
  * un autre Hunter.
  */
-class Hunter : public Entity
+class Hunter : public Agent
 {
 public:
     /**
@@ -47,7 +48,9 @@ public:
      * @param[in] harvesters Tableau des Harvesters du système
      * @param[in] map Map représentant l'environnement (sert pour les méthodes de distances)
      */
-    void update(std::vector<Harvester*> & harvesters, Map const & map);
+    void update() override;
+
+    virtual ENTITY_TYPE getType() const { return ENTITY_TYPE::HUNTER; }
 
 private:
     int _life; /*!< Vie de l'agent (entre 0 et 100) */

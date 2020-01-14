@@ -22,20 +22,22 @@ Base::~Base()
 {
 }
 
-void Base::addResources(int r)
+bool Base::addResources(int r)
 {
     _resources += r;
     if (_resources > _limit)
     {
         _resources -= _limit;
         _nextBirths++;
+        return true;
     }
+    return false;
 }
 
-void Base::update(std::vector<Harvester*> & harvesters)
+void Base::birth()
 {
     for (; _nextBirths > 0; _nextBirths--)
     {
-        harvesters.push_back(new Harvester(getPosition(), this));
+        World::getInstance().add(new Harvester(getPosition(), this));
     }
 }

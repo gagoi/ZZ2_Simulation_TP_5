@@ -1,7 +1,7 @@
 #include <random>
 #include "System.hpp"
 #include "Entities/Agent/Harvester.hpp"
-#include "Utils/Map.hpp"
+#include "Utils/World.hpp"
 
 constexpr int SYS_W = 20;
 constexpr int SYS_H = 20;
@@ -26,25 +26,4 @@ int main()
     }
     
     return 0;
-}
-
-void testGetDirection()
-{
-    Map m(10, 10);
-
-    Point c(6, 6);
-    Point p(6, 0);
-
-    m[c] = 'B';
-    m[p] = 'p';
-
-    std::cout << m;
-    while (c != p)
-    {
-        p += m.getDirection(p, c);
-        m.clear();
-        m[c] = 'B';
-        m[p] = 'p';
-        std::cout << m;
-    }
 }
