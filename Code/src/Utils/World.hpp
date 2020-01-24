@@ -58,7 +58,7 @@ public:
 
     std::vector<Entity*> getEnvironment(Point & origin, int range);
 
-    bool findRandomPositionInEnvironment(std::vector<Entity*> env, Point const & origin, int range, Entity::ENTITY_TYPE toFind, Point & pos);
+    bool findRandomPositionInEnvironment(std::vector<Entity*> env, int range, Entity::ENTITY_TYPE toFind, Point & pos);
 
     void updateMove(Entity * e, Point const & newPosition);
 

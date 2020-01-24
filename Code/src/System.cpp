@@ -38,13 +38,11 @@ void System::addAgent(Agent* a)
 void System::update()
 {
     // Updates
+    std::cout << "Size: " << _agents.size() << std::endl;
     for (auto it = _agents.begin(); it != _agents.end(); it++)
     {
         (*it)->update();
     }
-    std::cout << "Size: " << _agents.size() << std::endl;
-
-    std::cout << "------------------------------------------------------" << std::endl;
 }
 
 void System::updateDelete(Entity * e)

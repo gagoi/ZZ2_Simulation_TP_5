@@ -20,3 +20,15 @@ Agent::Agent(Point const & p, char c) :
 Agent::~Agent()
 {
 }
+
+void Agent::setPosition(Point const & p)
+{
+    notifyMove(this, p);
+    _position = p;
+}
+
+void Agent::move(Point const & p)
+{
+    notifyMove(this, _position + p);
+    _position += p;
+}

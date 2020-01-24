@@ -24,15 +24,15 @@ Harvester::~Harvester()
 {
 }
 
-void Harvester::move()
+void Harvester::randomMove()
 {
     switch (_state)
     {
     case STATE::SEARCH:
-        _position += Point(move_distribution(gen), move_distribution(gen));
+        move(Point(move_distribution(gen), move_distribution(gen)));
         break;
     case STATE::BRING:
-        _position += World::getInstance().getDirection(_position, _base->getPosition());
+        move(World::getInstance().getDirection(_position, _base->getPosition()));
         break;
     }
 }
@@ -67,7 +67,7 @@ void Harvester::update()
         }
         break;
     }
-    move();
+    randomMove();
 }
 
 Base* const Harvester::getBase() const

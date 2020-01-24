@@ -32,6 +32,10 @@ public:
      */
     Agent(Point const & p, char c);
 
+    void setPosition(Point const & p);
+
+    void move(Point const & p);
+
     /**
      * @brief Détruit l'objet Agent
      */

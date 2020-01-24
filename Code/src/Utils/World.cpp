@@ -41,7 +41,7 @@ void World::add(Entity* entity)
     }
 }
 
-bool World::findRandomPositionInEnvironment(std::vector<Entity*> env, Point const & origin, int range, Entity::ENTITY_TYPE toFind, Point & pos)
+bool World::findRandomPositionInEnvironment(std::vector<Entity*> env, int range, Entity::ENTITY_TYPE toFind, Point & pos)
 {
     std::vector<int> index;
     for (size_t i = 0; i < env.size(); i++)
