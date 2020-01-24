@@ -12,9 +12,9 @@
 #define BASE_HPP
 
 #include <vector>
+#include "Agent/Harvester.hpp"
 #include "../Utils/World.hpp"
 #include "Entity.hpp"
-#include "Agent/Harvester.hpp"
 
 class Harvester;
 

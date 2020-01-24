@@ -40,17 +40,9 @@ void System::update()
     // Updates
     for (auto it = _agents.begin(); it != _agents.end(); it++)
     {
-        if (*it == nullptr)
-        {
-            std::cout << "ERASE: " << *it << std::endl;
-            _agents.erase(it);
-        }
-        else
-        {
-            std::cout << "UPDATE: " << *it << std::endl;
-            (*it)->update();
-        }
+        (*it)->update();
     }
+    std::cout << "Size: " << _agents.size() << std::endl;
 
     std::cout << "------------------------------------------------------" << std::endl;
 }

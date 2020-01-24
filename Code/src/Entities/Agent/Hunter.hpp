@@ -18,8 +18,6 @@
 #include "Harvester.hpp"
 #include "../../Observer/Observable.hpp"
 
-Agent * a = nullptr;
-
 /**
  * @brief Classe de l'agent mangeur (Héritant de la classe Entity)
  * L'agent cherche à manger les agents "Harvester". Pour cela il se déplace aléatoirement

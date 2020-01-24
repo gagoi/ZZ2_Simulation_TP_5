@@ -16,6 +16,8 @@
 #include "../Entity.hpp"
 #include "../../Observer/Observable.hpp"
 
+class System;
+
 /**
  * @brief Classe abstraite définissant l'interface d'un agent (héritant d'Entity)
  */

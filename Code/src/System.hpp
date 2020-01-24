@@ -15,12 +15,10 @@
 #include <iostream>
 #include <iomanip>
 #include "Utils/World.hpp"
-#include "Entities/Entity.hpp"
-#include "Entities/Agent/Harvester.hpp"
-#include "Entities/Agent/Hunter.hpp"
-#include "Entities/Resource.hpp"
-#include "Entities/Base.hpp"
+#include "Entities/Agent/Agent.hpp"
 #include "Observer/IObserver.hpp"
+
+class Agent;
 
 /**
  * @brief Classe représentant un système multi-agent

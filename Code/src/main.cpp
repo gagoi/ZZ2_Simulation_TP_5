@@ -1,9 +1,10 @@
 #include <random>
 #include "System.hpp"
 #include "Entities/Agent/Harvester.hpp"
+#include "Entities/Agent/Hunter.hpp"
 #include "Utils/World.hpp"
 
-std::mt19937 gen(256);
+extern std::mt19937 gen;
 std::uniform_int_distribution<> dis_x(0, World::WORLD_WIDTH);
 std::uniform_int_distribution<> dis_y(0, World::WORLD_HEIGHT);
 
@@ -31,13 +32,12 @@ int main()
     }
     std::cout << std::endl;
     
-/*
+
     for (int i = 0; i < 20; i++)
     {
         s.update();
         std::cout << s;
     }
-    */
     
     return 0;
 }
