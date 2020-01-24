@@ -50,7 +50,7 @@ public:
      *      Aléatoirement si il est dans l'état SEARCHING
      *      Vers sa base si il est dans l'état BRINGING 
      */
-    void move();
+    void randomMove();
 
     /**
      * @brief Méthode définissant le comportement de l'agent à chaque étape du système

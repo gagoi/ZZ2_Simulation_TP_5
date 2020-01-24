@@ -23,18 +23,6 @@ Hunter::~Hunter()
 {
 }
 
-void Hunter::setPosition(Point const & p)
-{
-    notifyMove(this, p);
-    _position = p;
-}
-
-void Hunter::move(Point const & p)
-{
-    notifyMove(this, _position + p);
-    _position += p;
-}
-
 void Hunter::update()
 {
     // Environnement du Hunter (voisinage de Moore d'ordre 3)
@@ -58,11 +46,18 @@ void Hunter::update()
             else
             {
                 // On se déplace vers lui
+                // TODO: regarder si il y a quelque chose entre les deux sur lequel le Hunter ne peux pas marcher (Base, ressource)
                 move(World::getInstance().getDirection(_position, e->getPosition()) * 2);
                 moved = true;
             }
         }
-        if (!moved) //TODO: gerer les deplacement sur une entité
-            move(Point(move_distribution(gen), move_distribution(gen)));
+    }
+    if (!moved) //TODO: gerer les deplacement sur une entité
+    {
+        // Si il y a pls position disponible, on bouge sur une aléatoirement, sinon on reste sur sa position
+        environment = World::getInstance().getEnvironment(_position, 2);
+        Point nPos;
+        if (World::getInstance().findRandomPositionInEnvironment(environment, 2, ENTITY_TYPE::NONE, nPos))
+            move(nPos);
     }
 }

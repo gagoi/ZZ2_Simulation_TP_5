@@ -44,10 +44,6 @@ public:
      */
     ~Hunter();
 
-    void setPosition(Point const & p);
-
-    void move(Point const & p);
-
     /**
      * @brief Méthode définissant le comportement de l'agent
      * 

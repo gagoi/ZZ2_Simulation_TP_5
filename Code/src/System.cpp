@@ -42,9 +42,6 @@ void System::update()
     {
         (*it)->update();
     }
-    std::cout << "Size: " << _agents.size() << std::endl;
-
-    std::cout << "------------------------------------------------------" << std::endl;
 }
 
 void System::updateDelete(Entity * e)

@@ -24,15 +24,21 @@ Harvester::~Harvester()
 {
 }
 
-void Harvester::move()
+void Harvester::randomMove()
 {
+    std::vector<Entity*> env;
+    Point nPos;
     switch (_state)
     {
     case STATE::SEARCH:
-        _position += Point(move_distribution(gen), move_distribution(gen));
+        env = World::getInstance().getEnvironment(_position, 1);
+        if (World::getInstance().findRandomPositionInEnvironment(env, 1, ENTITY_TYPE::NONE, nPos))
+            move(nPos);
         break;
     case STATE::BRING:
-        _position += World::getInstance().getDirection(_position, _base->getPosition());
+        nPos = World::getInstance().getDirection(_position, _base->getPosition());
+        if (World::getInstance()[_position + nPos] != nullptr)
+            move(nPos);
         break;
     }
 }
@@ -67,7 +73,7 @@ void Harvester::update()
         }
         break;
     }
-    move();
+    randomMove();
 }
 
 Base* const Harvester::getBase() const

@@ -41,8 +41,17 @@ void World::add(Entity* entity)
     }
 }
 
-bool World::findRandomPositionInEnvironment(std::vector<Entity*> env, Point const & origin, int range, Entity::ENTITY_TYPE toFind, Point & pos)
+bool World::findRandomPositionInEnvironment(std::vector<Entity*> env, int range, Entity::ENTITY_TYPE toFind, Point & pos)
 {
+    std::vector<Point> points;
+    for (int i = -range; i <= range; i++)
+    {
+        for (int j = -range; j <= range; j++)
+        {
+            points.push_back(Point(i, j));
+        }
+    }
+
     std::vector<int> index;
     for (size_t i = 0; i < env.size(); i++)
     {
@@ -51,11 +60,11 @@ bool World::findRandomPositionInEnvironment(std::vector<Entity*> env, Point cons
             index.push_back(i);
         }
     }
+    
     if (index.size() > 0)
     {
         std::shuffle(index.begin(), index.end(), gen);
-        pos.x = index[0] / range;
-        pos.y = index[0] % range;
+        pos = points[index[0]];
         return true;
     }
     return false;
@@ -66,9 +75,9 @@ std::vector<Entity*> World::getEnvironment(Point & origin, int range)
     std::vector<Entity*> env;
     refactorCoordonates(origin);
 
-    for (int i = origin.x - range; i < origin.x + range; i++)
+    for (int i = origin.x - range; i <= origin.x + range; i++)
     {
-        for (int j = origin.y - range; j < origin.y + range; j++)
+        for (int j = origin.y - range; j <= origin.y + range; j++)
         {
             env.push_back((*this)[Point(i, j)]);
         }
