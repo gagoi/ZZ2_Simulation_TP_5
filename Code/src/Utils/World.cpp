@@ -1,5 +1,7 @@
 #include "World.hpp"
 
+std::mt19937 gen(256);
+
 World* World::instance = nullptr;
 
 World& World::getInstance()
@@ -39,6 +41,26 @@ void World::add(Entity* entity)
     }
 }
 
+bool World::findRandomPositionInEnvironment(std::vector<Entity*> env, Point const & origin, int range, Entity::ENTITY_TYPE toFind, Point & pos)
+{
+    std::vector<int> index;
+    for (size_t i = 0; i < env.size(); i++)
+    {
+        if ((toFind == Entity::ENTITY_TYPE::NONE && env[i] == nullptr) || (env[i] != nullptr && env[i]->getType() == toFind))
+        {
+            index.push_back(i);
+        }
+    }
+    if (index.size() > 0)
+    {
+        std::shuffle(index.begin(), index.end(), gen);
+        pos.x = index[0] / range;
+        pos.y = index[0] % range;
+        return true;
+    }
+    return false;
+}
+
 std::vector<Entity*> World::getEnvironment(Point & origin, int range)
 {
     std::vector<Entity*> env;
@@ -52,6 +74,18 @@ std::vector<Entity*> World::getEnvironment(Point & origin, int range)
         }
     }
     return env;
+}
+
+void World::updateMove(Entity * e, Point const & newPosition)
+{
+    (*this)[e->getPosition()] = nullptr;
+    (*this)[newPosition] = e;
+}
+
+void World::updateDelete(Entity * e)
+{
+    (*this)[e->getPosition()] = nullptr;
+    delete e;
 }
 
 void World::refactorCoordonates(Point & p)

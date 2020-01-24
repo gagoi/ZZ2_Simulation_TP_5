@@ -20,14 +20,20 @@
 #include "Entities/Agent/Hunter.hpp"
 #include "Entities/Resource.hpp"
 #include "Entities/Base.hpp"
+#include "Observer/IObserver.hpp"
 
 /**
  * @brief Classe représentant un système multi-agent
  * C'est cette classe qui va s'occuper de faire agir et interagir les agents et les ressources
  */
-class System
+class System : public IObserver
 {
+private:
+    static System* instance;
+
 public:
+    static System& getInstance();
+
     /**
      * @brief Construit un nouvel objet System
      * 
@@ -40,6 +46,10 @@ public:
      * @brief Détruit l'objet System
      */
     ~System();
+
+    void updateMove(Entity* e, Point const & newPosition) { }
+
+    void updateDelete(Entity * e);
 
     void addAgent(Agent * a);
 

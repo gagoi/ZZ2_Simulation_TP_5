@@ -23,6 +23,18 @@ Hunter::~Hunter()
 {
 }
 
+void Hunter::setPosition(Point const & p)
+{
+    notifyMove(this, p);
+    _position = p;
+}
+
+void Hunter::move(Point const & p)
+{
+    notifyMove(this, _position + p);
+    _position += p;
+}
+
 void Hunter::update()
 {
     // Environnement du Hunter (voisinage de Moore d'ordre 3)
@@ -37,20 +49,20 @@ void Hunter::update()
             if (d.x <= 2 && d.y <= 2) // Si il y a un Harvester dans un voisinage de Moore d'ordre 2
             {
                 // On se déplace et on mange le récolteur
-                _position = e->getPosition();
-                World::getInstance()[e->getPosition()] = nullptr;
-                delete e;
+                Point pos(e->getPosition());
+                notifyDelete(e);
+                setPosition(pos);
                 // TODO: Système de barre de vie
                 moved = true;
             }
             else
             {
                 // On se déplace vers lui
-                _position += World::getInstance().getDirection(_position, e->getPosition()) * 2;
+                move(World::getInstance().getDirection(_position, e->getPosition()) * 2);
                 moved = true;
             }
         }
-        if (!moved)
-            _position += Point(move_distribution(gen), move_distribution(gen));
+        if (!moved) //TODO: gerer les deplacement sur une entité
+            move(Point(move_distribution(gen), move_distribution(gen)));
     }
 }

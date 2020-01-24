@@ -13,6 +13,8 @@
 Agent::Agent(Point const & p, char c) :
     Entity(p, c)
 {
+    addObserver(&World::getInstance());
+    addObserver(&System::getInstance());
 }
 
 Agent::~Agent()

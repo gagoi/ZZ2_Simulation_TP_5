@@ -19,6 +19,9 @@
 #include <iterator>
 #include "Point.hpp"
 #include "../Entities/Entity.hpp"
+#include "../Observer/IObserver.hpp"
+
+extern std::mt19937 gen;
 
 /**
  * @brief Classe World
@@ -27,7 +30,7 @@
  * Cette classe permet de simplifier l'accès à l'affichage de l'environnement du système d'agents.
  * La fonctionnalité principale est qu'un objet World est un "tore" (le haut est relié au bas et la gauche à la droite)
  */
-class World
+class World : public IObserver
 {
 private:
     static World* instance;
@@ -54,6 +57,12 @@ public:
     void add(Entity* entity);
 
     std::vector<Entity*> getEnvironment(Point & origin, int range);
+
+    bool findRandomPositionInEnvironment(std::vector<Entity*> env, Point const & origin, int range, Entity::ENTITY_TYPE toFind, Point & pos);
+
+    void updateMove(Entity * e, Point const & newPosition);
+
+    void updateDelete(Entity * e);
 
     void refactorCoordonates(Point & p);
 

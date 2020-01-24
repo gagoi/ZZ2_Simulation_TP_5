@@ -11,12 +11,15 @@
 #ifndef AGENT_HPP
 #define AGENT_HPP
 
+#include "../../Utils/World.hpp"
+#include "../../System.hpp"
 #include "../Entity.hpp"
+#include "../../Observer/Observable.hpp"
 
 /**
  * @brief Classe abstraite définissant l'interface d'un agent (héritant d'Entity)
  */
-class Agent : public Entity
+class Agent : public Entity, public Observable
 {
 public:
     /**

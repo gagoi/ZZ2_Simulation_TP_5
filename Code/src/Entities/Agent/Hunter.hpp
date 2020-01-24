@@ -12,9 +12,13 @@
 #define HUNTER_HPP
 
 #include <random>
+#include "Agent.hpp"
 #include "../../Utils/World.hpp"
 #include "../Entity.hpp"
 #include "Harvester.hpp"
+#include "../../Observer/Observable.hpp"
+
+Agent * a = nullptr;
 
 /**
  * @brief Classe de l'agent mangeur (Héritant de la classe Entity)
@@ -41,6 +45,10 @@ public:
      * @brief Détruit l'objet Hunter
      */
     ~Hunter();
+
+    void setPosition(Point const & p);
+
+    void move(Point const & p);
 
     /**
      * @brief Méthode définissant le comportement de l'agent
