@@ -58,6 +58,7 @@ void testHunterMove()
     std::cout << s;
     for (int i = 0; i < 10; i++)
     {
+        std::cout << "------------------------------------------------------" << std::endl;
         s.update();
         std::cout << "############ UPDATE ############" << std::endl;
         std::cout << s;
