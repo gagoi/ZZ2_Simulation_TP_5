@@ -12,8 +12,6 @@ enum DRAW_MODE {
     MODE_LOG, MODE_DRAW, MODE_LOG_FILE, MODE_LOG_FILE_AND_DRAW
 };
 
-constexpr int SYS_W = 20;
-constexpr int SYS_H = 20;
 extern std::mt19937 gen;
 std::uniform_int_distribution<> dis_x(0, World::WORLD_WIDTH);
 std::uniform_int_distribution<> dis_y(0, World::WORLD_HEIGHT);
