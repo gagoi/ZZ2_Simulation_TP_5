@@ -9,6 +9,8 @@ public:
     Resource(Point const & p, char c = 'R');
     ~Resource();
 
+    virtual ENTITY_TYPE getType() const { return ENTITY_TYPE::RESOURCE; }
+
 private:
     
 };

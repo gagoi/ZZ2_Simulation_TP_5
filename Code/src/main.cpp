@@ -5,7 +5,8 @@
 #include <thread>
 #include "System.hpp"
 #include "Entities/Agent/Harvester.hpp"
-#include "Utils/Map.hpp"
+#include "Entities/Agent/Hunter.hpp"
+#include "Utils/World.hpp"
 
 enum DRAW_MODE {
     MODE_LOG, MODE_DRAW, MODE_LOG_FILE, MODE_LOG_FILE_AND_DRAW
@@ -13,10 +14,12 @@ enum DRAW_MODE {
 
 constexpr int SYS_W = 20;
 constexpr int SYS_H = 20;
+extern std::mt19937 gen;
+std::uniform_int_distribution<> dis_x(0, World::WORLD_WIDTH);
+std::uniform_int_distribution<> dis_y(0, World::WORLD_HEIGHT);
 
-std::mt19937 gen(256);
-std::uniform_int_distribution<> dis_x(0, SYS_W);
-std::uniform_int_distribution<> dis_y(0, SYS_H);
+void testHunterMove();
+void testHarvesterMove();
 
 DRAW_MODE mode = MODE_LOG;
 std::fstream log_file;
@@ -32,13 +35,17 @@ int main(int argc, char ** argv)
     if (mode == MODE_LOG_FILE || mode == MODE_LOG_FILE_AND_DRAW)
         log_file = std::fstream("output.log");
 
-    System s(SYS_W, SYS_H);
+    System& s = System::getInstance();
+    World& w = World::getInstance();
 
     Base* base = new Base(Point(5, 5), 5);
+    Hunter* hunter = new Hunter(Point(0, 0));
 
+    w.add(base);
+    s.addAgent(hunter);
     for (int i = 0; i < 15; i++)    
-        s.addHarvester(new Harvester(Point(dis_x(gen), dis_y(gen)), base));
-    s.addHunter(new Hunter(Point(0, 0)));
+        s.addAgent(new Harvester(Point(dis_x(gen), dis_y(gen)), base));
+
     for (int i = 0; i < 20; i++)
     {
         s.update();

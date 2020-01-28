@@ -12,6 +12,8 @@
 #define HARVESTER_HPP
 
 #include <random>
+#include "../../Utils/World.hpp"
+#include "Agent.hpp"
 #include "../Entity.hpp"
 #include "../Resource.hpp"
 #include "../Base.hpp"
@@ -26,7 +28,7 @@ class Base;
  *      Dans le premier, l'agent se déplace aléatoirement dans un voisinage de Moore d'ordre 1. Il le fait jusqu'à se trouver sur une case contenant une ressource
  *      Une fois sur une ressource, il prends celle-ci et se déplace au plus court vers sa base où il dépose ses ressources.
  */
-class Harvester : public Entity
+class Harvester : public Agent
 {
 public:
     /**
@@ -48,7 +50,7 @@ public:
      *      Aléatoirement si il est dans l'état SEARCHING
      *      Vers sa base si il est dans l'état BRINGING 
      */
-    void move(Map const & map);
+    void randomMove();
 
     /**
      * @brief Méthode définissant le comportement de l'agent à chaque étape du système
@@ -56,7 +58,7 @@ public:
      * @param[in] resources Tableau d'entité contenant les ressources
      * @param[in] map Map représentant l'environnement (sert pour les méthodes de distances)
      */
-    void update(std::vector<Resource*> & resources, Map const & map);
+    void update() override;
 
     /**
      * @brief Getter de la base de l'agent
@@ -64,6 +66,8 @@ public:
      * @return Base* const Pointeur sur la base de l'agent
      */
     Base* const getBase() const;
+
+    ENTITY_TYPE getType() const override { return ENTITY_TYPE::HARVESTER; }
 
 private:
     /**

@@ -11,12 +11,17 @@
 #ifndef AGENT_HPP
 #define AGENT_HPP
 
+#include "../../Utils/World.hpp"
+#include "../../System.hpp"
 #include "../Entity.hpp"
+#include "../../Observer/Observable.hpp"
+
+class System;
 
 /**
  * @brief Classe abstraite définissant l'interface d'un agent (héritant d'Entity)
  */
-class Agent : public Entity
+class Agent : public Entity, public Observable
 {
 public:
     /**
@@ -27,20 +32,26 @@ public:
      */
     Agent(Point const & p, char c);
 
+    void setPosition(Point const & p);
+
+    void move(Point const & p);
+
+    bool isDead() const { return _dead; }
+
+    void kill() { _dead = true; }
+
     /**
      * @brief Détruit l'objet Agent
      */
     ~Agent();
 
     /**
-     * @brief Méthode abstraite, un agent doit pouvoir se déplacer dans l'environnement 
-     */
-    virtual void move() = 0;
-
-    /**
      * @brief Méthode abstraite, doit définir le comportement à chaque étape du système
      */
     virtual void update() = 0;
+
+private:
+    bool _dead;
 };
 
 #endif
