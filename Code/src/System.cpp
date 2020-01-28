@@ -37,21 +37,21 @@ void System::addAgent(Agent* a)
 
 void System::update()
 {
+    std::vector<std::vector<Agent*>::iterator> toSuppr;
     // Updates
     for (auto it = _agents.begin(); it != _agents.end(); it++)
     {
-        std::cout << *it << "(" << (*it)->getChar() << ") :" << std::endl;
-        std::cout << "type: " << typeid(**it).name() << std::endl;
-        std::cout << ((*it)->getType() == Entity::ENTITY_TYPE::HARVESTER) << std::endl;
-        (*it)->update();
+        auto ptr = *it;
+        if (!ptr->isDead())
+            ptr->update();
+        else
+            toSuppr.push_back(it);
     }
-}
 
-void System::updateDelete(Entity * e)
-{
-    auto f = std::find(_agents.begin(), _agents.end(), e);
-    if (f != _agents.end())
-        _agents.erase(f);
+    for(auto itit = toSuppr.begin(); itit != toSuppr.end(); itit++)
+    {
+        _agents.erase(*itit);
+    }
 }
 
 std::ostream& operator<<(std::ostream& out, System const & sys)

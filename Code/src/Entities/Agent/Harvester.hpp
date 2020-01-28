@@ -67,7 +67,7 @@ public:
      */
     Base* const getBase() const;
 
-    virtual ENTITY_TYPE getType() const override { return ENTITY_TYPE::HARVESTER; }
+    ENTITY_TYPE getType() const override { return ENTITY_TYPE::HARVESTER; }
 
 private:
     /**

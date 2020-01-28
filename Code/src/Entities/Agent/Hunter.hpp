@@ -52,7 +52,7 @@ public:
      */
     void update() override;
 
-    virtual ENTITY_TYPE getType() const override { return ENTITY_TYPE::HUNTER; }
+    ENTITY_TYPE getType() const override { return ENTITY_TYPE::HUNTER; }
 
 private:
     int _life; /*!< Vie de l'agent (entre 0 et 100) */

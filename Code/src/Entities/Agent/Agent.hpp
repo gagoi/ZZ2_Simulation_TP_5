@@ -32,9 +32,13 @@ public:
      */
     Agent(Point const & p, char c);
 
-    void setPosition(Entity* e, Point const & p);
+    void setPosition(Point const & p);
 
-    void move(Entity* e, Point const & p);
+    void move(Point const & p);
+
+    bool isDead() const { return _dead; }
+
+    void kill() { _dead = true; }
 
     /**
      * @brief Détruit l'objet Agent
@@ -45,6 +49,9 @@ public:
      * @brief Méthode abstraite, doit définir le comportement à chaque étape du système
      */
     virtual void update() = 0;
+
+private:
+    bool _dead;
 };
 
 #endif

@@ -21,11 +21,11 @@ public:
         }
     }
 
-    void notifyDelete(Entity * e)
+    void notifyKill(Entity * e)
     {
         for (auto it = _listObserver.begin(); it != _listObserver.end(); it++)
         {
-            (*it)->updateDelete(e);
+            (*it)->updateKill(e);
         }
     }
 

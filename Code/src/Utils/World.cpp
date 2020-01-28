@@ -33,7 +33,7 @@ void World::add(Entity* entity)
     if ((*this)[p] != nullptr) // Si la case est occupée
     {
         // TODO: Gerer le cas où la case est occupée
-        delete entity;
+        //delete entity;
     }
     else
     {
@@ -87,15 +87,13 @@ std::vector<Entity*> World::getEnvironment(Point & origin, int range)
 
 void World::updateMove(Entity * e, Point const & newPosition)
 {
-    std::cout << "[UPDATE_MOVE] type: " << typeid(*e).name() << std::endl;
     (*this)[e->getPosition()] = nullptr;
     (*this)[newPosition] = e;
 }
 
-void World::updateDelete(Entity * e)
+void World::updateKill(Entity * e)
 {
     (*this)[e->getPosition()] = nullptr;
-    delete e;
 }
 
 void World::refactorCoordonates(Point & p)

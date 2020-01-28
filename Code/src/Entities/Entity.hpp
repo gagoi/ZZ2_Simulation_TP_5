@@ -22,6 +22,7 @@ class Entity
 public:
     enum class ENTITY_TYPE
     {
+        ZERO,
         HARVESTER,
         HUNTER,
         BASE,

@@ -62,7 +62,7 @@ public:
 
     void updateMove(Entity * e, Point const & newPosition);
 
-    void updateDelete(Entity * e);
+    void updateKill(Entity * e);
 
     void refactorCoordonates(Point & p);
 

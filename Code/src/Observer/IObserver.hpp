@@ -8,7 +8,7 @@ class IObserver
 {
 public:
     virtual void updateMove(Entity* e, Point const & newPosition) = 0;
-    virtual void updateDelete(Entity* e) = 0;
+    virtual void updateKill(Entity* e) = 0;
 };
 
 #endif

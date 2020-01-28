@@ -11,24 +11,24 @@
 #include "Agent.hpp"
 
 Agent::Agent(Point const & p, char c) :
-    Entity(p, c)
+    Entity(p, c),
+    _dead(false)
 {
     addObserver(&World::getInstance());
-    addObserver(&System::getInstance());
 }
 
 Agent::~Agent()
 {
 }
 
-void Agent::setPosition(Entity* e, Point const & p)
+void Agent::setPosition(Point const & p)
 {
-    notifyMove(e, p);
+    notifyMove(this, p);
     _position = p;
 }
 
-void Agent::move(Entity* e, Point const & p)
+void Agent::move(Point const & p)
 {
-    notifyMove(e, _position + p);
+    notifyMove(this, _position + p);
     _position += p;
 }

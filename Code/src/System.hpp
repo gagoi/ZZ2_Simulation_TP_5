@@ -16,7 +16,6 @@
 #include <iomanip>
 #include "Utils/World.hpp"
 #include "Entities/Agent/Agent.hpp"
-#include "Observer/IObserver.hpp"
 
 class Agent;
 
@@ -24,7 +23,7 @@ class Agent;
  * @brief Classe représentant un système multi-agent
  * C'est cette classe qui va s'occuper de faire agir et interagir les agents et les ressources
  */
-class System : public IObserver
+class System
 {
 private:
     static System* instance;
@@ -44,10 +43,6 @@ public:
      * @brief Détruit l'objet System
      */
     ~System();
-
-    void updateMove(Entity* e, Point const & newPosition) { }
-
-    void updateDelete(Entity * e);
 
     void addAgent(Agent * a);
 

@@ -33,36 +33,29 @@ void Harvester::randomMove()
     case STATE::SEARCH:
         env = World::getInstance().getEnvironment(_position, 1);
         if (World::getInstance().findRandomPositionInEnvironment(env, 1, ENTITY_TYPE::NONE, nPos))
-            move(this, nPos);
+            move(nPos);
         break;
     case STATE::BRING:
         nPos = World::getInstance().getDirection(_position, _base->getPosition());
         if (World::getInstance()[_position + nPos] != nullptr)
-            move(this, nPos);
+            move(nPos);
         break;
     }
 }
 
 void Harvester::update()
 {
-    std::cout << "  [HARVESTER_UPDATE]" << std::endl;
     std::vector<Entity*> environment;
     switch (_state)
     {
     case STATE::SEARCH:
         environment = World::getInstance().getEnvironment(_position, 1); // On récupère l'environnement du Harvester (voisinage de Moore d'ordre 1 autour de la position de l'agent)
-
-        for (auto &&e : environment)
-        {
-            std::cout << "  [ENV]" << e << std::endl;
-        }
-        
         for (auto &&e : environment)
         {
             if (e != nullptr && e->getType() == ENTITY_TYPE::RESOURCE)
             {
                 _state = STATE::BRING;
-                notifyDelete(e);    
+                notifyKill(e);
                 break;
             }
         }
