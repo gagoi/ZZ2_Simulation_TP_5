@@ -41,6 +41,7 @@ void System::update()
     for (auto it = _agents.begin(); it != _agents.end(); it++)
     {
         std::cout << *it << "(" << (*it)->getChar() << ") :" << std::endl;
+        std::cout << "type: " << typeid(**it).name() << std::endl;
         std::cout << ((*it)->getType() == Entity::ENTITY_TYPE::HARVESTER) << std::endl;
         (*it)->update();
     }

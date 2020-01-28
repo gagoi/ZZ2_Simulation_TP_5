@@ -32,9 +32,9 @@ public:
      */
     Agent(Point const & p, char c);
 
-    void setPosition(Point const & p);
+    void setPosition(Entity* e, Point const & p);
 
-    void move(Point const & p);
+    void move(Entity* e, Point const & p);
 
     /**
      * @brief Détruit l'objet Agent

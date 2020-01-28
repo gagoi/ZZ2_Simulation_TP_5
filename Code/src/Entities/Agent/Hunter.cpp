@@ -39,7 +39,7 @@ void Hunter::update()
                 // On se déplace et on mange le récolteur
                 Point pos(e->getPosition());
                 notifyDelete(e);
-                setPosition(pos);
+                setPosition(this, pos);
                 // TODO: Système de barre de vie
                 moved = true;
             }
@@ -47,7 +47,7 @@ void Hunter::update()
             {
                 // On se déplace vers lui
                 // TODO: regarder si il y a quelque chose entre les deux sur lequel le Hunter ne peux pas marcher (Base, ressource)
-                move(World::getInstance().getDirection(_position, e->getPosition()) * 2);
+                move(this, World::getInstance().getDirection(_position, e->getPosition()) * 2);
                 moved = true;
             }
         }
@@ -58,6 +58,6 @@ void Hunter::update()
         environment = World::getInstance().getEnvironment(_position, 2);
         Point nPos;
         if (World::getInstance().findRandomPositionInEnvironment(environment, 2, ENTITY_TYPE::NONE, nPos))
-            move(nPos);
+            move(this, nPos);
     }
 }

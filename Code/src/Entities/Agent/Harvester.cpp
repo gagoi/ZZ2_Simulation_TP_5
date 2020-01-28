@@ -33,12 +33,12 @@ void Harvester::randomMove()
     case STATE::SEARCH:
         env = World::getInstance().getEnvironment(_position, 1);
         if (World::getInstance().findRandomPositionInEnvironment(env, 1, ENTITY_TYPE::NONE, nPos))
-            move(nPos);
+            move(this, nPos);
         break;
     case STATE::BRING:
         nPos = World::getInstance().getDirection(_position, _base->getPosition());
         if (World::getInstance()[_position + nPos] != nullptr)
-            move(nPos);
+            move(this, nPos);
         break;
     }
 }

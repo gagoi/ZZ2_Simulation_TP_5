@@ -53,7 +53,7 @@ public:
      */
     void birth();
 
-    virtual ENTITY_TYPE getType() const { return ENTITY_TYPE::BASE; }
+    virtual ENTITY_TYPE getType() const override { return ENTITY_TYPE::BASE; }
 
 private:
     int         _resources; /*!< Nombre de ressources que possède actuellement la base */

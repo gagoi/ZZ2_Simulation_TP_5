@@ -87,6 +87,7 @@ std::vector<Entity*> World::getEnvironment(Point & origin, int range)
 
 void World::updateMove(Entity * e, Point const & newPosition)
 {
+    std::cout << "[UPDATE_MOVE] type: " << typeid(*e).name() << std::endl;
     (*this)[e->getPosition()] = nullptr;
     (*this)[newPosition] = e;
 }

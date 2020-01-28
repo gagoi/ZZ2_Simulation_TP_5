@@ -21,14 +21,14 @@ Agent::~Agent()
 {
 }
 
-void Agent::setPosition(Point const & p)
+void Agent::setPosition(Entity* e, Point const & p)
 {
-    notifyMove(this, p);
+    notifyMove(e, p);
     _position = p;
 }
 
-void Agent::move(Point const & p)
+void Agent::move(Entity* e, Point const & p)
 {
-    notifyMove(this, _position + p);
+    notifyMove(e, _position + p);
     _position += p;
 }
