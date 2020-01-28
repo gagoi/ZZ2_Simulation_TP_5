@@ -38,9 +38,10 @@ void System::addAgent(Agent* a)
 void System::update()
 {
     // Updates
-    std::cout << "Size: " << _agents.size() << std::endl;
     for (auto it = _agents.begin(); it != _agents.end(); it++)
     {
+        std::cout << *it << "(" << (*it)->getChar() << ") :" << std::endl;
+        std::cout << ((*it)->getType() == Entity::ENTITY_TYPE::HARVESTER) << std::endl;
         (*it)->update();
     }
 }

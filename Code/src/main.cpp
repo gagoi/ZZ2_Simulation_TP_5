@@ -13,7 +13,7 @@ void testHarvesterMove();
 
 int main()
 {
-    /*System& s = System::getInstance();
+    System& s = System::getInstance();
     World& w = World::getInstance();
 
     Base* base = new Base(Point(5, 5), 5);
@@ -27,12 +27,12 @@ int main()
     std::cout << s;
     for (int i = 0; i < 20; i++)
     {
-        std::cout << "------------------------------------------------------" << std::endl;
         s.update();
+        std::cout << "############ UPDATE " << i << " ############" << std::endl;
         std::cout << s;
-    }*/
+    }
     //testHunterMove();
-    testHarvesterMove();
+    //testHarvesterMove();
     
     return 0;
 }

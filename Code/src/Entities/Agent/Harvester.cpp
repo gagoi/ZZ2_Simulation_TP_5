@@ -45,6 +45,7 @@ void Harvester::randomMove()
 
 void Harvester::update()
 {
+    std::cout << "  [HARVESTER_UPDATE]" << std::endl;
     std::vector<Entity*> environment;
     switch (_state)
     {
@@ -53,11 +54,15 @@ void Harvester::update()
 
         for (auto &&e : environment)
         {
+            std::cout << "  [ENV]" << e << std::endl;
+        }
+        
+        for (auto &&e : environment)
+        {
             if (e != nullptr && e->getType() == ENTITY_TYPE::RESOURCE)
             {
                 _state = STATE::BRING;
-                World::getInstance()[e->getPosition()] = nullptr;
-                delete e;
+                notifyDelete(e);    
                 break;
             }
         }
