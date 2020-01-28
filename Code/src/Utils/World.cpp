@@ -94,6 +94,7 @@ void World::updateMove(Entity * e, Point const & newPosition)
 void World::updateKill(Entity * e)
 {
     (*this)[e->getPosition()] = nullptr;
+    std::cout << "SUPPR" << std::endl;
 }
 
 void World::refactorCoordonates(Point & p)

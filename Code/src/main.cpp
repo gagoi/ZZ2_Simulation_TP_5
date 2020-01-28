@@ -6,6 +6,7 @@
 #include "System.hpp"
 #include "Entities/Agent/Harvester.hpp"
 #include "Entities/Agent/Hunter.hpp"
+#include "Entities/Resource.hpp"
 #include "Utils/World.hpp"
 
 enum DRAW_MODE {
@@ -39,10 +40,13 @@ int main(int argc, char ** argv)
     Base* base = new Base(Point(5, 5), 5);
     Hunter* hunter = new Hunter(Point(0, 0));
 
-    w.add(base);
+    w.add(base);/*
     s.addAgent(hunter);
     for (int i = 0; i < 15; i++)    
         s.addAgent(new Harvester(Point(dis_x(gen), dis_y(gen)), base));
+*/
+    s.addAgent(new Harvester(Point(5, 15), base));
+    w.add(new Resource(Point(5, 13)));
 
     for (int i = 0; i < 20; i++)
     {
