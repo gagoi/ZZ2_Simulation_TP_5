@@ -12,6 +12,7 @@
 #define HUNTER_HPP
 
 #include <random>
+#include "../../colors.hpp"
 #include "Agent.hpp"
 #include "../../Utils/World.hpp"
 #include "../Entity.hpp"
@@ -51,6 +52,8 @@ public:
      * @param[in] map Map représentant l'environnement (sert pour les méthodes de distances)
      */
     void update() override;
+
+    std::string getColor() const override;
 
     ENTITY_TYPE getType() const override { return ENTITY_TYPE::HUNTER; }
 

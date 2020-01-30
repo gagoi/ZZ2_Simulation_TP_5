@@ -186,7 +186,7 @@ std::ostream& operator<<(std::ostream& out, World const & m)
         for (auto &&o : line)
         {
             if (o)
-                std::cout << std::setw(3) << *o;
+                std::cout << std::setw(7) << *o;
             else
                 std::cout << std::setw(3) << '.';
         }

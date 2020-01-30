@@ -12,6 +12,7 @@
 #define ENTITY_HPP
 
 #include <vector>
+#include "../colors.hpp"
 #include "../Utils/Point.hpp"
 
 /**
@@ -63,6 +64,8 @@ public:
      * @return char Caractère représentant l'entité
      */
     char getChar() const { return _shellChar; }
+
+    virtual std::string getColor() const = 0;
 
     virtual ENTITY_TYPE getType() const = 0;
 

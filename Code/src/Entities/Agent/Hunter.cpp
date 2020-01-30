@@ -45,7 +45,6 @@ void Hunter::update()
                     harvester->kill();
                     notifyKill(harvester);
                     setPosition(pos);
-                    // TODO: Système de barre de vie
                     moved = true;
                     ate = true;
                 }
@@ -60,7 +59,7 @@ void Hunter::update()
             }
         }
     }
-    if (!moved) //TODO: gerer les deplacement sur une entité
+    if (!moved)
     {
         // Si il y a pls position disponible, on bouge sur une aléatoirement, sinon on reste sur sa position
         environment = World::getInstance().getEnvironment(_position, 2);
@@ -78,6 +77,7 @@ void Hunter::update()
             environment = World::getInstance().getEnvironment(_position, 1);
             if (World::getInstance().findRandomPositionInEnvironment(environment, 1, ENTITY_TYPE::NONE, nPos))
             {
+                System::getInstance().addAgent(new Hunter(nPos));
             }
             break;
         case LIFE_STATE::ORANGE:
@@ -114,5 +114,21 @@ void Hunter::update()
                 break;
             }
         }   
+    }
+}
+
+std::string Hunter::getColor() const
+{
+    switch (_lifeState)
+    {
+    case LIFE_STATE::GREEN:
+        return COLOR_GREEN;
+        break;
+    case LIFE_STATE::ORANGE:
+        return COLOR_YELLOW;
+        break;
+    case LIFE_STATE::RED:
+        return COLOR_RED;
+        break;
     }
 }

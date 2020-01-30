@@ -12,6 +12,7 @@
 #define BASE_HPP
 
 #include <vector>
+#include "../colors.hpp"
 #include "Agent/Harvester.hpp"
 #include "../Utils/World.hpp"
 #include "Entity.hpp"
@@ -52,6 +53,8 @@ public:
      * @param[in] harvesters Tableau du système dans lequel la base doit ajouter des Harvesters
      */
     void birth();
+
+    std::string getColor() const override { return COLOR_CYAN; }
 
     virtual ENTITY_TYPE getType() const override { return ENTITY_TYPE::BASE; }
 

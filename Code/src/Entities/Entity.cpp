@@ -22,6 +22,6 @@ Entity::~Entity()
 
 std::ostream& operator<<(std::ostream& out, Entity const & e)
 {
-    out << e.getChar();
+    out << e.getColor() << e.getChar() << COLOR_RESET;
     return out;
 }

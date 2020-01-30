@@ -62,9 +62,3 @@ void System::update()
         _addingBuffer.clear();
     }
 }
-
-std::ostream& operator<<(std::ostream& out, System const & sys)
-{
-    out << World::getInstance();
-    return out;
-}

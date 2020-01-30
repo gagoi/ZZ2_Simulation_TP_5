@@ -25,7 +25,7 @@ std::fstream log_file;
 
 
 void getDrawMode(int, char **);
-void draw(System const &);
+void draw(World const &);
 
 int main(int argc, char ** argv)
 {
@@ -40,18 +40,17 @@ int main(int argc, char ** argv)
     Base* base = new Base(Point(5, 5), 0);
     Hunter* hunter = new Hunter(Point(0, 0));
 
-    w.add(base);/*
-    s.addAgent(hunter);
+    w.add(base);
+    s.addAgent(hunter);/*
     for (int i = 0; i < 15; i++)    
         s.addAgent(new Harvester(Point(dis_x(gen), dis_y(gen)), base));
 */
-    s.addAgent(new Harvester(Point(5, 15), base));
     w.add(new Resource(Point(5, 13)));
 
     for (int i = 0; i < 20; i++)
     {
         s.update();
-        draw(s);
+        draw(w);
     }
     
     if (mode == MODE_LOG_FILE || mode == MODE_LOG_FILE_AND_DRAW)
@@ -60,7 +59,7 @@ int main(int argc, char ** argv)
     return 0;
 }
 
-void draw(System const & s)
+void draw(World const & w)
 {
     switch (mode)
     {
@@ -70,23 +69,23 @@ void draw(System const & s)
         #else
         system("clear");
         #endif 
-        std::cout << s;
+        std::cout << w;
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
         break;
     case MODE_LOG:
-        std::cout << s;
+        std::cout << w;
         break;
     case MODE_LOG_FILE:
-        log_file << s;
+        log_file << w;
         break;
     case MODE_LOG_FILE_AND_DRAW:
-        log_file << s;
+        log_file << w;
         #if defined(_WIN32)
         system("CLS");
         #else
         system("clear");
         #endif
-        std::cout << s;
+        std::cout << w;
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
         break;
     }

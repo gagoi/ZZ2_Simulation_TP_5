@@ -53,15 +53,6 @@ public:
      */
     void update();
 
-    /**
-     * @brief Surcharge de l'opérateur <<, permet d'afficher plus simplement la map du système sur un flux
-     * 
-     * @param[in] out flux sur lequel afficher la map du système
-     * @param[in] sys système à afficher
-     * @return std::ostream& flux d'entrée, permet le chaînage d'opérateurs
-     */
-    friend std::ostream& operator<<(std::ostream& out, System const & sys);
-
 private:
     std::vector<Agent*> _agents;
     std::vector<Agent*> _addingBuffer;
