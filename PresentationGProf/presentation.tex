@@ -1,0 +1,45 @@
+\documentclass[a4paper]{article}
+\usepackage{makeidx}
+\usepackage{formular}
+\usepackage{listings}
+\usepackage[utf8]{inputenc}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{mdframed}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{geometry}
+
+\geometry{hmargin=2.2cm,vmargin=1.5cm}
+\definecolor{light-gray}{gray}{0.95} %the shade of grey that stack exchange uses
+
+\title{Présentation GProf}
+\author{Jérémy ZANGLA}
+
+\begin{document}
+
+\maketitle
+\pagebreak
+\tableofcontents
+\pagebreak
+\section{Présentation}
+\subsection{Profiling}
+Le \emph{profiling} est le processus qui analyse l'exécution d'un programme.
+Il permet d'étudier les performances de notre application, afin de trouver les points à améliorer.
+Les domaines que l'on peut étudier sont diverses : temps d'éxécution, espace mémoire, nombre et fréquence d'appel des fonctions.
+On appelle \emph{profiler} l'outil qui nous permet de faire du profiling.
+\subsection{Outils}
+Il existe différents outils, appelés \emph{profilers}, permettant le profiling en fonction du langage de programmation choisis. On citera par exemple : 
+\begin{itemize}
+    \item C/C++ : Valgrind (Callgrind, Cachegrind, ...), ...
+    \item Java : Java Runtime Analysis Toolkit (JRAT), ...
+    \item Python : cProfile, ...
+\end{itemize}
+Certains de ces outils doivent être intégrés au programme, d'autres sont lancés indépendamment en donnant le programme (les sources dans le cas d'un langage interprété).
+\section{GProf}
+\subsection{Présentation}Le profiler traité ici est Gprof, il permet d'analyser l'analyse de programmes développés en C ou en C++.
+Il appartient à \emph{GNU Bininary Utilities} et est maintenu par le projet GNU.
+\subsection{Installation}
+Ce logiciel n'est disponnible que sous Linux. La plupart des distributions permettent de l'installer directement depuis les repositories de leur gestionnaire de paquets. 
+Cependant on peut l'installer manuellement depuis un linux, en téléchargeant l'archive depuis le (\href{http://ftpmirror.gnu.org/binutils}{"site officiel de GNU"}) et en suivant les instructions du fichier \emph{README}.
+\subsection{Utilisation}
+\end{document}

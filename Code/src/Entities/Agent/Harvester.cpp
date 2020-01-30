@@ -14,7 +14,7 @@ std::mt19937 Harvester::gen(253);
 std::uniform_int_distribution<> Harvester::move_distribution(-1, 1);
 
 Harvester::Harvester(Point const & p, Base* base, char c) :
-    Entity(p, c),
+    Agent(p, c),
     _base(base),
     _state(STATE::SEARCH)
 {
@@ -24,45 +24,55 @@ Harvester::~Harvester()
 {
 }
 
-void Harvester::move(Map const & map)
+void Harvester::moveHarvester()
 {
+    std::vector<Entity*> env;
+    Point nPos;
     switch (_state)
     {
     case STATE::SEARCH:
-        _position += Point(move_distribution(gen), move_distribution(gen));
+        env = World::getInstance().getEnvironment(_position, 1);
+        if (World::getInstance().findRandomPositionInEnvironment(env, 1, ENTITY_TYPE::NONE, nPos))
+            move(nPos);
         break;
     case STATE::BRING:
-        _position += map.getDirection(_position, _base->getPosition());
+        nPos = World::getInstance().getDirection(_position, _base->getPosition());
+        if (World::getInstance()[_position + nPos] == nullptr)
+            move(nPos);
         break;
     }
 }
 
-void Harvester::update(std::vector<Resource*> & resources, Map const & map)
+void Harvester::update()
 {
+    std::vector<Entity*> environment;
     switch (_state)
     {
     case STATE::SEARCH:
-        for (std::vector<Resource*>::iterator it = resources.begin(); it != resources.end(); it++)
+        environment = World::getInstance().getEnvironment(_position, 1); // On récupère l'environnement du Harvester (voisinage de Moore d'ordre 1 autour de la position de l'agent)
+        for (auto &&e : environment)
         {
-            Point d = map.getDistances(getPosition(), (*it)->getPosition());
-            if (d.x <= 1 && d.y <= 1)
+            if (e != nullptr && e->getType() == ENTITY_TYPE::RESOURCE)
             {
                 _state = STATE::BRING;
-                delete *it;
-                resources.erase(it);
+                notifyKill(e);
                 break;
             }
         }
         break;
     case STATE::BRING:
-        if (_base->getPosition() == _position)
+        Point p = World::getInstance().getDistances(getPosition(), _base->getPosition());
+        if (p.x <= 1 && p.y <= 1)
         {
             _state = STATE::SEARCH;
-            _base->addResources(1);
+            if (_base->addResources(1))
+            {
+                _base->birth();
+            }
         }
         break;
     }
-    move(map);
+    moveHarvester();
 }
 
 Base* const Harvester::getBase() const

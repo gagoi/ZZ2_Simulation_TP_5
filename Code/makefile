@@ -1,19 +1,3 @@
-#===========================================================
-#
-#  Makefile du projet ................
-#
-#  Auteur               : .................
-#  Date de création     : ................
-#  Date de modification : ................
-#
-#  Version Actuelle du projet: ................
-#
-#  Histoire:
-#    - ver  -- date -- comment
-#    - ..... -- ...... -- .....................................
-#
-#===========================================================
- 
 #variables
 SRCDIR = src/
 OBJDIR = bin/obj/
@@ -34,8 +18,8 @@ MSG_BUILDOK = $(MSG) "Le Projet a été construit!"
 RM  = $(MSQ)rm -rf
 CC  = $(MSQ)g++
 SED = sed -e "s/\(.*\.o:\)/$(subst /,\/,$(OBJDIR))\1/g"
-CFLAGS = -O3 -Wall
-LFLAGS = -O3 -Wall
+CFLAGS = -O3 -Wall -std=c++17 -g
+LFLAGS = -O3 -Wall -std=c++17 -g
  
 #variables automatiques
 #SRC = $(wildcard $(SRCDIR)*.cpp $(SRCDIR)*/*.cpp $(SRCDIR)*/*/*.cpp $(SRCDIR)*/*/*/*.cpp)
@@ -57,7 +41,7 @@ $(EXEC): $(OBJ)
 	$(MSG) "==== édition de liens ===== "
 	$(CC) $(LFLAGS) $(OBJ) -o $(EXEC) $(LIBDIR) $(INCLIB)
 	$(MSG_BUILDOK)
-	$(EXEC)
+	#$(EXEC)
 
 $(DEPFILE): $(SRC) $(SRC_H)
 	$(MSG) "Calcul des dependances..."
@@ -74,5 +58,17 @@ $(OBJ):
 
 clean:
 	$(RM) $(OBJ) $(DEPFILE)
+
+draw:
+	$(EXEC) --draw;
+
+log:
+	$(EXEC) --log;
+
+log-draw:
+	$(EXEC) --log-draw
+
+log-file:
+	$(EXEC) --log-file
 
 #============ fin du makefile ========================

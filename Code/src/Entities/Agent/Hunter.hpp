@@ -12,8 +12,11 @@
 #define HUNTER_HPP
 
 #include <random>
+#include "Agent.hpp"
+#include "../../Utils/World.hpp"
 #include "../Entity.hpp"
 #include "Harvester.hpp"
+#include "../../Observer/Observable.hpp"
 
 /**
  * @brief Classe de l'agent mangeur (Héritant de la classe Entity)
@@ -25,7 +28,7 @@
  * celle-ci remonte. Si il mange un Harvester avec plus de 80% de sa vie, il donne naissance à
  * un autre Hunter.
  */
-class Hunter : public Entity
+class Hunter : public Agent
 {
 public:
     /**
@@ -47,7 +50,9 @@ public:
      * @param[in] harvesters Tableau des Harvesters du système
      * @param[in] map Map représentant l'environnement (sert pour les méthodes de distances)
      */
-    void update(std::vector<Harvester*> & harvesters, Map const & map);
+    void update() override;
+
+    ENTITY_TYPE getType() const override { return ENTITY_TYPE::HUNTER; }
 
     bool isDead() const;
 
