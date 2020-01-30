@@ -58,7 +58,7 @@ public:
 private:
     int         _resources; /*!< Nombre de ressources que possède actuellement la base */
     const int   _limit; /*!< Nombre de ressources nécessaires afin de créer un agent Harvester */
-    int         _nextBirths; /*!< Nombre de Harvesters à créer à la prochaine étape du système */
+    bool        _hasToBirth; /*!< La base doit créer un harvester à la prochaine étape du système */
 };
 
 #endif

@@ -16,6 +16,7 @@
 #include <iomanip>
 #include "Utils/World.hpp"
 #include "Entities/Agent/Agent.hpp"
+#include "Observer/IObserver.hpp"
 
 class Agent;
 
@@ -63,6 +64,7 @@ public:
 
 private:
     std::vector<Agent*> _agents;
+    std::vector<Agent*> _addingBuffer;
 };
 
 #endif

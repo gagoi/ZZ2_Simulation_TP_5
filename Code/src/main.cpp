@@ -37,7 +37,7 @@ int main(int argc, char ** argv)
     System& s = System::getInstance();
     World& w = World::getInstance();
 
-    Base* base = new Base(Point(5, 5), 5);
+    Base* base = new Base(Point(5, 5), 0);
     Hunter* hunter = new Hunter(Point(0, 0));
 
     w.add(base);/*

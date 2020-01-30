@@ -28,7 +28,7 @@ void Hunter::update()
 {
     // Environnement du Hunter (voisinage de Moore d'ordre 3)
     std::vector<Entity*> environment = World::getInstance().getEnvironment(_position, 3);
-    bool moved = false;
+    bool moved = false, ate = false;
 
     for (auto &&e : environment)
     {
@@ -47,6 +47,7 @@ void Hunter::update()
                     setPosition(pos);
                     // TODO: Système de barre de vie
                     moved = true;
+                    ate = true;
                 }
                 else
                 {
@@ -67,9 +68,51 @@ void Hunter::update()
         if (World::getInstance().findRandomPositionInEnvironment(environment, 2, ENTITY_TYPE::NONE, nPos))
             move(nPos);
     }
-}
 
-bool Hunter::isDead() const
-{
-    return _lifeState == LIFE_STATE::RED && _stepsBeforeChange <= 0;
+    if (ate)
+    {
+        Point nPos;
+        switch (_lifeState)
+        {
+        case LIFE_STATE::GREEN:
+            environment = World::getInstance().getEnvironment(_position, 1);
+            if (World::getInstance().findRandomPositionInEnvironment(environment, 1, ENTITY_TYPE::NONE, nPos))
+            {
+            }
+            break;
+        case LIFE_STATE::ORANGE:
+            _lifeState = LIFE_STATE::GREEN;
+            _stepsBeforeChange = GREEN_STATE_DURATION;
+            break;
+        case LIFE_STATE::RED:
+            _lifeState = LIFE_STATE::ORANGE;
+            _stepsBeforeChange = ORANGE_STATE_DURATION;
+            break;
+        }
+    }
+    else
+    {
+        if (_stepsBeforeChange > 0)
+        {
+            _stepsBeforeChange--;
+        }
+        else
+        {
+            switch (_lifeState)
+            {
+            case LIFE_STATE::GREEN:
+                _lifeState = LIFE_STATE::ORANGE;
+                _stepsBeforeChange = ORANGE_STATE_DURATION;
+                break;
+            case LIFE_STATE::ORANGE:
+                _lifeState = LIFE_STATE::RED;
+                _stepsBeforeChange = RED_STATE_DURATION;
+                break;
+            case LIFE_STATE::RED:
+                kill();
+                notifyKill(this);
+                break;
+            }
+        }   
+    }
 }

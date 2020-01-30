@@ -60,13 +60,6 @@ public:
      */
     void update() override;
 
-    /**
-     * @brief Getter de la base de l'agent
-     * 
-     * @return Base* const Pointeur sur la base de l'agent
-     */
-    Base* const getBase() const;
-
     ENTITY_TYPE getType() const override { return ENTITY_TYPE::HARVESTER; }
 
 private:

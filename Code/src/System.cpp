@@ -31,7 +31,7 @@ System::~System()
 
 void System::addAgent(Agent* a)
 {
-    _agents.push_back(a);
+    _addingBuffer.push_back(a);
     World::getInstance().add(a);
 }
 
@@ -48,9 +48,18 @@ void System::update()
             toSuppr.push_back(it);
     }
 
-    for(auto itit = toSuppr.begin(); itit != toSuppr.end(); itit++)
+    // Suppression des agents morts pendant cette update
+    for (auto itit = toSuppr.begin(); itit != toSuppr.end(); itit++)
     {
         _agents.erase(*itit);
+    }
+
+    // Ajout des agents nés dans cette update
+    if (_addingBuffer.size() > 0)
+    {
+        for (auto it = _addingBuffer.begin(); it != _addingBuffer.end(); it++)
+            _agents.push_back(*it);
+        _addingBuffer.clear();
     }
 }
 

@@ -28,7 +28,7 @@ public:
             (*it)->updateKill(e);
         }
     }
-
+    
 private:
     std::set<IObserver*> _listObserver;
 };

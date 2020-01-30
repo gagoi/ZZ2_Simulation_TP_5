@@ -74,8 +74,3 @@ void Harvester::update()
     }
     moveHarvester();
 }
-
-Base* const Harvester::getBase() const
-{
-    return _base;
-}

@@ -60,9 +60,9 @@ public:
 
     bool findRandomPositionInEnvironment(std::vector<Entity*> env, int range, Entity::ENTITY_TYPE toFind, Point & pos);
 
-    void updateMove(Entity * e, Point const & newPosition);
+    void updateMove(Entity * e, Point const & newPosition) override;
 
-    void updateKill(Entity * e);
+    void updateKill(Entity * e) override;
 
     void refactorCoordonates(Point & p);
 

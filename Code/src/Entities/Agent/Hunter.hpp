@@ -54,8 +54,6 @@ public:
 
     ENTITY_TYPE getType() const override { return ENTITY_TYPE::HUNTER; }
 
-    bool isDead() const;
-
 private:
     enum LIFE_STATE
     {

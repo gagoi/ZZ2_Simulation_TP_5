@@ -14,7 +14,7 @@ Base::Base(Point const & p, int limit, char c) :
     Entity(p, c),
     _resources(0),
     _limit(limit),
-    _nextBirths(0)
+    _hasToBirth(false)
 {
 }
 
@@ -28,7 +28,7 @@ bool Base::addResources(int r)
     if (_resources > _limit)
     {
         _resources -= _limit;
-        _nextBirths++;
+        _hasToBirth = true;
         return true;
     }
     return false;
@@ -36,8 +36,14 @@ bool Base::addResources(int r)
 
 void Base::birth()
 {
-    for (; _nextBirths > 0; _nextBirths--)
+    if (_hasToBirth)
     {
-        World::getInstance().add(new Harvester(getPosition(), this));
+        std::vector<Entity*> env = World::getInstance().getEnvironment(_position, 1);
+        Point pos;
+        if (World::getInstance().findRandomPositionInEnvironment(env, 1, ENTITY_TYPE::NONE, pos))
+        {
+            System::getInstance().addAgent(new Harvester(_position + pos, this));
+            _hasToBirth = false;
+        }
     }
 }
