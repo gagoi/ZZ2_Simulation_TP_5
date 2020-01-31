@@ -1,9 +1,9 @@
-/*
 #include <random>
 #include <string>
 #include <fstream>
 #include <chrono>
 #include <thread>
+#include <SFML/Graphics.hpp>
 #include "System.hpp"
 #include "Entities/Agent/Harvester.hpp"
 #include "Entities/Agent/Hunter.hpp"
@@ -30,6 +30,10 @@ void draw(World const &);
 
 int main(int argc, char ** argv)
 {
+    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
+    sf::CircleShape shape(100.f);
+    shape.setFillColor(sf::Color::Green);
+
     getDrawMode(argc, argv);
 
     if (mode == MODE_LOG_FILE || mode == MODE_LOG_FILE_AND_DRAW)
@@ -56,6 +60,20 @@ int main(int argc, char ** argv)
     
     if (mode == MODE_LOG_FILE || mode == MODE_LOG_FILE_AND_DRAW)
         log_file.close();
+
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+
+        window.clear();
+        window.draw(shape);
+        window.display();
+    }
 
     return 0;
 }
@@ -115,28 +133,4 @@ void getDrawMode(int argc, char ** argv)
             exit(1);
         }
     }
-}*/
-#include <SFML/Graphics.hpp>
-
-int main()
-{
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
-
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-
-        window.clear();
-        window.draw(shape);
-        window.display();
-    }
-
-    return 0;
 }
