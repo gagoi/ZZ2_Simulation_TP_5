@@ -13,12 +13,8 @@ enum DRAW_MODE {
     MODE_LOG, MODE_DRAW, MODE_LOG_FILE, MODE_LOG_FILE_AND_DRAW
 };
 
-extern std::mt19937 gen;
 std::uniform_int_distribution<> dis_x(0, World::WORLD_WIDTH);
 std::uniform_int_distribution<> dis_y(0, World::WORLD_HEIGHT);
-
-void testHunterMove();
-void testHarvesterMove();
 
 DRAW_MODE mode = MODE_LOG;
 std::fstream log_file;
@@ -41,20 +37,24 @@ int main(int argc, char ** argv)
     Hunter* hunter = new Hunter(Point(0, 0));
 
     w.add(base);
-    s.addAgent(hunter);/*
+    s.addAgent(hunter);
     for (int i = 0; i < 15; i++)    
-        s.addAgent(new Harvester(Point(dis_x(gen), dis_y(gen)), base));
-*/
+        s.addAgent(new Harvester(Point(dis_x(World::gen), dis_y(World::gen)), base));
+
     w.add(new Resource(Point(5, 13)));
 
     for (int i = 0; i < 20; i++)
     {
         s.update();
+        std::cout << "UPDATE " << i << std::endl;
         draw(w);
     }
     
     if (mode == MODE_LOG_FILE || mode == MODE_LOG_FILE_AND_DRAW)
         log_file.close();
+
+    System::deleteInstance();
+    World::deleteInstance();
 
     return 0;
 }

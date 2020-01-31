@@ -1,6 +1,6 @@
 #include "World.hpp"
 
-std::mt19937 gen(256);
+std::mt19937 World::gen(World::RANDOM_INIT);
 
 World* World::instance = nullptr;
 
@@ -9,6 +9,11 @@ World& World::getInstance()
     if (instance == nullptr)
         instance = new World();
     return *instance;
+}
+
+void World::deleteInstance()
+{
+    delete instance;
 }
 
 World::World() :
@@ -25,7 +30,16 @@ World::World() :
     }
 }
 
-World::~World() {}
+World::~World()
+{
+    for (auto &&line : _world)
+    {
+        for (auto &&e : line)
+        {
+            delete e;
+        }
+    }
+}
 
 void World::add(Entity* entity)
 {

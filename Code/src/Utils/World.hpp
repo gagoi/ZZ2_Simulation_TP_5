@@ -21,8 +21,6 @@
 #include "../Entities/Entity.hpp"
 #include "../Observer/IObserver.hpp"
 
-extern std::mt19937 gen;
-
 /**
  * @brief Classe World
  * 
@@ -33,13 +31,17 @@ extern std::mt19937 gen;
 class World : public IObserver
 {
 private:
+    static constexpr int RANDOM_INIT = 256;
     static World* instance;
 
 public:
     static constexpr int WORLD_WIDTH = 20;
     static constexpr int WORLD_HEIGHT = 20;
 
+    static std::mt19937 gen;
+
     static World& getInstance();
+    static void deleteInstance();
 
     /**
      * @brief Construit un nouvel objet World

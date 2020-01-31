@@ -31,6 +31,7 @@ private:
 
 public:
     static System& getInstance();
+    static void deleteInstance();
 
     /**
      * @brief Construit un nouvel objet System

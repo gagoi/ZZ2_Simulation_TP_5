@@ -10,9 +10,6 @@
  */
 #include "Hunter.hpp"
 
-std::mt19937 Hunter::gen(253);
-std::uniform_int_distribution<> Hunter::move_distribution(-2, 2);
-
 Hunter::Hunter(Point const & p, char c) :
     Agent(p, c),
     _lifeState(LIFE_STATE::ORANGE),
@@ -59,6 +56,7 @@ void Hunter::update()
             }
         }
     }
+    
     if (!moved)
     {
         // Si il y a pls position disponible, on bouge sur une aléatoirement, sinon on reste sur sa position
@@ -119,16 +117,18 @@ void Hunter::update()
 
 std::string Hunter::getColor() const
 {
+    std::string ret;
     switch (_lifeState)
     {
     case LIFE_STATE::GREEN:
-        return COLOR_GREEN;
+        ret = COLOR_GREEN;
         break;
     case LIFE_STATE::ORANGE:
-        return COLOR_YELLOW;
+        ret = COLOR_YELLOW;
         break;
     case LIFE_STATE::RED:
-        return COLOR_RED;
+        ret = COLOR_RED;
         break;
     }
+    return ret;
 }

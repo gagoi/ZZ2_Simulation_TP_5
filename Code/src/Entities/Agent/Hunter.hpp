@@ -71,9 +71,6 @@ private:
     static constexpr int RED_STATE_DURATION = 5; /*!< Durée de l'état critique si pas de mise à jour (en nombre d'itération du système) */
     static constexpr int ORANGE_STATE_DURATION = 5; /*!< Durée de l'état normal si pas de mise à jour (en nombre d'itération du système) */
     static constexpr int GREEN_STATE_DURATION = 5; /*!< Durée de l'état bien si pas de mise à jour (en nombre d'itération du système) */
-
-    static std::mt19937 gen; /*!< générateur de nombre aléatoire Mersenne Twister (pour le déplacement aléatoire) */
-    static std::uniform_int_distribution<> move_distribution; /*!< Distribution pour le déplacement aléatoire */
 };
 
 #endif

@@ -77,9 +77,6 @@ private:
 
     Base* _base; /*!< Base de l'agent */
     STATE _state; /*!< Etat de l'agent */
-
-    static std::mt19937 gen; /*!< générateur de nombre aléatoire Mersenne Twister (pour le déplacement aléatoire) */
-    static std::uniform_int_distribution<> move_distribution; /*!< Distribution pour le déplacement aléatoire */
 };
 
 #endif

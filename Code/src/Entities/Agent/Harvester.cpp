@@ -10,9 +10,6 @@
  */
 #include "Harvester.hpp"
 
-std::mt19937 Harvester::gen(253);
-std::uniform_int_distribution<> Harvester::move_distribution(-1, 1);
-
 Harvester::Harvester(Point const & p, Base* base, char c) :
     Agent(p, c),
     _base(base),

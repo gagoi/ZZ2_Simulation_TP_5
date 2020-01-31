@@ -19,14 +19,17 @@ System& System::getInstance()
     return *instance;
 }
 
+void System::deleteInstance()
+{
+    delete instance;
+}
+
 System::System()
 {
 }
 
 System::~System()
 {
-    for (auto &&a : _agents)
-        delete a;
 }
 
 void System::addAgent(Agent* a)
@@ -39,6 +42,7 @@ void System::update()
 {
     std::vector<std::vector<Agent*>::iterator> toSuppr;
     // Updates
+    //std::shuffle(_agents.begin(), _agents.end(), World::gen);
     for (auto it = _agents.begin(); it != _agents.end(); it++)
     {
         auto ptr = *it;
@@ -49,10 +53,16 @@ void System::update()
     }
 
     // Suppression des agents morts pendant cette update
-    for (auto itit = toSuppr.begin(); itit != toSuppr.end(); itit++)
+    _agents.erase(std::remove_if(_agents.begin(), _agents.end(), [](Agent * a)
     {
-        _agents.erase(*itit);
-    }
+        bool suppr = false;
+        if (a->isDead())
+        {
+            suppr = true;
+            delete a;
+        }
+        return suppr;
+    }), _agents.end());
 
     // Ajout des agents nés dans cette update
     if (_addingBuffer.size() > 0)
