@@ -12,8 +12,8 @@
 #define ENTITY_HPP
 
 #include <vector>
+#include "../colors.hpp"
 #include "../Utils/Point.hpp"
-#include "../Utils/Map.hpp"
 
 /**
  * @brief Classe Entity, définit un objet simple existant dans l'environnement du système
@@ -21,6 +21,16 @@
 class Entity
 {
 public:
+    enum class ENTITY_TYPE
+    {
+        ZERO,
+        HARVESTER,
+        HUNTER,
+        BASE,
+        RESOURCE,
+        NONE
+    };
+
     /**
      * @brief Construit un nouvel objet Entity
      * 
@@ -55,12 +65,11 @@ public:
      */
     char getChar() const { return _shellChar; }
 
-    /**
-     * @brief Méthode qui "dessine" l'entité sur une map donnée
-     * 
-     * @param[in] map Tableau de caractères représentant le système
-     */
-    void draw(Map & map) const;
+    virtual std::string getColor() const = 0;
+
+    virtual ENTITY_TYPE getType() const = 0;
+
+    friend std::ostream& operator<<(std::ostream& out, Entity const & e);
 
 protected:
     Point _position; /*!< Position de l'entité dans le système */

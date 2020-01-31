@@ -12,8 +12,10 @@
 #define BASE_HPP
 
 #include <vector>
-#include "Entity.hpp"
+#include "../colors.hpp"
 #include "Agent/Harvester.hpp"
+#include "../Utils/World.hpp"
+#include "Entity.hpp"
 
 class Harvester;
 
@@ -43,19 +45,23 @@ public:
      * 
      * @param[in] r Nombre de ressources à ajouter
      */
-    void addResources(int r);
+    bool addResources(int r);
 
     /**
      * @brief Méthode permettant de savoir si la base doit donner naissance à des Harvesters
      * 
      * @param[in] harvesters Tableau du système dans lequel la base doit ajouter des Harvesters
      */
-    void update(std::vector<Harvester*> & harvesters);
+    void birth();
+
+    std::string getColor() const override { return COLOR_CYAN; }
+
+    virtual ENTITY_TYPE getType() const override { return ENTITY_TYPE::BASE; }
 
 private:
     int         _resources; /*!< Nombre de ressources que possède actuellement la base */
     const int   _limit; /*!< Nombre de ressources nécessaires afin de créer un agent Harvester */
-    int         _nextBirths; /*!< Nombre de Harvesters à créer à la prochaine étape du système */
+    bool        _hasToBirth; /*!< La base doit créer un harvester à la prochaine étape du système */
 };
 
 #endif

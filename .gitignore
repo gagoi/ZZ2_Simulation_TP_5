@@ -43,3 +43,6 @@ bin/
 # Doxygen
 html/
 latex/
+
+# VSCode
+.vscode

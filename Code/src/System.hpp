@@ -14,12 +14,11 @@
 #include <vector>
 #include <iostream>
 #include <iomanip>
-#include "Utils/Map.hpp"
-#include "Entities/Entity.hpp"
-#include "Entities/Agent/Harvester.hpp"
-#include "Entities/Agent/Hunter.hpp"
-#include "Entities/Resource.hpp"
-#include "Entities/Base.hpp"
+#include "Utils/World.hpp"
+#include "Entities/Agent/Agent.hpp"
+#include "Observer/IObserver.hpp"
+
+class Agent;
 
 /**
  * @brief Classe représentant un système multi-agent
@@ -27,33 +26,26 @@
  */
 class System
 {
+private:
+    static System* instance;
+
 public:
+    static System& getInstance();
+
     /**
      * @brief Construit un nouvel objet System
      * 
      * @param[in] w "hauteur" de la map du système
      * @param[in] h "longeur" de la map du système
      */
-    System(int w, int h);
+    System();
 
     /**
      * @brief Détruit l'objet System
      */
     ~System();
 
-    /**
-     * @brief Ajoute un récolteur dans le système
-     * 
-     * @param[in] h Pointeur sur l'agent à ajouter
-     */
-    void addHarvester(Harvester* h);
-
-    /**
-     * @brief Ajoute un mangeur dans le système
-     * 
-     * @param[in] h Pointeur sur l'agent à ajouter
-     */
-    void addHunter(Hunter* h);
+    void addAgent(Agent * a);
 
     /**
      * @brief Méthode qui actualise tous les agents et donc les fais bouger et intéragir avec leur environnement
@@ -61,21 +53,9 @@ public:
      */
     void update();
 
-    /**
-     * @brief Surcharge de l'opérateur <<, permet d'afficher plus simplement la map du système sur un flux
-     * 
-     * @param[in] out flux sur lequel afficher la map du système
-     * @param[in] sys système à afficher
-     * @return std::ostream& flux d'entrée, permet le chaînage d'opérateurs
-     */
-    friend std::ostream& operator<<(std::ostream& out, System const & sys);
-
 private:
-    std::vector<Harvester*> _harvesters; /*!< Tableau contenant les agents récolteurs du système */
-    std::vector<Hunter*>    _hunters; /*!< Tableau contenant les agents mangeurs du système */
-    std::vector<Resource*>  _resources; /*!< Tableau contenant les ressources présentes dans le système */
-    std::vector<Base*>      _bases; /*!< Tableau contenant les bases des agents Harvester du système */
-    Map _map; /*!< Objet map sur lequel on affiche l'ensemble du système */
+    std::vector<Agent*> _agents;
+    std::vector<Agent*> _addingBuffer;
 };
 
 #endif

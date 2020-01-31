@@ -12,8 +12,12 @@
 #define HUNTER_HPP
 
 #include <random>
+#include "../../colors.hpp"
+#include "Agent.hpp"
+#include "../../Utils/World.hpp"
 #include "../Entity.hpp"
 #include "Harvester.hpp"
+#include "../../Observer/Observable.hpp"
 
 /**
  * @brief Classe de l'agent mangeur (Héritant de la classe Entity)
@@ -25,7 +29,7 @@
  * celle-ci remonte. Si il mange un Harvester avec plus de 80% de sa vie, il donne naissance à
  * un autre Hunter.
  */
-class Hunter : public Entity
+class Hunter : public Agent
 {
 public:
     /**
@@ -47,10 +51,26 @@ public:
      * @param[in] harvesters Tableau des Harvesters du système
      * @param[in] map Map représentant l'environnement (sert pour les méthodes de distances)
      */
-    void update(std::vector<Harvester*> & harvesters, Map const & map);
+    void update() override;
+
+    std::string getColor() const override;
+
+    ENTITY_TYPE getType() const override { return ENTITY_TYPE::HUNTER; }
 
 private:
-    int _life; /*!< Vie de l'agent (entre 0 et 100) */
+    enum LIFE_STATE
+    {
+        RED,
+        ORANGE,
+        GREEN
+    };
+
+    LIFE_STATE _lifeState; /*!< Vie de l'agent (représentée par 3 état: critique, normal et bien) */
+    int _stepsBeforeChange; /*!< Nombre d'itérations du système avant de changer d'état */
+
+    static constexpr int RED_STATE_DURATION = 5; /*!< Durée de l'état critique si pas de mise à jour (en nombre d'itération du système) */
+    static constexpr int ORANGE_STATE_DURATION = 5; /*!< Durée de l'état normal si pas de mise à jour (en nombre d'itération du système) */
+    static constexpr int GREEN_STATE_DURATION = 5; /*!< Durée de l'état bien si pas de mise à jour (en nombre d'itération du système) */
 
     static std::mt19937 gen; /*!< générateur de nombre aléatoire Mersenne Twister (pour le déplacement aléatoire) */
     static std::uniform_int_distribution<> move_distribution; /*!< Distribution pour le déplacement aléatoire */
