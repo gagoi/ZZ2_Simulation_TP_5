@@ -1,3 +1,13 @@
+/**
+ * @file colors.hpp
+ * @author Mathieu Arquilliere (mathieu.arquilliere@etu.uca.fr), Jeremy Zangla (jeremy.zangla@etu.uca.fr)
+ * @brief Fichier contenant les defines des couleurs affichable dans le terminal
+ * @version 0.1
+ * @date 2020-02-18
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
 #ifndef COLORS_HPP
 #define COLORS_HPP
 

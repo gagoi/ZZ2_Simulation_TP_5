@@ -1,3 +1,13 @@
+/**
+ * @file main.cpp
+ * @author Mathieu Arquilliere (mathieu.arquilliere@etu.uca.fr), Jeremy Zangla (jeremy.zangla@etu.uca.fr)
+ * @brief Fichier contenant le main, qui lance la simulation
+ * @version 0.1
+ * @date 2020-02-18
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
 #include <random>
 #include <string>
 #include <fstream>

@@ -22,22 +22,31 @@ class Agent;
 
 /**
  * @brief Classe représentant un système multi-agent
- * C'est cette classe qui va s'occuper de faire agir et interagir les agents et les ressources
+ * C'est cette classe qui va s'occuper de faire agir et interagir les agents
+ * 
+ * Cette classe ne contient qu'un tableau d'agents et les updates
+ * Cette classe est un singleton
  */
 class System
 {
 private:
-    static System* instance;
+    static System* instance; /*!< Instance de System (singleton) */
 
 public:
+    /**
+     * @brief Getter de l'instance de System (la méthode la créee si elle n'existe pas (singleton))
+     * 
+     * @return System& instance de System
+     */
     static System& getInstance();
+
+    /**
+     * @brief Libère la mémoire utilisée par l'instance de System
+     */
     static void deleteInstance();
 
     /**
      * @brief Construit un nouvel objet System
-     * 
-     * @param[in] w "hauteur" de la map du système
-     * @param[in] h "longeur" de la map du système
      */
     System();
 
@@ -46,6 +55,11 @@ public:
      */
     ~System();
 
+    /**
+     * @brief Méthode ajoutant un agent au systeme
+     * 
+     * @param[in] a agent
+     */
     void addAgent(Agent * a);
 
     /**
@@ -55,8 +69,8 @@ public:
     void update();
 
 private:
-    std::vector<Agent*> _agents;
-    std::vector<Agent*> _addingBuffer;
+    std::vector<Agent*> _agents; /*!< Tableau contenant les agents du syteme */
+    std::vector<Agent*> _addingBuffer; /*!< Tableau contenant les agents à ajouter au prochain update */
 };
 
 #endif

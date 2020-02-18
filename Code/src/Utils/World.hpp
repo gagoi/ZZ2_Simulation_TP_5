@@ -73,20 +73,49 @@ public:
     void add(Entity* entity);
 
     /**
-     * @brief Méthode permettant d'obtenir un environnement
+     * @brief Méthode permettant d'obtenir un environnement d'une certaine taille autour d'un point
+     *      Un environnement est un tableau composé de toutes les cases autour de l'origine (y compris les cases vides avec nullptr)
      * 
-     * @param[in] origin 
-     * @param[in] range 
-     * @return std::vector<Entity*> 
+     * @param[in] origin point central de l'environnement voulu
+     * @param[in] range taille du voisinage autour du point central
+     * @return std::vector<Entity*> tableau de pointeurs d'entité représentant l'environnement voulu
      */
     std::vector<Entity*> getEnvironment(Point & origin, int range);
 
+    /**
+     * @brief Méthode qui permet d'obtenir une position aléatoire d'un environnement
+     *      On choisit ce qu'on veut trouver en aléatoire dans l'environnement donné
+     * 
+     * @param[in] env environnement
+     * @param[in] range taille du voisinage de l'environnement
+     * @param[in] toFind type d'entité à trouver en aléatoire
+     * @param[out] pos psoition aléatoire trouvée par la méthode
+     * @return true une position à bien été trouvée
+     * @return false il n'y a aucune entité de ce type dans l'environnement donné
+     */
     bool findRandomPositionInEnvironment(std::vector<Entity*> env, int range, Entity::ENTITY_TYPE toFind, Point & pos);
 
+    /**
+     * @brief Méthode redéfinit hérité de l'interface IObserver qui permet de replacer une entité dans le tableau
+     * 
+     * @param[in] e entité qui a bougé
+     * @param[in] newPosition nouvelle position de l'entité
+     */
     void updateMove(Entity * e, Point const & newPosition) override;
 
+    /**
+     * @brief Méthode redéfinit hérité de l'interface IObserver qui permet de supprimer une entité dans le tableau
+     * 
+     * @param[in] e entité qui est morte
+     */
     void updateKill(Entity * e) override;
 
+    /**
+     * @brief Méthode permettant de transformer des coordonnées pour revenir dans le World
+     *      Puisque le World est un tore, les coordonnées "en dehors" correspondent à des coordonnées qui restent dans le double tableau
+     * 
+     * @param[in/out] p coordonnées à refactor
+     */
     void refactorCoordonates(Point & p);
 
     /**
