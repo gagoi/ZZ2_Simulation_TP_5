@@ -1,6 +1,6 @@
 /**
  * @file World.hpp
- * @author Mathieu Arquilliere (mathieu.arquilliere@etu.uca.fr)
+ * @author Mathieu Arquilliere (mathieu.arquilliere@etu.uca.fr), Jeremy Zangla (jeremy.zangla@etu.uca.fr)
  * @brief Fichier de déclaration de la classe World
  * @version 0.1
  * @date 2019-12-21
@@ -24,30 +24,39 @@
 /**
  * @brief Classe World
  * 
- * Classe implémentant une interface d'un double tableau de caractère.
- * Cette classe permet de simplifier l'accès à l'affichage de l'environnement du système d'agents.
+ * Classe qui représente le monde où se situe toutes les entitées
+ * Cette classe permet aux entitées d'obtenir leur environnement et de s'y déplacer
  * La fonctionnalité principale est qu'un objet World est un "tore" (le haut est relié au bas et la gauche à la droite)
+ * 
+ * World est un Observer d'entité afin de savoir quand une entité bouge ou meurt, la classe hérite donc de l'interface IObserver
+ * World est un singleton
  */
 class World : public IObserver
 {
 private:
-    static constexpr int RANDOM_INIT = 256;
-    static World* instance;
+    static constexpr int RANDOM_INIT = 256; /*!< seed d'initialisation pour l'aléatoire */
+    static World* instance; /*!< instance de World (singleton) */
 
 public:
-    static constexpr int WORLD_WIDTH = 20;
-    static constexpr int WORLD_HEIGHT = 20;
+    static constexpr int WORLD_WIDTH = 20; /*!< Longueur du monde 2D */
+    static constexpr int WORLD_HEIGHT = 20; /*!< Hauteur du monde 2D */
 
-    static std::mt19937 gen;
+    static std::mt19937 gen; /*!< générateur de nombre aléatoire Mersenne Twister */
 
+    /**
+     * @brief Getter de l'instance de World (la méthode la créee si elle n'existe pas (singleton))
+     * 
+     * @return World& instance de World
+     */
     static World& getInstance();
+
+    /**
+     * @brief Libère la mémoire utilisée par l'instance de World
+     */
     static void deleteInstance();
 
     /**
      * @brief Construit un nouvel objet World
-     * 
-     * @param[in] a nombre de "lignes" de la World
-     * @param[in] b nombre de "colonnes" de la World
      */
     World();
 
@@ -56,8 +65,20 @@ public:
      */
     ~World();
 
+    /**
+     * @brief Ajoute une entité au World
+     * 
+     * @param[in] entity Entité à ajouter
+     */
     void add(Entity* entity);
 
+    /**
+     * @brief Méthode permettant d'obtenir un environnement
+     * 
+     * @param[in] origin 
+     * @param[in] range 
+     * @return std::vector<Entity*> 
+     */
     std::vector<Entity*> getEnvironment(Point & origin, int range);
 
     bool findRandomPositionInEnvironment(std::vector<Entity*> env, int range, Entity::ENTITY_TYPE toFind, Point & pos);

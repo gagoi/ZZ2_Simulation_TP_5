@@ -1,6 +1,6 @@
 /**
  * @file Entity.hpp
- * @author Mathieu Arquilliere (mathieu.arquilliere@etu.uca.fr)
+ * @author Mathieu Arquilliere (mathieu.arquilliere@etu.uca.fr), Jeremy Zangla (jeremy.zangla@etu.uca.fr)
  * @brief Fichier de déclaration de la classe Entity
  * @version 0.1
  * @date 2019-12-21
@@ -21,6 +21,10 @@
 class Entity
 {
 public:
+    /**
+     * @brief enum définissant les différents types d'entité possible
+     * 
+     */
     enum class ENTITY_TYPE
     {
         ZERO,
@@ -65,10 +69,27 @@ public:
      */
     char getChar() const { return _shellChar; }
 
+    /**
+     * @brief Getter de la couleur de l'entité à afficher (méthode virtuelle pure à redéfinir dans les classes filles)
+     * 
+     * @return std::string chaîne de caractères changeant la couleur affichée dans le terminal
+     */
     virtual std::string getColor() const = 0;
 
+    /**
+     * @brief Getter de Type (méthode virtuelle pure à redéfinir dans les classes filles)
+     * 
+     * @return ENTITY_TYPE type de l'entité
+     */
     virtual ENTITY_TYPE getType() const = 0;
 
+    /**
+     * @brief Fonction d'affichage d'une entité
+     * 
+     * @param[in] out flux sur lequel afficher l'entité
+     * @param[in] e entité à afficher
+     * @return std::ostream& le flux d'entré (retour permettant le chaînage d'opérateur de flux)
+     */
     friend std::ostream& operator<<(std::ostream& out, Entity const & e);
 
 protected:

@@ -1,6 +1,6 @@
 /**
  * @file Base.hpp
- * @author Mathieu Arquilliere (mathieu.arquilliere@etu.uca.fr)
+ * @author Mathieu Arquilliere (mathieu.arquilliere@etu.uca.fr), Jeremy Zangla (jeremy.zangla@etu.uca.fr)
  * @brief Fichier de déclaration de la classe Base
  * @version 0.1
  * @date 2019-12-26
@@ -48,15 +48,23 @@ public:
     bool addResources(int r);
 
     /**
-     * @brief Méthode permettant de savoir si la base doit donner naissance à des Harvesters
-     * 
-     * @param[in] harvesters Tableau du système dans lequel la base doit ajouter des Harvesters
+     * @brief Méthode permettant de donner naissance à des Harvesters si les ressources sont suffisantes
      */
     void birth();
 
+    /**
+     * @brief Getter de la couleur de l'entité à afficher
+     * 
+     * @return std::string chaîne de caractères changeant la couleur affichée dans le terminal
+     */
     std::string getColor() const override { return COLOR_CYAN; }
 
-    virtual ENTITY_TYPE getType() const override { return ENTITY_TYPE::BASE; }
+    /**
+     * @brief Getter de Type 
+     * 
+     * @return ENTITY_TYPE type de l'entité
+     */
+    ENTITY_TYPE getType() const override { return ENTITY_TYPE::BASE; }
 
 private:
     int         _resources; /*!< Nombre de ressources que possède actuellement la base */

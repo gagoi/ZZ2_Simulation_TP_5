@@ -1,6 +1,6 @@
 /**
  * @file Agent.hpp
- * @author Mathieu Arquilliere (mathieu.arquilliere@etu.uca.fr)
+ * @author Mathieu Arquilliere (mathieu.arquilliere@etu.uca.fr), Jeremy Zangla (jeremy.zangla@etu.uca.fr)
  * @brief Fichier de déclaration de la classe Agent
  * @version 0.1
  * @date 2019-12-21
@@ -20,6 +20,7 @@ class System;
 
 /**
  * @brief Classe abstraite définissant l'interface d'un agent (héritant d'Entity)
+ * Cette classe hérite également de l'objet Observable pour la mise en place du patron Observer
  */
 class Agent : public Entity, public Observable
 {
@@ -32,12 +33,31 @@ public:
      */
     Agent(Point const & p, char c);
 
+    /**
+     * @brief Setter de Position
+     * 
+     * @param[in] p nouvelle position de l'agent
+     */
     void setPosition(Point const & p);
 
+    /**
+     * @brief Permet à l'agent de changer de bouger sur la map
+     * 
+     * @param[in] p nouvelle position (relative à sa position actuelle)
+     */
     void move(Point const & p);
 
+    /**
+     * @brief Getter de _dead, permet de savoir si l'agent doit sortir du système
+     * 
+     * @return true l'agent est techniquement mort (mais encore dans le système)
+     * @return false l'agent est toujours vivant
+     */
     bool isDead() const { return _dead; }
 
+    /**
+     * @brief tue l'agent (mais ne le retire pas du système)
+     */
     void kill() { _dead = true; }
 
     /**
@@ -51,7 +71,7 @@ public:
     virtual void update() = 0;
 
 private:
-    bool _dead;
+    bool _dead; /*!< Booleen déterminant si l'agent est mort ou non */
 };
 
 #endif

@@ -1,3 +1,13 @@
+/**
+ * @file World.cpp
+ * @author Mathieu Arquilliere (mathieu.arquilliere@etu.uca.fr), Jeremy Zangla (jeremy.zangla@etu.uca.fr)
+ * @brief Fichier d'implémentation de la classe World
+ * @version 0.1
+ * @date 2020-02-18
+ * 
+ * @copyright Copyright (c) 2020
+ * 
+ */
 #include "World.hpp"
 
 std::mt19937 World::gen(World::RANDOM_INIT);

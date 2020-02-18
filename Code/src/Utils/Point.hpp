@@ -1,6 +1,6 @@
 /**
  * @file Point.hpp
- * @author Mathieu Arquilliere (mathieu.arquilliere@etu.uca.fr)
+ * @author Mathieu Arquilliere (mathieu.arquilliere@etu.uca.fr), Jeremy Zangla (jeremy.zangla@etu.uca.fr)
  * @brief Fichier de la structure utilitaire Point
  * @version 0.1
  * @date 2019-12-21
@@ -46,14 +46,14 @@ struct Point
      */
     Point(int a, int b) : x(a), y(b) {}
 
-    Point& operator=(Point const & p) { x = p.x; y = p.y; return *this; }
-    bool operator==(Point const & p) { return x == p.x && y == p.y; }
-    bool operator!=(Point const & p) { return x != p.x || y != p.y; }
-    Point& operator+=(Point const & p) { x += p.x; y += p.y; return *this; }
-    Point operator+(Point const & p) { return Point(x + p.x, y + p.y); }
-    Point& operator-=(Point const & p) { x -= p.x; y -= p.y; return *this; }
-    Point operator-(Point const & p) { return Point(x - p.x, y - p.y); }
-    Point& operator*(int mul) { x *= mul; y *= mul; return *this; }
+    Point&  operator=(Point const & p)  { x = p.x; y = p.y; return *this; }
+    bool    operator==(Point const & p) { return x == p.x && y == p.y; }
+    bool    operator!=(Point const & p) { return x != p.x || y != p.y; }
+    Point&  operator+=(Point const & p) { x += p.x; y += p.y; return *this; }
+    Point   operator+(Point const & p)  { return Point(x + p.x, y + p.y); }
+    Point&  operator-=(Point const & p) { x -= p.x; y -= p.y; return *this; }
+    Point   operator-(Point const & p)  { return Point(x - p.x, y - p.y); }
+    Point&  operator*(int mul)          { x *= mul; y *= mul; return *this; }
 
     friend std::ostream& operator<<(std::ostream& out, Point const & p) {
         out << "(" << p.x << "," << p.y << ")";

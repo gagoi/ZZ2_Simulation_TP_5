@@ -1,6 +1,6 @@
 /**
  * @file Harvester.hpp
- * @author Mathieu Arquilliere (mathieu.arquilliere@etu.uca.fr)
+ * @author Mathieu Arquilliere (mathieu.arquilliere@etu.uca.fr), Jeremy Zangla (jeremy.zangla@etu.uca.fr)
  * @brief Fichier de déclaration de la classe Harvester
  * @version 0.1
  * @date 2019-12-21
@@ -22,12 +22,12 @@
 class Base;
 
 /**
- * @brief Classe de l'agent récolteur (héritant de la classe Entity)
+ * @brief Classe de l'agent récolteur (héritant de la classe Agent)
  * L'agent est créé par une base et est lié à celle-ci.
  * Comportement :
  *      L'Harvester a 2 états, recherche et livraison
  *      Dans le premier, l'agent se déplace aléatoirement dans un voisinage de Moore d'ordre 1. Il le fait jusqu'à se trouver sur une case contenant une ressource
- *      Une fois sur une ressource, il prends celle-ci et se déplace au plus court vers sa base où il dépose ses ressources.
+ *      Une fois à côté d'une ressource, il prends celle-ci et se déplace au plus court vers sa base où il dépose ses ressources.
  */
 class Harvester : public Agent
 {
@@ -55,14 +55,21 @@ public:
 
     /**
      * @brief Méthode définissant le comportement de l'agent à chaque étape du système
-     * 
-     * @param[in] resources Tableau d'entité contenant les ressources
-     * @param[in] map Map représentant l'environnement (sert pour les méthodes de distances)
      */
     void update() override;
 
+    /**
+     * @brief Getter de la couleur de l'entité à afficher
+     * 
+     * @return std::string chaîne de caractères changeant la couleur affichée dans le terminal
+     */
     std::string getColor() const override { return COLOR_MAGENTA; }
 
+    /**
+     * @brief Getter de Type 
+     * 
+     * @return ENTITY_TYPE type de l'entité
+     */
     ENTITY_TYPE getType() const override { return ENTITY_TYPE::HARVESTER; }
 
 private:

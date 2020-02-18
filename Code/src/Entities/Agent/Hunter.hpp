@@ -1,6 +1,6 @@
 /**
  * @file Hunter.hpp
- * @author Mathieu Arquilliere (mathieu.arquilliere@etu.uca.fr)
+ * @author Mathieu Arquilliere (mathieu.arquilliere@etu.uca.fr), Jeremy Zangla (jeremy.zangla@etu.uca.fr)
  * @brief Fichier de déclaration de la classe Hunter
  * @version 0.1
  * @date 2019-12-26
@@ -20,14 +20,16 @@
 #include "../../Observer/Observable.hpp"
 
 /**
- * @brief Classe de l'agent mangeur (Héritant de la classe Entity)
- * L'agent cherche à manger les agents "Harvester". Pour cela il se déplace aléatoirement
- * dans un voisinage de Moore d'ordre 2 et lorsqu'il trouve un Harvester dans ce voisinage
- * il se déplace sur sa case et le mange. Il peut également repérer les Harvesters qui sont
- * dans un voisinage de Moore d'ordre 3.
- * Cet agent possède une vie qui baisse à chaque étape du système. Lorsqu'il mange un Harvester,
- * celle-ci remonte. Si il mange un Harvester avec plus de 80% de sa vie, il donne naissance à
- * un autre Hunter.
+ * @brief Classe de l'agent mangeur (Héritant de la classe Agent)
+ * Comportement :
+ *      L'agent cherche à manger les agents "Harvester". Pour cela il se déplace aléatoirement
+ *      dans un voisinage de Moore d'ordre 2 et lorsqu'il trouve un Harvester dans ce voisinage
+ *      il se déplace sur sa case et le mange. Il peut également repérer les Harvesters qui sont
+ *      dans un voisinage de Moore d'ordre 3.
+ *      Cet agent possède une vie (soit ROUGE, soit ORANGE, soit VERT). Lorsqu'il mange un Harvester,
+ *      celle-ci monte. Si il mange un Harvester dans l'état VERT, il donne naissance à
+ *      un autre Hunter. Si il ne mange pas pendant un certain temps, sa vie descend et si il est il
+ *      ne mange pas alors qu'il est en ROUGE, il meurt.
  */
 class Hunter : public Agent
 {
@@ -47,17 +49,23 @@ public:
 
     /**
      * @brief Méthode définissant le comportement de l'agent
-     * 
-     * @param[in] harvesters Tableau des Harvesters du système
-     * @param[in] map Map représentant l'environnement (sert pour les méthodes de distances)
      */
     void update() override;
 
+
     std::string getColor() const override;
 
+    /**
+     * @brief Getter de Type 
+     * 
+     * @return ENTITY_TYPE type de l'entité
+     */
     ENTITY_TYPE getType() const override { return ENTITY_TYPE::HUNTER; }
 
 private:
+    /**
+     * @brief enum définissant les différents états de vie du Hunter
+     */
     enum LIFE_STATE
     {
         RED,

@@ -1,6 +1,6 @@
 /**
  * @file Hunter.cpp
- * @author Mathieu Arquilliere (mathieu.arquilliere@etu.uca.fr)
+ * @author Mathieu Arquilliere (mathieu.arquilliere@etu.uca.fr), Jeremy Zangla (jeremy.zangla@etu.uca.fr)
  * @brief Fichier d'implémentation de la classe Hunter
  * @version 0.1
  * @date 2019-12-26

@@ -40,10 +40,10 @@ int main(int argc, char ** argv)
     s.addAgent(hunter);
     for (int i = 0; i < 15; i++)    
         s.addAgent(new Harvester(Point(dis_x(World::gen), dis_y(World::gen)), base));
+    for (int i = 0; i < 15; i++)    
+        w.add(new Resource(Point(dis_x(World::gen), dis_y(World::gen))));
 
-    w.add(new Resource(Point(5, 13)));
-
-    for (int i = 0; i < 20; i++)
+    for (int i = 0; /*i < 1000*/; i++)
     {
         s.update();
         std::cout << "UPDATE " << i << std::endl;
@@ -65,12 +65,13 @@ void draw(World const & w)
     {
     case MODE_DRAW:
         #if defined(_WIN32)
+        execl
         system("CLS");
         #else
         system("clear");
         #endif 
         std::cout << w;
-        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
         break;
     case MODE_LOG:
         std::cout << w;
@@ -86,7 +87,7 @@ void draw(World const & w)
         system("clear");
         #endif
         std::cout << w;
-        std::this_thread::sleep_for(std::chrono::milliseconds(500));
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
         break;
     }
 }

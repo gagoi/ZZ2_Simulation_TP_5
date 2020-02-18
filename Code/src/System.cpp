@@ -1,6 +1,6 @@
 /**
  * @file System.cpp
- * @author Mathieu Arquilliere (mathieu.arquilliere@etu.uca.fr)
+ * @author Mathieu Arquilliere (mathieu.arquilliere@etu.uca.fr), Jeremy Zangla (jeremy.zangla@etu.uca.fr)
  * @brief Fichier d'implémentation de la classe System
  * @version 0.1
  * @date 2019-12-21
@@ -42,7 +42,7 @@ void System::update()
 {
     std::vector<std::vector<Agent*>::iterator> toSuppr;
     // Updates
-    //std::shuffle(_agents.begin(), _agents.end(), World::gen);
+    std::shuffle(_agents.begin(), _agents.end(), World::gen);
     for (auto it = _agents.begin(); it != _agents.end(); it++)
     {
         auto ptr = *it;
