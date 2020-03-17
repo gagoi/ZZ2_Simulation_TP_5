@@ -35,15 +35,17 @@ int main(int argc, char ** argv)
 
     Base* base = new Base(Point(5, 5), 0);
     Hunter* hunter = new Hunter(Point(0, 0));
+    Hunter* hunter2 = new Hunter(Point(39, 39));
 
     w.add(base);
     s.addAgent(hunter);
+    s.addAgent(hunter2);
     for (int i = 0; i < 15; i++)    
         s.addAgent(new Harvester(Point(dis_x(World::gen), dis_y(World::gen)), base));
     for (int i = 0; i < 15; i++)    
         w.add(new Resource(Point(dis_x(World::gen), dis_y(World::gen))));
 
-    for (int i = 0; /*i < 1000*/; i++)
+    for (int i = 0; i < 100; i++)
     {
         s.update();
         std::cout << "UPDATE " << i << std::endl;
