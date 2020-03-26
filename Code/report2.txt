@@ -1,0 +1,2420 @@
+# To display the perf.data header info, please use --header/--header-only options.
+#
+#
+# Total Lost Samples: 0
+#
+# Samples: 46  of event 'cycles'
+# Event count (approx.): 11695100
+#
+# Children      Self  Command  Shared Object        Symbol                                                                   
+# ........  ........  .......  ...................  .........................................................................
+#
+  [31m  62.90%[m     0.00%  sma      sma                  [.] _start
+            |
+            ---_start
+               __libc_start_main
+               |          
+               |--[31m58.53%[m--main
+               |          |          
+               |          |--[31m44.84%[m--draw
+               |          |          operator<<
+               |          |          |          
+               |          |          |--[31m24.76%[m--std::ostream::operator<< (inlined)
+               |          |          |          std::endl<char, std::char_traits<char> > (inlined)
+               |          |          |          |          
+               |          |          |          |--[31m20.88%[m--std::ostream::put
+               |          |          |          |          _IO_file_overflow
+               |          |          |          |          _IO_do_write
+               |          |          |          |          _IO_file_write
+               |          |          |          |          __write (inlined)
+               |          |          |          |          entry_SYSCALL_64_after_hwframe
+               |          |          |          |          do_syscall_64
+               |          |          |          |          __x64_sys_write
+               |          |          |          |          ksys_write
+               |          |          |          |          |          
+               |          |          |          |           --[31m16.52%[m--vfs_write
+               |          |          |          |                     __vfs_write
+               |          |          |          |                     tty_write
+               |          |          |          |                     |          
+               |          |          |          |                     |--[31m9.78%[m--n_tty_write
+               |          |          |          |                     |          |          
+               |          |          |          |                     |           --[31m5.52%[m--pty_write
+               |          |          |          |                     |                     tty_flip_buffer_push
+               |          |          |          |                     |                     queue_work_on
+               |          |          |          |                     |                     __queue_work
+               |          |          |          |                     |                     insert_work
+               |          |          |          |                     |                     wake_up_process
+               |          |          |          |                     |                     try_to_wake_up
+               |          |          |          |                     |                     ttwu_do_activate
+               |          |          |          |                     |                     activate_task
+               |          |          |          |                     |                     |          
+               |          |          |          |                     |                     |--[32m3.36%[m--enqueue_task_fair
+               |          |          |          |                     |                     |          
+               |          |          |          |                     |                      --[32m2.16%[m--psi_task_change
+               |          |          |          |                     |                                record_times
+               |          |          |          |                     |                                sched_clock_cpu
+               |          |          |          |                     |          
+               |          |          |          |                      --[32m3.91%[m--tty_write_unlock
+               |          |          |          |                                __wake_up
+               |          |          |          |                                __wake_up_common_lock
+               |          |          |          |                                _raw_spin_lock_irqsave
+               |          |          |          |          
+               |          |          |           --[32m3.88%[m--std::basic_ios<char, std::char_traits<char> >::widen (inlined)
+               |          |          |          
+               |          |          |--[31m11.76%[m--std::operator<< <std::char_traits<char> > (inlined)
+               |          |          |          std::__ostream_insert<char, std::char_traits<char> >
+               |          |          |          |          
+               |          |          |          |--[31m7.82%[m--fwrite (inlined)
+               |          |          |          |          
+               |          |          |           --[32m3.94%[m--_IO_file_overflow
+               |          |          |          
+               |          |           --[32m5.00%[m--operator<<
+               |          |                     |          
+               |          |                     |--[32m3.86%[m--std::operator<< <std::char_traits<char> > (inlined)
+               |          |                     |          0x55a5984073d4
+               |          |                     |          
+               |          |                      --[32m1.14%[m--std::operator<< <char, std::char_traits<char>, std::allocator<char> > (inlined)
+               |          |                                std::__ostream_insert<char, std::char_traits<char> >
+               |          |                                0x7f4818a1ec54
+               |          |          
+               |          |--[31m11.05%[m--System::update
+               |          |          |          
+               |          |          |--[31m7.72%[m--Harvester::update
+               |          |          |          |          
+               |          |          |          |--[32m4.36%[m--Harvester::moveHarvester
+               |          |          |          |          World::getEnvironment
+               |          |          |          |          World::operator[] (inlined)
+               |          |          |          |          
+               |          |          |           --[32m3.36%[m--World::getEnvironment
+               |          |          |                     World::operator[] (inlined)
+               |          |          |                     std::vector<Entity*, std::allocator<Entity*> >::operator[] (inlined)
+               |          |          |          
+               |          |           --[32m3.33%[m--Hunter::update
+               |          |                     World::getEnvironment
+               |          |                     World::operator[] (inlined)
+               |          |          
+               |           --[32m2.63%[m--std::ostream::operator<< (inlined)
+               |                     std::endl<char, std::char_traits<char> > (inlined)
+               |                     std::ostream::put
+               |                     _IO_file_overflow
+               |                     _IO_do_write
+               |                     _IO_file_write
+               |                     __write (inlined)
+               |                     entry_SYSCALL_64_after_hwframe
+               |                     do_syscall_64
+               |                     __x64_sys_write
+               |                     ksys_write
+               |                     vfs_write
+               |                     __vfs_write
+               |                     tty_write
+               |                     n_tty_write
+               |                     pty_write
+               |                     tty_flip_buffer_push
+               |                     queue_work_on
+               |                     __queue_work
+               |                     insert_work
+               |                     wake_up_process
+               |                     try_to_wake_up
+               |                     ttwu_do_activate
+               |                     ttwu_do_wakeup
+               |                     check_preempt_curr
+               |                     resched_curr
+               |          
+                --[32m4.36%[m--__libc_csu_init
+                          _GLOBAL__sub_I__ZN8ResourceC2ERK5Pointc
+                          __static_initialization_and_destruction_0 (inlined)
+                          std::ios_base::Init::Init
+                          std::basic_ios<char, std::char_traits<char> >::init
+                          std::basic_ios<char, std::char_traits<char> >::_M_cache_locale
+                          0x7f4818ba8963
+
+  [31m  62.90%[m     0.00%  sma      libc-2.30.so         [.] __libc_start_main
+            |
+            ---__libc_start_main
+               |          
+               |--[31m58.53%[m--main
+               |          |          
+               |          |--[31m44.84%[m--draw
+               |          |          operator<<
+               |          |          |          
+               |          |          |--[31m24.76%[m--std::ostream::operator<< (inlined)
+               |          |          |          std::endl<char, std::char_traits<char> > (inlined)
+               |          |          |          |          
+               |          |          |          |--[31m20.88%[m--std::ostream::put
+               |          |          |          |          _IO_file_overflow
+               |          |          |          |          _IO_do_write
+               |          |          |          |          _IO_file_write
+               |          |          |          |          __write (inlined)
+               |          |          |          |          entry_SYSCALL_64_after_hwframe
+               |          |          |          |          do_syscall_64
+               |          |          |          |          __x64_sys_write
+               |          |          |          |          ksys_write
+               |          |          |          |          |          
+               |          |          |          |           --[31m16.52%[m--vfs_write
+               |          |          |          |                     __vfs_write
+               |          |          |          |                     tty_write
+               |          |          |          |                     |          
+               |          |          |          |                     |--[31m9.78%[m--n_tty_write
+               |          |          |          |                     |          |          
+               |          |          |          |                     |           --[31m5.52%[m--pty_write
+               |          |          |          |                     |                     tty_flip_buffer_push
+               |          |          |          |                     |                     queue_work_on
+               |          |          |          |                     |                     __queue_work
+               |          |          |          |                     |                     insert_work
+               |          |          |          |                     |                     wake_up_process
+               |          |          |          |                     |                     try_to_wake_up
+               |          |          |          |                     |                     ttwu_do_activate
+               |          |          |          |                     |                     activate_task
+               |          |          |          |                     |                     |          
+               |          |          |          |                     |                     |--[32m3.36%[m--enqueue_task_fair
+               |          |          |          |                     |                     |          
+               |          |          |          |                     |                      --[32m2.16%[m--psi_task_change
+               |          |          |          |                     |                                record_times
+               |          |          |          |                     |                                sched_clock_cpu
+               |          |          |          |                     |          
+               |          |          |          |                      --[32m3.91%[m--tty_write_unlock
+               |          |          |          |                                __wake_up
+               |          |          |          |                                __wake_up_common_lock
+               |          |          |          |                                _raw_spin_lock_irqsave
+               |          |          |          |          
+               |          |          |           --[32m3.88%[m--std::basic_ios<char, std::char_traits<char> >::widen (inlined)
+               |          |          |          
+               |          |          |--[31m11.76%[m--std::operator<< <std::char_traits<char> > (inlined)
+               |          |          |          std::__ostream_insert<char, std::char_traits<char> >
+               |          |          |          |          
+               |          |          |          |--[31m7.82%[m--fwrite (inlined)
+               |          |          |          |          
+               |          |          |           --[32m3.94%[m--_IO_file_overflow
+               |          |          |          
+               |          |           --[32m5.00%[m--operator<<
+               |          |                     |          
+               |          |                     |--[32m3.86%[m--std::operator<< <std::char_traits<char> > (inlined)
+               |          |                     |          0x55a5984073d4
+               |          |                     |          
+               |          |                      --[32m1.14%[m--std::operator<< <char, std::char_traits<char>, std::allocator<char> > (inlined)
+               |          |                                std::__ostream_insert<char, std::char_traits<char> >
+               |          |                                0x7f4818a1ec54
+               |          |          
+               |          |--[31m11.05%[m--System::update
+               |          |          |          
+               |          |          |--[31m7.72%[m--Harvester::update
+               |          |          |          |          
+               |          |          |          |--[32m4.36%[m--Harvester::moveHarvester
+               |          |          |          |          World::getEnvironment
+               |          |          |          |          World::operator[] (inlined)
+               |          |          |          |          
+               |          |          |           --[32m3.36%[m--World::getEnvironment
+               |          |          |                     World::operator[] (inlined)
+               |          |          |                     std::vector<Entity*, std::allocator<Entity*> >::operator[] (inlined)
+               |          |          |          
+               |          |           --[32m3.33%[m--Hunter::update
+               |          |                     World::getEnvironment
+               |          |                     World::operator[] (inlined)
+               |          |          
+               |           --[32m2.63%[m--std::ostream::operator<< (inlined)
+               |                     std::endl<char, std::char_traits<char> > (inlined)
+               |                     std::ostream::put
+               |                     _IO_file_overflow
+               |                     _IO_do_write
+               |                     _IO_file_write
+               |                     __write (inlined)
+               |                     entry_SYSCALL_64_after_hwframe
+               |                     do_syscall_64
+               |                     __x64_sys_write
+               |                     ksys_write
+               |                     vfs_write
+               |                     __vfs_write
+               |                     tty_write
+               |                     n_tty_write
+               |                     pty_write
+               |                     tty_flip_buffer_push
+               |                     queue_work_on
+               |                     __queue_work
+               |                     insert_work
+               |                     wake_up_process
+               |                     try_to_wake_up
+               |                     ttwu_do_activate
+               |                     ttwu_do_wakeup
+               |                     check_preempt_curr
+               |                     resched_curr
+               |          
+                --[32m4.36%[m--__libc_csu_init
+                          _GLOBAL__sub_I__ZN8ResourceC2ERK5Pointc
+                          __static_initialization_and_destruction_0 (inlined)
+                          std::ios_base::Init::Init
+                          std::basic_ios<char, std::char_traits<char> >::init
+                          std::basic_ios<char, std::char_traits<char> >::_M_cache_locale
+                          0x7f4818ba8963
+
+  [31m  58.53%[m     0.00%  sma      sma                  [.] main
+            |
+            ---main
+               |          
+               |--[31m44.84%[m--draw
+               |          operator<<
+               |          |          
+               |          |--[31m24.76%[m--std::ostream::operator<< (inlined)
+               |          |          std::endl<char, std::char_traits<char> > (inlined)
+               |          |          |          
+               |          |          |--[31m20.88%[m--std::ostream::put
+               |          |          |          _IO_file_overflow
+               |          |          |          _IO_do_write
+               |          |          |          _IO_file_write
+               |          |          |          __write (inlined)
+               |          |          |          entry_SYSCALL_64_after_hwframe
+               |          |          |          do_syscall_64
+               |          |          |          __x64_sys_write
+               |          |          |          ksys_write
+               |          |          |          |          
+               |          |          |           --[31m16.52%[m--vfs_write
+               |          |          |                     __vfs_write
+               |          |          |                     tty_write
+               |          |          |                     |          
+               |          |          |                     |--[31m9.78%[m--n_tty_write
+               |          |          |                     |          |          
+               |          |          |                     |           --[31m5.52%[m--pty_write
+               |          |          |                     |                     tty_flip_buffer_push
+               |          |          |                     |                     queue_work_on
+               |          |          |                     |                     __queue_work
+               |          |          |                     |                     insert_work
+               |          |          |                     |                     wake_up_process
+               |          |          |                     |                     try_to_wake_up
+               |          |          |                     |                     ttwu_do_activate
+               |          |          |                     |                     activate_task
+               |          |          |                     |                     |          
+               |          |          |                     |                     |--[32m3.36%[m--enqueue_task_fair
+               |          |          |                     |                     |          
+               |          |          |                     |                      --[32m2.16%[m--psi_task_change
+               |          |          |                     |                                record_times
+               |          |          |                     |                                sched_clock_cpu
+               |          |          |                     |          
+               |          |          |                      --[32m3.91%[m--tty_write_unlock
+               |          |          |                                __wake_up
+               |          |          |                                __wake_up_common_lock
+               |          |          |                                _raw_spin_lock_irqsave
+               |          |          |          
+               |          |           --[32m3.88%[m--std::basic_ios<char, std::char_traits<char> >::widen (inlined)
+               |          |          
+               |          |--[31m11.76%[m--std::operator<< <std::char_traits<char> > (inlined)
+               |          |          std::__ostream_insert<char, std::char_traits<char> >
+               |          |          |          
+               |          |          |--[31m7.82%[m--fwrite (inlined)
+               |          |          |          
+               |          |           --[32m3.94%[m--_IO_file_overflow
+               |          |          
+               |           --[32m5.00%[m--operator<<
+               |                     |          
+               |                     |--[32m3.86%[m--std::operator<< <std::char_traits<char> > (inlined)
+               |                     |          0x55a5984073d4
+               |                     |          
+               |                      --[32m1.14%[m--std::operator<< <char, std::char_traits<char>, std::allocator<char> > (inlined)
+               |                                std::__ostream_insert<char, std::char_traits<char> >
+               |                                0x7f4818a1ec54
+               |          
+               |--[31m11.05%[m--System::update
+               |          |          
+               |          |--[31m7.72%[m--Harvester::update
+               |          |          |          
+               |          |          |--[32m4.36%[m--Harvester::moveHarvester
+               |          |          |          World::getEnvironment
+               |          |          |          World::operator[] (inlined)
+               |          |          |          
+               |          |           --[32m3.36%[m--World::getEnvironment
+               |          |                     World::operator[] (inlined)
+               |          |                     std::vector<Entity*, std::allocator<Entity*> >::operator[] (inlined)
+               |          |          
+               |           --[32m3.33%[m--Hunter::update
+               |                     World::getEnvironment
+               |                     World::operator[] (inlined)
+               |          
+                --[32m2.63%[m--std::ostream::operator<< (inlined)
+                          std::endl<char, std::char_traits<char> > (inlined)
+                          std::ostream::put
+                          _IO_file_overflow
+                          _IO_do_write
+                          _IO_file_write
+                          __write (inlined)
+                          entry_SYSCALL_64_after_hwframe
+                          do_syscall_64
+                          __x64_sys_write
+                          ksys_write
+                          vfs_write
+                          __vfs_write
+                          tty_write
+                          n_tty_write
+                          pty_write
+                          tty_flip_buffer_push
+                          queue_work_on
+                          __queue_work
+                          insert_work
+                          wake_up_process
+                          try_to_wake_up
+                          ttwu_do_activate
+                          ttwu_do_wakeup
+                          check_preempt_curr
+                          resched_curr
+
+  [31m  44.84%[m     0.00%  sma      sma                  [.] draw
+            |
+            ---draw
+               operator<<
+               |          
+               |--[31m24.76%[m--std::ostream::operator<< (inlined)
+               |          std::endl<char, std::char_traits<char> > (inlined)
+               |          |          
+               |          |--[31m20.88%[m--std::ostream::put
+               |          |          _IO_file_overflow
+               |          |          _IO_do_write
+               |          |          _IO_file_write
+               |          |          __write (inlined)
+               |          |          entry_SYSCALL_64_after_hwframe
+               |          |          do_syscall_64
+               |          |          __x64_sys_write
+               |          |          ksys_write
+               |          |          |          
+               |          |           --[31m16.52%[m--vfs_write
+               |          |                     __vfs_write
+               |          |                     tty_write
+               |          |                     |          
+               |          |                     |--[31m9.78%[m--n_tty_write
+               |          |                     |          |          
+               |          |                     |           --[31m5.52%[m--pty_write
+               |          |                     |                     tty_flip_buffer_push
+               |          |                     |                     queue_work_on
+               |          |                     |                     __queue_work
+               |          |                     |                     insert_work
+               |          |                     |                     wake_up_process
+               |          |                     |                     try_to_wake_up
+               |          |                     |                     ttwu_do_activate
+               |          |                     |                     activate_task
+               |          |                     |                     |          
+               |          |                     |                     |--[32m3.36%[m--enqueue_task_fair
+               |          |                     |                     |          
+               |          |                     |                      --[32m2.16%[m--psi_task_change
+               |          |                     |                                record_times
+               |          |                     |                                sched_clock_cpu
+               |          |                     |          
+               |          |                      --[32m3.91%[m--tty_write_unlock
+               |          |                                __wake_up
+               |          |                                __wake_up_common_lock
+               |          |                                _raw_spin_lock_irqsave
+               |          |          
+               |           --[32m3.88%[m--std::basic_ios<char, std::char_traits<char> >::widen (inlined)
+               |          
+               |--[31m11.76%[m--std::operator<< <std::char_traits<char> > (inlined)
+               |          std::__ostream_insert<char, std::char_traits<char> >
+               |          |          
+               |          |--[31m7.82%[m--fwrite (inlined)
+               |          |          
+               |           --[32m3.94%[m--_IO_file_overflow
+               |          
+                --[32m5.00%[m--operator<<
+                          |          
+                          |--[32m3.86%[m--std::operator<< <std::char_traits<char> > (inlined)
+                          |          0x55a5984073d4
+                          |          
+                           --[32m1.14%[m--std::operator<< <char, std::char_traits<char>, std::allocator<char> > (inlined)
+                                     std::__ostream_insert<char, std::char_traits<char> >
+                                     0x7f4818a1ec54
+
+  [31m  44.84%[m  [31m   7.20%[m  sma      sma                  [.] operator<<
+            |          
+            |--[31m37.64%[m--operator<<
+            |          |          
+            |          |--[31m20.88%[m--std::ostream::operator<< (inlined)
+            |          |          std::endl<char, std::char_traits<char> > (inlined)
+            |          |          std::ostream::put
+            |          |          _IO_file_overflow
+            |          |          _IO_do_write
+            |          |          _IO_file_write
+            |          |          __write (inlined)
+            |          |          entry_SYSCALL_64_after_hwframe
+            |          |          do_syscall_64
+            |          |          __x64_sys_write
+            |          |          ksys_write
+            |          |          |          
+            |          |           --[31m16.52%[m--vfs_write
+            |          |                     __vfs_write
+            |          |                     tty_write
+            |          |                     |          
+            |          |                     |--[31m9.78%[m--n_tty_write
+            |          |                     |          |          
+            |          |                     |           --[31m5.52%[m--pty_write
+            |          |                     |                     tty_flip_buffer_push
+            |          |                     |                     queue_work_on
+            |          |                     |                     __queue_work
+            |          |                     |                     insert_work
+            |          |                     |                     wake_up_process
+            |          |                     |                     try_to_wake_up
+            |          |                     |                     ttwu_do_activate
+            |          |                     |                     activate_task
+            |          |                     |                     |          
+            |          |                     |                     |--[32m3.36%[m--enqueue_task_fair
+            |          |                     |                     |          
+            |          |                     |                      --[32m2.16%[m--psi_task_change
+            |          |                     |                                record_times
+            |          |                     |                                sched_clock_cpu
+            |          |                     |          
+            |          |                      --[32m3.91%[m--tty_write_unlock
+            |          |                                __wake_up
+            |          |                                __wake_up_common_lock
+            |          |                                _raw_spin_lock_irqsave
+            |          |          
+            |          |--[31m11.76%[m--std::operator<< <std::char_traits<char> > (inlined)
+            |          |          std::__ostream_insert<char, std::char_traits<char> >
+            |          |          |          
+            |          |          |--[31m7.82%[m--fwrite (inlined)
+            |          |          |          
+            |          |           --[32m3.94%[m--_IO_file_overflow
+            |          |          
+            |           --[32m5.00%[m--operator<<
+            |                     |          
+            |                     |--[32m3.86%[m--std::operator<< <std::char_traits<char> > (inlined)
+            |                     |          0x55a5984073d4
+            |                     |          
+            |                      --[32m1.14%[m--std::operator<< <char, std::char_traits<char>, std::allocator<char> > (inlined)
+            |                                std::__ostream_insert<char, std::char_traits<char> >
+            |                                0x7f4818a1ec54
+            |          
+             --[31m7.20%[m--_start
+                       __libc_start_main
+                       main
+                       draw
+                       operator<<
+                       |          
+                        --[32m3.88%[m--std::ostream::operator<< (inlined)
+                                  std::endl<char, std::char_traits<char> > (inlined)
+                                  std::basic_ios<char, std::char_traits<char> >::widen (inlined)
+
+  [31m  39.18%[m     0.00%  sma      [kernel.kallsyms]    [k] entry_SYSCALL_64_after_hwframe
+            |
+            ---entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               |          
+               |--[31m23.52%[m--__x64_sys_write
+               |          ksys_write
+               |          |          
+               |           --[31m19.15%[m--vfs_write
+               |                     __vfs_write
+               |                     tty_write
+               |                     |          
+               |                     |--[31m12.42%[m--n_tty_write
+               |                     |          |          
+               |                     |           --[31m8.16%[m--pty_write
+               |                     |                     tty_flip_buffer_push
+               |                     |                     queue_work_on
+               |                     |                     __queue_work
+               |                     |                     insert_work
+               |                     |                     wake_up_process
+               |                     |                     try_to_wake_up
+               |                     |                     ttwu_do_activate
+               |                     |                     |          
+               |                     |                     |--[31m5.52%[m--activate_task
+               |                     |                     |          |          
+               |                     |                     |          |--[32m3.36%[m--enqueue_task_fair
+               |                     |                     |          |          
+               |                     |                     |           --[32m2.16%[m--psi_task_change
+               |                     |                     |                     record_times
+               |                     |                     |                     sched_clock_cpu
+               |                     |                     |          
+               |                     |                      --[32m2.63%[m--ttwu_do_wakeup
+               |                     |                                check_preempt_curr
+               |                     |                                resched_curr
+               |                     |          
+               |                      --[32m3.91%[m--tty_write_unlock
+               |                                __wake_up
+               |                                __wake_up_common_lock
+               |                                _raw_spin_lock_irqsave
+               |          
+               |--[32m4.32%[m--__x64_sys_mprotect
+               |          do_mprotect_pkey
+               |          
+               |--[32m4.13%[m--__x64_sys_openat
+               |          do_sys_open
+               |          get_unused_fd_flags
+               |          __alloc_fd
+               |          
+               |--[32m3.13%[m--exit_to_usermode_loop
+               |          task_work_run
+               |          ____fput
+               |          __fput
+               |          security_file_free
+               |          kmem_cache_free
+               |          
+               |--[32m2.93%[m--__x64_sys_exit_group
+               |          do_group_exit
+               |          do_exit
+               |          mmput
+               |          exit_mmap
+               |          unmap_vmas
+               |          unmap_single_vma
+               |          
+                --[32m1.15%[m--__x64_sys_execve
+                          __do_execve_file.isra.0
+                          search_binary_handler
+                          load_elf_binary
+                          setup_arg_pages
+                          shift_arg_pages
+                          tlb_finish_mmu
+                          tlb_flush_mmu
+                          free_pages_and_swap_cache
+                          release_pages
+                          mem_cgroup_uncharge_list
+                          uncharge_page
+
+  [31m  39.18%[m     0.00%  sma      [kernel.kallsyms]    [k] do_syscall_64
+            |
+            ---do_syscall_64
+               |          
+               |--[31m23.52%[m--__x64_sys_write
+               |          ksys_write
+               |          |          
+               |           --[31m19.15%[m--vfs_write
+               |                     __vfs_write
+               |                     tty_write
+               |                     |          
+               |                     |--[31m12.42%[m--n_tty_write
+               |                     |          |          
+               |                     |           --[31m8.16%[m--pty_write
+               |                     |                     tty_flip_buffer_push
+               |                     |                     queue_work_on
+               |                     |                     __queue_work
+               |                     |                     insert_work
+               |                     |                     wake_up_process
+               |                     |                     try_to_wake_up
+               |                     |                     ttwu_do_activate
+               |                     |                     |          
+               |                     |                     |--[31m5.52%[m--activate_task
+               |                     |                     |          |          
+               |                     |                     |          |--[32m3.36%[m--enqueue_task_fair
+               |                     |                     |          |          
+               |                     |                     |           --[32m2.16%[m--psi_task_change
+               |                     |                     |                     record_times
+               |                     |                     |                     sched_clock_cpu
+               |                     |                     |          
+               |                     |                      --[32m2.63%[m--ttwu_do_wakeup
+               |                     |                                check_preempt_curr
+               |                     |                                resched_curr
+               |                     |          
+               |                      --[32m3.91%[m--tty_write_unlock
+               |                                __wake_up
+               |                                __wake_up_common_lock
+               |                                _raw_spin_lock_irqsave
+               |          
+               |--[32m4.32%[m--__x64_sys_mprotect
+               |          do_mprotect_pkey
+               |          
+               |--[32m4.13%[m--__x64_sys_openat
+               |          do_sys_open
+               |          get_unused_fd_flags
+               |          __alloc_fd
+               |          
+               |--[32m3.13%[m--exit_to_usermode_loop
+               |          task_work_run
+               |          ____fput
+               |          __fput
+               |          security_file_free
+               |          kmem_cache_free
+               |          
+               |--[32m2.93%[m--__x64_sys_exit_group
+               |          do_group_exit
+               |          do_exit
+               |          mmput
+               |          exit_mmap
+               |          unmap_vmas
+               |          unmap_single_vma
+               |          
+                --[32m1.15%[m--__x64_sys_execve
+                          __do_execve_file.isra.0
+                          search_binary_handler
+                          load_elf_binary
+                          setup_arg_pages
+                          shift_arg_pages
+                          tlb_finish_mmu
+                          tlb_flush_mmu
+                          free_pages_and_swap_cache
+                          release_pages
+                          mem_cgroup_uncharge_list
+                          uncharge_page
+
+  [31m  27.46%[m  [32m   3.94%[m  sma      libc-2.30.so         [.] _IO_file_overflow
+            |          
+            |--[31m23.52%[m--_IO_file_overflow
+            |          _IO_do_write
+            |          _IO_file_write
+            |          __write (inlined)
+            |          entry_SYSCALL_64_after_hwframe
+            |          do_syscall_64
+            |          __x64_sys_write
+            |          ksys_write
+            |          |          
+            |           --[31m19.15%[m--vfs_write
+            |                     __vfs_write
+            |                     tty_write
+            |                     |          
+            |                     |--[31m12.42%[m--n_tty_write
+            |                     |          |          
+            |                     |           --[31m8.16%[m--pty_write
+            |                     |                     tty_flip_buffer_push
+            |                     |                     queue_work_on
+            |                     |                     __queue_work
+            |                     |                     insert_work
+            |                     |                     wake_up_process
+            |                     |                     try_to_wake_up
+            |                     |                     ttwu_do_activate
+            |                     |                     |          
+            |                     |                     |--[31m5.52%[m--activate_task
+            |                     |                     |          |          
+            |                     |                     |          |--[32m3.36%[m--enqueue_task_fair
+            |                     |                     |          |          
+            |                     |                     |           --[32m2.16%[m--psi_task_change
+            |                     |                     |                     record_times
+            |                     |                     |                     sched_clock_cpu
+            |                     |                     |          
+            |                     |                      --[32m2.63%[m--ttwu_do_wakeup
+            |                     |                                check_preempt_curr
+            |                     |                                resched_curr
+            |                     |          
+            |                      --[32m3.91%[m--tty_write_unlock
+            |                                __wake_up
+            |                                __wake_up_common_lock
+            |                                _raw_spin_lock_irqsave
+            |          
+             --[32m3.94%[m--_start
+                       __libc_start_main
+                       main
+                       draw
+                       operator<<
+                       std::operator<< <std::char_traits<char> > (inlined)
+                       std::__ostream_insert<char, std::char_traits<char> >
+                       _IO_file_overflow
+
+  [31m  24.76%[m     0.00%  sma      sma                  [.] std::ostream::operator<< (inlined)
+            |
+            ---std::ostream::operator<< (inlined)
+               std::endl<char, std::char_traits<char> > (inlined)
+               |          
+               |--[31m20.88%[m--std::ostream::put
+               |          _IO_file_overflow
+               |          _IO_do_write
+               |          _IO_file_write
+               |          __write (inlined)
+               |          entry_SYSCALL_64_after_hwframe
+               |          do_syscall_64
+               |          __x64_sys_write
+               |          ksys_write
+               |          |          
+               |           --[31m16.52%[m--vfs_write
+               |                     __vfs_write
+               |                     tty_write
+               |                     |          
+               |                     |--[31m9.78%[m--n_tty_write
+               |                     |          |          
+               |                     |           --[31m5.52%[m--pty_write
+               |                     |                     tty_flip_buffer_push
+               |                     |                     queue_work_on
+               |                     |                     __queue_work
+               |                     |                     insert_work
+               |                     |                     wake_up_process
+               |                     |                     try_to_wake_up
+               |                     |                     ttwu_do_activate
+               |                     |                     activate_task
+               |                     |                     |          
+               |                     |                     |--[32m3.36%[m--enqueue_task_fair
+               |                     |                     |          
+               |                     |                      --[32m2.16%[m--psi_task_change
+               |                     |                                record_times
+               |                     |                                sched_clock_cpu
+               |                     |          
+               |                      --[32m3.91%[m--tty_write_unlock
+               |                                __wake_up
+               |                                __wake_up_common_lock
+               |                                _raw_spin_lock_irqsave
+               |          
+                --[32m3.88%[m--std::basic_ios<char, std::char_traits<char> >::widen (inlined)
+
+  [31m  24.76%[m     0.00%  sma      sma                  [.] std::endl<char, std::char_traits<char> > (inlined)
+            |
+            ---std::endl<char, std::char_traits<char> > (inlined)
+               |          
+               |--[31m20.88%[m--std::ostream::put
+               |          _IO_file_overflow
+               |          _IO_do_write
+               |          _IO_file_write
+               |          __write (inlined)
+               |          entry_SYSCALL_64_after_hwframe
+               |          do_syscall_64
+               |          __x64_sys_write
+               |          ksys_write
+               |          |          
+               |           --[31m16.52%[m--vfs_write
+               |                     __vfs_write
+               |                     tty_write
+               |                     |          
+               |                     |--[31m9.78%[m--n_tty_write
+               |                     |          |          
+               |                     |           --[31m5.52%[m--pty_write
+               |                     |                     tty_flip_buffer_push
+               |                     |                     queue_work_on
+               |                     |                     __queue_work
+               |                     |                     insert_work
+               |                     |                     wake_up_process
+               |                     |                     try_to_wake_up
+               |                     |                     ttwu_do_activate
+               |                     |                     activate_task
+               |                     |                     |          
+               |                     |                     |--[32m3.36%[m--enqueue_task_fair
+               |                     |                     |          
+               |                     |                      --[32m2.16%[m--psi_task_change
+               |                     |                                record_times
+               |                     |                                sched_clock_cpu
+               |                     |          
+               |                      --[32m3.91%[m--tty_write_unlock
+               |                                __wake_up
+               |                                __wake_up_common_lock
+               |                                _raw_spin_lock_irqsave
+               |          
+                --[32m3.88%[m--std::basic_ios<char, std::char_traits<char> >::widen (inlined)
+
+  [31m  23.52%[m     0.00%  sma      libstdc++.so.6.0.28  [.] std::ostream::put
+            |
+            ---std::ostream::put
+               _IO_file_overflow
+               _IO_do_write
+               _IO_file_write
+               __write (inlined)
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               __x64_sys_write
+               ksys_write
+               |          
+                --[31m19.15%[m--vfs_write
+                          __vfs_write
+                          tty_write
+                          |          
+                          |--[31m12.42%[m--n_tty_write
+                          |          |          
+                          |           --[31m8.16%[m--pty_write
+                          |                     tty_flip_buffer_push
+                          |                     queue_work_on
+                          |                     __queue_work
+                          |                     insert_work
+                          |                     wake_up_process
+                          |                     try_to_wake_up
+                          |                     ttwu_do_activate
+                          |                     |          
+                          |                     |--[31m5.52%[m--activate_task
+                          |                     |          |          
+                          |                     |          |--[32m3.36%[m--enqueue_task_fair
+                          |                     |          |          
+                          |                     |           --[32m2.16%[m--psi_task_change
+                          |                     |                     record_times
+                          |                     |                     sched_clock_cpu
+                          |                     |          
+                          |                      --[32m2.63%[m--ttwu_do_wakeup
+                          |                                check_preempt_curr
+                          |                                resched_curr
+                          |          
+                           --[32m3.91%[m--tty_write_unlock
+                                     __wake_up
+                                     __wake_up_common_lock
+                                     _raw_spin_lock_irqsave
+
+  [31m  23.52%[m     0.00%  sma      libc-2.30.so         [.] _IO_do_write
+            |
+            ---_IO_do_write
+               _IO_file_write
+               __write (inlined)
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               __x64_sys_write
+               ksys_write
+               |          
+                --[31m19.15%[m--vfs_write
+                          __vfs_write
+                          tty_write
+                          |          
+                          |--[31m12.42%[m--n_tty_write
+                          |          |          
+                          |           --[31m8.16%[m--pty_write
+                          |                     tty_flip_buffer_push
+                          |                     queue_work_on
+                          |                     __queue_work
+                          |                     insert_work
+                          |                     wake_up_process
+                          |                     try_to_wake_up
+                          |                     ttwu_do_activate
+                          |                     |          
+                          |                     |--[31m5.52%[m--activate_task
+                          |                     |          |          
+                          |                     |          |--[32m3.36%[m--enqueue_task_fair
+                          |                     |          |          
+                          |                     |           --[32m2.16%[m--psi_task_change
+                          |                     |                     record_times
+                          |                     |                     sched_clock_cpu
+                          |                     |          
+                          |                      --[32m2.63%[m--ttwu_do_wakeup
+                          |                                check_preempt_curr
+                          |                                resched_curr
+                          |          
+                           --[32m3.91%[m--tty_write_unlock
+                                     __wake_up
+                                     __wake_up_common_lock
+                                     _raw_spin_lock_irqsave
+
+  [31m  23.52%[m     0.00%  sma      libc-2.30.so         [.] _IO_file_write
+            |
+            ---_IO_file_write
+               __write (inlined)
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               __x64_sys_write
+               ksys_write
+               |          
+                --[31m19.15%[m--vfs_write
+                          __vfs_write
+                          tty_write
+                          |          
+                          |--[31m12.42%[m--n_tty_write
+                          |          |          
+                          |           --[31m8.16%[m--pty_write
+                          |                     tty_flip_buffer_push
+                          |                     queue_work_on
+                          |                     __queue_work
+                          |                     insert_work
+                          |                     wake_up_process
+                          |                     try_to_wake_up
+                          |                     ttwu_do_activate
+                          |                     |          
+                          |                     |--[31m5.52%[m--activate_task
+                          |                     |          |          
+                          |                     |          |--[32m3.36%[m--enqueue_task_fair
+                          |                     |          |          
+                          |                     |           --[32m2.16%[m--psi_task_change
+                          |                     |                     record_times
+                          |                     |                     sched_clock_cpu
+                          |                     |          
+                          |                      --[32m2.63%[m--ttwu_do_wakeup
+                          |                                check_preempt_curr
+                          |                                resched_curr
+                          |          
+                           --[32m3.91%[m--tty_write_unlock
+                                     __wake_up
+                                     __wake_up_common_lock
+                                     _raw_spin_lock_irqsave
+
+  [31m  23.52%[m     0.00%  sma      libc-2.30.so         [.] __write (inlined)
+            |
+            ---__write (inlined)
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               __x64_sys_write
+               ksys_write
+               |          
+                --[31m19.15%[m--vfs_write
+                          __vfs_write
+                          tty_write
+                          |          
+                          |--[31m12.42%[m--n_tty_write
+                          |          |          
+                          |           --[31m8.16%[m--pty_write
+                          |                     tty_flip_buffer_push
+                          |                     queue_work_on
+                          |                     __queue_work
+                          |                     insert_work
+                          |                     wake_up_process
+                          |                     try_to_wake_up
+                          |                     ttwu_do_activate
+                          |                     |          
+                          |                     |--[31m5.52%[m--activate_task
+                          |                     |          |          
+                          |                     |          |--[32m3.36%[m--enqueue_task_fair
+                          |                     |          |          
+                          |                     |           --[32m2.16%[m--psi_task_change
+                          |                     |                     record_times
+                          |                     |                     sched_clock_cpu
+                          |                     |          
+                          |                      --[32m2.63%[m--ttwu_do_wakeup
+                          |                                check_preempt_curr
+                          |                                resched_curr
+                          |          
+                           --[32m3.91%[m--tty_write_unlock
+                                     __wake_up
+                                     __wake_up_common_lock
+                                     _raw_spin_lock_irqsave
+
+  [31m  23.52%[m     0.00%  sma      [kernel.kallsyms]    [k] __x64_sys_write
+            |
+            ---__x64_sys_write
+               ksys_write
+               |          
+                --[31m19.15%[m--vfs_write
+                          __vfs_write
+                          tty_write
+                          |          
+                          |--[31m12.42%[m--n_tty_write
+                          |          |          
+                          |           --[31m8.16%[m--pty_write
+                          |                     tty_flip_buffer_push
+                          |                     queue_work_on
+                          |                     __queue_work
+                          |                     insert_work
+                          |                     wake_up_process
+                          |                     try_to_wake_up
+                          |                     ttwu_do_activate
+                          |                     |          
+                          |                     |--[31m5.52%[m--activate_task
+                          |                     |          |          
+                          |                     |          |--[32m3.36%[m--enqueue_task_fair
+                          |                     |          |          
+                          |                     |           --[32m2.16%[m--psi_task_change
+                          |                     |                     record_times
+                          |                     |                     sched_clock_cpu
+                          |                     |          
+                          |                      --[32m2.63%[m--ttwu_do_wakeup
+                          |                                check_preempt_curr
+                          |                                resched_curr
+                          |          
+                           --[32m3.91%[m--tty_write_unlock
+                                     __wake_up
+                                     __wake_up_common_lock
+                                     _raw_spin_lock_irqsave
+
+  [31m  23.52%[m  [32m   4.36%[m  sma      [kernel.kallsyms]    [k] ksys_write
+            |          
+            |--[31m19.15%[m--ksys_write
+            |          vfs_write
+            |          __vfs_write
+            |          tty_write
+            |          |          
+            |          |--[31m12.42%[m--n_tty_write
+            |          |          |          
+            |          |           --[31m8.16%[m--pty_write
+            |          |                     tty_flip_buffer_push
+            |          |                     queue_work_on
+            |          |                     __queue_work
+            |          |                     insert_work
+            |          |                     wake_up_process
+            |          |                     try_to_wake_up
+            |          |                     ttwu_do_activate
+            |          |                     |          
+            |          |                     |--[31m5.52%[m--activate_task
+            |          |                     |          |          
+            |          |                     |          |--[32m3.36%[m--enqueue_task_fair
+            |          |                     |          |          
+            |          |                     |           --[32m2.16%[m--psi_task_change
+            |          |                     |                     record_times
+            |          |                     |                     sched_clock_cpu
+            |          |                     |          
+            |          |                      --[32m2.63%[m--ttwu_do_wakeup
+            |          |                                check_preempt_curr
+            |          |                                resched_curr
+            |          |          
+            |           --[32m3.91%[m--tty_write_unlock
+            |                     __wake_up
+            |                     __wake_up_common_lock
+            |                     _raw_spin_lock_irqsave
+            |          
+             --[32m4.36%[m--_start
+                       __libc_start_main
+                       main
+                       draw
+                       operator<<
+                       std::ostream::operator<< (inlined)
+                       std::endl<char, std::char_traits<char> > (inlined)
+                       std::ostream::put
+                       _IO_file_overflow
+                       _IO_do_write
+                       _IO_file_write
+                       __write (inlined)
+                       entry_SYSCALL_64_after_hwframe
+                       do_syscall_64
+                       __x64_sys_write
+                       ksys_write
+
+  [31m  19.15%[m  [32m   2.82%[m  sma      [kernel.kallsyms]    [k] tty_write
+            |          
+            |--[31m16.33%[m--tty_write
+            |          |          
+            |          |--[31m12.42%[m--n_tty_write
+            |          |          |          
+            |          |           --[31m8.16%[m--pty_write
+            |          |                     tty_flip_buffer_push
+            |          |                     queue_work_on
+            |          |                     __queue_work
+            |          |                     insert_work
+            |          |                     wake_up_process
+            |          |                     try_to_wake_up
+            |          |                     ttwu_do_activate
+            |          |                     |          
+            |          |                     |--[31m5.52%[m--activate_task
+            |          |                     |          |          
+            |          |                     |          |--[32m3.36%[m--enqueue_task_fair
+            |          |                     |          |          
+            |          |                     |           --[32m2.16%[m--psi_task_change
+            |          |                     |                     record_times
+            |          |                     |                     sched_clock_cpu
+            |          |                     |          
+            |          |                      --[32m2.63%[m--ttwu_do_wakeup
+            |          |                                check_preempt_curr
+            |          |                                resched_curr
+            |          |          
+            |           --[32m3.91%[m--tty_write_unlock
+            |                     __wake_up
+            |                     __wake_up_common_lock
+            |                     _raw_spin_lock_irqsave
+            |          
+             --[32m2.82%[m--_start
+                       __libc_start_main
+                       main
+                       draw
+                       operator<<
+                       std::ostream::operator<< (inlined)
+                       std::endl<char, std::char_traits<char> > (inlined)
+                       std::ostream::put
+                       _IO_file_overflow
+                       _IO_do_write
+                       _IO_file_write
+                       __write (inlined)
+                       entry_SYSCALL_64_after_hwframe
+                       do_syscall_64
+                       __x64_sys_write
+                       ksys_write
+                       vfs_write
+                       __vfs_write
+                       tty_write
+
+  [31m  19.15%[m     0.00%  sma      [kernel.kallsyms]    [k] vfs_write
+            |
+            ---vfs_write
+               __vfs_write
+               tty_write
+               |          
+               |--[31m12.42%[m--n_tty_write
+               |          |          
+               |           --[31m8.16%[m--pty_write
+               |                     tty_flip_buffer_push
+               |                     queue_work_on
+               |                     __queue_work
+               |                     insert_work
+               |                     wake_up_process
+               |                     try_to_wake_up
+               |                     ttwu_do_activate
+               |                     |          
+               |                     |--[31m5.52%[m--activate_task
+               |                     |          |          
+               |                     |          |--[32m3.36%[m--enqueue_task_fair
+               |                     |          |          
+               |                     |           --[32m2.16%[m--psi_task_change
+               |                     |                     record_times
+               |                     |                     sched_clock_cpu
+               |                     |          
+               |                      --[32m2.63%[m--ttwu_do_wakeup
+               |                                check_preempt_curr
+               |                                resched_curr
+               |          
+                --[32m3.91%[m--tty_write_unlock
+                          __wake_up
+                          __wake_up_common_lock
+                          _raw_spin_lock_irqsave
+
+  [31m  19.15%[m     0.00%  sma      [kernel.kallsyms]    [k] __vfs_write
+            |
+            ---__vfs_write
+               tty_write
+               |          
+               |--[31m12.42%[m--n_tty_write
+               |          |          
+               |           --[31m8.16%[m--pty_write
+               |                     tty_flip_buffer_push
+               |                     queue_work_on
+               |                     __queue_work
+               |                     insert_work
+               |                     wake_up_process
+               |                     try_to_wake_up
+               |                     ttwu_do_activate
+               |                     |          
+               |                     |--[31m5.52%[m--activate_task
+               |                     |          |          
+               |                     |          |--[32m3.36%[m--enqueue_task_fair
+               |                     |          |          
+               |                     |           --[32m2.16%[m--psi_task_change
+               |                     |                     record_times
+               |                     |                     sched_clock_cpu
+               |                     |          
+               |                      --[32m2.63%[m--ttwu_do_wakeup
+               |                                check_preempt_curr
+               |                                resched_curr
+               |          
+                --[32m3.91%[m--tty_write_unlock
+                          __wake_up
+                          __wake_up_common_lock
+                          _raw_spin_lock_irqsave
+
+  [31m  17.17%[m     0.00%  sma      ld-2.30.so           [.] 0x00007f4818b92107
+            |
+            ---0x7f4818b92107
+               0x7f4818b9303b
+               0x7f4818baca1a
+               |          
+               |--[31m13.04%[m--0x7f4818b956b9
+               |          |          
+               |          |--[32m4.36%[m--0x7f4818b9e593
+               |          |          0x7f4818b9ca70
+               |          |          0x7f4818b9be6f
+               |          |          
+               |          |--[32m4.35%[m--0x7f4818b9e56f
+               |          |          
+               |           --[32m4.32%[m--0x7f4818b9ede8
+               |                     0x7f4818baefab
+               |                     entry_SYSCALL_64_after_hwframe
+               |                     do_syscall_64
+               |                     __x64_sys_mprotect
+               |                     do_mprotect_pkey
+               |          
+                --[32m4.13%[m--0x7f4818b94c54
+                          0x7f4818b9ff82
+                          _dl_catch_exception
+                          0x7f4818b9fb34
+                          0x7f4818b9b3a7
+                          0x7f4818b98d3f
+                          0x7f4818baed08
+                          entry_SYSCALL_64_after_hwframe
+                          do_syscall_64
+                          __x64_sys_openat
+                          do_sys_open
+                          get_unused_fd_flags
+                          __alloc_fd
+
+  [31m  17.17%[m     0.00%  sma      ld-2.30.so           [.] 0x00007f4818b9303b
+            |
+            ---0x7f4818b9303b
+               0x7f4818baca1a
+               |          
+               |--[31m13.04%[m--0x7f4818b956b9
+               |          |          
+               |          |--[32m4.36%[m--0x7f4818b9e593
+               |          |          0x7f4818b9ca70
+               |          |          0x7f4818b9be6f
+               |          |          
+               |          |--[32m4.35%[m--0x7f4818b9e56f
+               |          |          
+               |           --[32m4.32%[m--0x7f4818b9ede8
+               |                     0x7f4818baefab
+               |                     entry_SYSCALL_64_after_hwframe
+               |                     do_syscall_64
+               |                     __x64_sys_mprotect
+               |                     do_mprotect_pkey
+               |          
+                --[32m4.13%[m--0x7f4818b94c54
+                          0x7f4818b9ff82
+                          _dl_catch_exception
+                          0x7f4818b9fb34
+                          0x7f4818b9b3a7
+                          0x7f4818b98d3f
+                          0x7f4818baed08
+                          entry_SYSCALL_64_after_hwframe
+                          do_syscall_64
+                          __x64_sys_openat
+                          do_sys_open
+                          get_unused_fd_flags
+                          __alloc_fd
+
+  [31m  17.17%[m     0.00%  sma      ld-2.30.so           [.] 0x00007f4818baca1a
+            |
+            ---0x7f4818baca1a
+               |          
+               |--[31m13.04%[m--0x7f4818b956b9
+               |          |          
+               |          |--[32m4.36%[m--0x7f4818b9e593
+               |          |          0x7f4818b9ca70
+               |          |          0x7f4818b9be6f
+               |          |          
+               |          |--[32m4.35%[m--0x7f4818b9e56f
+               |          |          
+               |           --[32m4.32%[m--0x7f4818b9ede8
+               |                     0x7f4818baefab
+               |                     entry_SYSCALL_64_after_hwframe
+               |                     do_syscall_64
+               |                     __x64_sys_mprotect
+               |                     do_mprotect_pkey
+               |          
+                --[32m4.13%[m--0x7f4818b94c54
+                          0x7f4818b9ff82
+                          _dl_catch_exception
+                          0x7f4818b9fb34
+                          0x7f4818b9b3a7
+                          0x7f4818b98d3f
+                          0x7f4818baed08
+                          entry_SYSCALL_64_after_hwframe
+                          do_syscall_64
+                          __x64_sys_openat
+                          do_sys_open
+                          get_unused_fd_flags
+                          __alloc_fd
+
+  [31m  16.99%[m  [32m   4.09%[m  sma      libstdc++.so.6.0.28  [.] std::__ostream_insert<char, std::char_traits<char> >
+            |          
+            |--[31m12.90%[m--std::__ostream_insert<char, std::char_traits<char> >
+            |          |          
+            |          |--[31m7.82%[m--fwrite (inlined)
+            |          |          
+            |          |--[32m3.94%[m--_IO_file_overflow
+            |          |          
+            |           --[32m1.14%[m--0x7f4818a1ec54
+            |          
+             --[32m4.09%[m--0x55a598d2e67f
+                       std::__ostream_insert<char, std::char_traits<char> >
+
+  [31m  13.04%[m     0.00%  sma      ld-2.30.so           [.] 0x00007f4818b956b9
+            |
+            ---0x7f4818b956b9
+               |          
+               |--[32m4.36%[m--0x7f4818b9e593
+               |          0x7f4818b9ca70
+               |          0x7f4818b9be6f
+               |          
+               |--[32m4.35%[m--0x7f4818b9e56f
+               |          
+                --[32m4.32%[m--0x7f4818b9ede8
+                          0x7f4818baefab
+                          entry_SYSCALL_64_after_hwframe
+                          do_syscall_64
+                          __x64_sys_mprotect
+                          do_mprotect_pkey
+
+  [31m  12.42%[m  [32m   3.82%[m  sma      [kernel.kallsyms]    [k] n_tty_write
+            |          
+            |--[31m8.59%[m--n_tty_write
+            |          |          
+            |           --[31m8.16%[m--pty_write
+            |                     tty_flip_buffer_push
+            |                     queue_work_on
+            |                     __queue_work
+            |                     insert_work
+            |                     wake_up_process
+            |                     try_to_wake_up
+            |                     ttwu_do_activate
+            |                     |          
+            |                     |--[31m5.52%[m--activate_task
+            |                     |          |          
+            |                     |          |--[32m3.36%[m--enqueue_task_fair
+            |                     |          |          
+            |                     |           --[32m2.16%[m--psi_task_change
+            |                     |                     record_times
+            |                     |                     sched_clock_cpu
+            |                     |          
+            |                      --[32m2.63%[m--ttwu_do_wakeup
+            |                                check_preempt_curr
+            |                                resched_curr
+            |          
+             --[32m3.82%[m--_start
+                       __libc_start_main
+                       main
+                       draw
+                       operator<<
+                       std::ostream::operator<< (inlined)
+                       std::endl<char, std::char_traits<char> > (inlined)
+                       std::ostream::put
+                       _IO_file_overflow
+                       _IO_do_write
+                       _IO_file_write
+                       __write (inlined)
+                       entry_SYSCALL_64_after_hwframe
+                       do_syscall_64
+                       __x64_sys_write
+                       ksys_write
+                       vfs_write
+                       __vfs_write
+                       tty_write
+                       n_tty_write
+
+  [31m  11.76%[m     0.00%  sma      sma                  [.] std::operator<< <std::char_traits<char> > (inlined)
+            |
+            ---std::operator<< <std::char_traits<char> > (inlined)
+               std::__ostream_insert<char, std::char_traits<char> >
+               |          
+               |--[31m7.82%[m--fwrite (inlined)
+               |          
+                --[32m3.94%[m--_IO_file_overflow
+
+  [31m  11.05%[m  [31m  11.05%[m  sma      sma                  [.] World::getEnvironment
+            |
+            ---_start
+               __libc_start_main
+               main
+               System::update
+               |          
+               |--[31m7.72%[m--Harvester::update
+               |          |          
+               |          |--[32m4.36%[m--Harvester::moveHarvester
+               |          |          World::getEnvironment
+               |          |          World::operator[] (inlined)
+               |          |          
+               |           --[32m3.36%[m--World::getEnvironment
+               |                     World::operator[] (inlined)
+               |                     std::vector<Entity*, std::allocator<Entity*> >::operator[] (inlined)
+               |          
+                --[32m3.33%[m--Hunter::update
+                          World::getEnvironment
+                          World::operator[] (inlined)
+
+  [31m  11.05%[m     0.00%  sma      sma                  [.] System::update
+            |
+            ---System::update
+               |          
+               |--[31m7.72%[m--Harvester::update
+               |          |          
+               |          |--[32m4.36%[m--Harvester::moveHarvester
+               |          |          World::getEnvironment
+               |          |          World::operator[] (inlined)
+               |          |          
+               |           --[32m3.36%[m--World::getEnvironment
+               |                     World::operator[] (inlined)
+               |                     std::vector<Entity*, std::allocator<Entity*> >::operator[] (inlined)
+               |          
+                --[32m3.33%[m--Hunter::update
+                          World::getEnvironment
+                          World::operator[] (inlined)
+
+  [31m  11.05%[m     0.00%  sma      sma                  [.] World::operator[] (inlined)
+            |
+            ---World::operator[] (inlined)
+               |          
+                --[32m3.36%[m--std::vector<Entity*, std::allocator<Entity*> >::operator[] (inlined)
+
+  [31m   8.49%[m     0.00%  sma      [kernel.kallsyms]    [k] pty_write
+            |
+            ---pty_write
+               tty_flip_buffer_push
+               queue_work_on
+               __queue_work
+               insert_work
+               wake_up_process
+               try_to_wake_up
+               ttwu_do_activate
+               |          
+               |--[31m5.86%[m--activate_task
+               |          |          
+               |          |--[32m3.70%[m--enqueue_task_fair
+               |          |          
+               |           --[32m2.16%[m--psi_task_change
+               |                     record_times
+               |                     sched_clock_cpu
+               |          
+                --[32m2.63%[m--ttwu_do_wakeup
+                          check_preempt_curr
+                          resched_curr
+
+  [31m   8.49%[m     0.00%  sma      [kernel.kallsyms]    [k] tty_flip_buffer_push
+            |
+            ---tty_flip_buffer_push
+               queue_work_on
+               __queue_work
+               insert_work
+               wake_up_process
+               try_to_wake_up
+               ttwu_do_activate
+               |          
+               |--[31m5.86%[m--activate_task
+               |          |          
+               |          |--[32m3.70%[m--enqueue_task_fair
+               |          |          
+               |           --[32m2.16%[m--psi_task_change
+               |                     record_times
+               |                     sched_clock_cpu
+               |          
+                --[32m2.63%[m--ttwu_do_wakeup
+                          check_preempt_curr
+                          resched_curr
+
+  [31m   8.49%[m     0.00%  sma      [kernel.kallsyms]    [k] queue_work_on
+            |
+            ---queue_work_on
+               __queue_work
+               insert_work
+               wake_up_process
+               try_to_wake_up
+               ttwu_do_activate
+               |          
+               |--[31m5.86%[m--activate_task
+               |          |          
+               |          |--[32m3.70%[m--enqueue_task_fair
+               |          |          
+               |           --[32m2.16%[m--psi_task_change
+               |                     record_times
+               |                     sched_clock_cpu
+               |          
+                --[32m2.63%[m--ttwu_do_wakeup
+                          check_preempt_curr
+                          resched_curr
+
+  [31m   8.49%[m     0.00%  sma      [kernel.kallsyms]    [k] __queue_work
+            |
+            ---__queue_work
+               insert_work
+               wake_up_process
+               try_to_wake_up
+               ttwu_do_activate
+               |          
+               |--[31m5.86%[m--activate_task
+               |          |          
+               |          |--[32m3.70%[m--enqueue_task_fair
+               |          |          
+               |           --[32m2.16%[m--psi_task_change
+               |                     record_times
+               |                     sched_clock_cpu
+               |          
+                --[32m2.63%[m--ttwu_do_wakeup
+                          check_preempt_curr
+                          resched_curr
+
+  [31m   8.49%[m     0.00%  sma      [kernel.kallsyms]    [k] insert_work
+            |
+            ---insert_work
+               wake_up_process
+               try_to_wake_up
+               ttwu_do_activate
+               |          
+               |--[31m5.86%[m--activate_task
+               |          |          
+               |          |--[32m3.70%[m--enqueue_task_fair
+               |          |          
+               |           --[32m2.16%[m--psi_task_change
+               |                     record_times
+               |                     sched_clock_cpu
+               |          
+                --[32m2.63%[m--ttwu_do_wakeup
+                          check_preempt_curr
+                          resched_curr
+
+  [31m   8.49%[m     0.00%  sma      [kernel.kallsyms]    [k] wake_up_process
+            |
+            ---wake_up_process
+               try_to_wake_up
+               ttwu_do_activate
+               |          
+               |--[31m5.86%[m--activate_task
+               |          |          
+               |          |--[32m3.70%[m--enqueue_task_fair
+               |          |          
+               |           --[32m2.16%[m--psi_task_change
+               |                     record_times
+               |                     sched_clock_cpu
+               |          
+                --[32m2.63%[m--ttwu_do_wakeup
+                          check_preempt_curr
+                          resched_curr
+
+  [31m   8.49%[m     0.00%  sma      [kernel.kallsyms]    [k] try_to_wake_up
+            |
+            ---try_to_wake_up
+               ttwu_do_activate
+               |          
+               |--[31m5.86%[m--activate_task
+               |          |          
+               |          |--[32m3.70%[m--enqueue_task_fair
+               |          |          
+               |           --[32m2.16%[m--psi_task_change
+               |                     record_times
+               |                     sched_clock_cpu
+               |          
+                --[32m2.63%[m--ttwu_do_wakeup
+                          check_preempt_curr
+                          resched_curr
+
+  [31m   8.49%[m     0.00%  sma      [kernel.kallsyms]    [k] ttwu_do_activate
+            |
+            ---ttwu_do_activate
+               |          
+               |--[31m5.86%[m--activate_task
+               |          |          
+               |          |--[32m3.70%[m--enqueue_task_fair
+               |          |          
+               |           --[32m2.16%[m--psi_task_change
+               |                     record_times
+               |                     sched_clock_cpu
+               |          
+                --[32m2.63%[m--ttwu_do_wakeup
+                          check_preempt_curr
+                          resched_curr
+
+  [31m   7.82%[m  [31m   7.82%[m  sma      libc-2.30.so         [.] _IO_fwrite
+            |
+            ---_start
+               __libc_start_main
+               main
+               draw
+               operator<<
+               std::operator<< <std::char_traits<char> > (inlined)
+               std::__ostream_insert<char, std::char_traits<char> >
+               fwrite (inlined)
+
+  [31m   7.82%[m     0.00%  sma      libc-2.30.so         [.] fwrite (inlined)
+            |
+            ---fwrite (inlined)
+
+  [31m   7.72%[m     0.00%  sma      sma                  [.] Harvester::update
+            |
+            ---Harvester::update
+               |          
+               |--[32m4.36%[m--Harvester::moveHarvester
+               |          World::getEnvironment
+               |          World::operator[] (inlined)
+               |          
+                --[32m3.36%[m--World::getEnvironment
+                          World::operator[] (inlined)
+                          std::vector<Entity*, std::allocator<Entity*> >::operator[] (inlined)
+
+  [31m   5.86%[m     0.00%  sma      [kernel.kallsyms]    [k] activate_task
+            |
+            ---activate_task
+               |          
+               |--[32m3.70%[m--enqueue_task_fair
+               |          
+                --[32m2.16%[m--psi_task_change
+                          record_times
+                          sched_clock_cpu
+
+  [32m   5.00%[m     0.00%  sma      sma                  [.] operator<<
+            |
+            ---operator<<
+               |          
+               |--[32m3.86%[m--std::operator<< <std::char_traits<char> > (inlined)
+               |          0x55a5984073d4
+               |          
+                --[32m1.14%[m--std::operator<< <char, std::char_traits<char>, std::allocator<char> > (inlined)
+                          std::__ostream_insert<char, std::char_traits<char> >
+                          0x7f4818a1ec54
+
+  [32m   4.36%[m     0.00%  sma      sma                  [.] Harvester::moveHarvester
+            |
+            ---Harvester::moveHarvester
+               World::getEnvironment
+               World::operator[] (inlined)
+
+  [32m   4.36%[m  [32m   4.36%[m  sma      ld-2.30.so           [.] 0x0000000000017963
+            |
+            ---_start
+               __libc_start_main
+               __libc_csu_init
+               _GLOBAL__sub_I__ZN8ResourceC2ERK5Pointc
+               __static_initialization_and_destruction_0 (inlined)
+               std::ios_base::Init::Init
+               std::basic_ios<char, std::char_traits<char> >::init
+               std::basic_ios<char, std::char_traits<char> >::_M_cache_locale
+               0x7f4818ba8963
+
+  [32m   4.36%[m     0.00%  sma      sma                  [.] __libc_csu_init
+            |
+            ---__libc_csu_init
+               _GLOBAL__sub_I__ZN8ResourceC2ERK5Pointc
+               __static_initialization_and_destruction_0 (inlined)
+               std::ios_base::Init::Init
+               std::basic_ios<char, std::char_traits<char> >::init
+               std::basic_ios<char, std::char_traits<char> >::_M_cache_locale
+               0x7f4818ba8963
+
+  [32m   4.36%[m     0.00%  sma      sma                  [.] _GLOBAL__sub_I__ZN8ResourceC2ERK5Pointc
+            |
+            ---_GLOBAL__sub_I__ZN8ResourceC2ERK5Pointc
+               __static_initialization_and_destruction_0 (inlined)
+               std::ios_base::Init::Init
+               std::basic_ios<char, std::char_traits<char> >::init
+               std::basic_ios<char, std::char_traits<char> >::_M_cache_locale
+               0x7f4818ba8963
+
+  [32m   4.36%[m     0.00%  sma      sma                  [.] __static_initialization_and_destruction_0 (inlined)
+            |
+            ---__static_initialization_and_destruction_0 (inlined)
+               std::ios_base::Init::Init
+               std::basic_ios<char, std::char_traits<char> >::init
+               std::basic_ios<char, std::char_traits<char> >::_M_cache_locale
+               0x7f4818ba8963
+
+  [32m   4.36%[m     0.00%  sma      libstdc++.so.6.0.28  [.] std::ios_base::Init::Init
+            |
+            ---std::ios_base::Init::Init
+               std::basic_ios<char, std::char_traits<char> >::init
+               std::basic_ios<char, std::char_traits<char> >::_M_cache_locale
+               0x7f4818ba8963
+
+  [32m   4.36%[m     0.00%  sma      libstdc++.so.6.0.28  [.] std::basic_ios<char, std::char_traits<char> >::init
+            |
+            ---std::basic_ios<char, std::char_traits<char> >::init
+               std::basic_ios<char, std::char_traits<char> >::_M_cache_locale
+               0x7f4818ba8963
+
+  [32m   4.36%[m     0.00%  sma      libstdc++.so.6.0.28  [.] std::basic_ios<char, std::char_traits<char> >::_M_cache_locale
+            |
+            ---std::basic_ios<char, std::char_traits<char> >::_M_cache_locale
+               0x7f4818ba8963
+
+  [32m   4.36%[m     0.00%  sma      ld-2.30.so           [.] 0x00007f4818ba8963
+            |
+            ---0x7f4818ba8963
+
+  [32m   4.36%[m  [32m   4.36%[m  sma      ld-2.30.so           [.] 0x000000000000b156
+            |
+            ---0x7ffefb5b360f
+               0x7f4818b9c156
+
+  [32m   4.36%[m     0.00%  sma      [stack]              [.] 0x00007ffefb5b360f
+            |
+            ---0x7ffefb5b360f
+               0x7f4818b9c156
+
+  [32m   4.36%[m     0.00%  sma      ld-2.30.so           [.] 0x00007f4818b9c156
+            |
+            ---0x7f4818b9c156
+
+  [32m   4.36%[m  [32m   4.36%[m  sma      ld-2.30.so           [.] 0x000000000000ae6f
+            |
+            ---0x7f4818b92107
+               0x7f4818b9303b
+               0x7f4818baca1a
+               0x7f4818b956b9
+               0x7f4818b9e593
+               0x7f4818b9ca70
+               0x7f4818b9be6f
+
+  [32m   4.36%[m     0.00%  sma      ld-2.30.so           [.] 0x00007f4818b9e593
+            |
+            ---0x7f4818b9e593
+               0x7f4818b9ca70
+               0x7f4818b9be6f
+
+  [32m   4.36%[m     0.00%  sma      ld-2.30.so           [.] 0x00007f4818b9ca70
+            |
+            ---0x7f4818b9ca70
+               0x7f4818b9be6f
+
+  [32m   4.36%[m     0.00%  sma      ld-2.30.so           [.] 0x00007f4818b9be6f
+            |
+            ---0x7f4818b9be6f
+
+  [32m   4.35%[m  [32m   4.35%[m  sma      ld-2.30.so           [.] 0x000000000000d56f
+            |
+            ---0x7f4818b92107
+               0x7f4818b9303b
+               0x7f4818baca1a
+               0x7f4818b956b9
+               0x7f4818b9e56f
+
+  [32m   4.35%[m     0.00%  sma      ld-2.30.so           [.] 0x00007f4818b9e56f
+            |
+            ---0x7f4818b9e56f
+
+  [32m   4.32%[m  [32m   4.32%[m  sma      [kernel.kallsyms]    [k] do_mprotect_pkey
+            |
+            ---0x7f4818b92107
+               0x7f4818b9303b
+               0x7f4818baca1a
+               0x7f4818b956b9
+               0x7f4818b9ede8
+               0x7f4818baefab
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               __x64_sys_mprotect
+               do_mprotect_pkey
+
+  [32m   4.32%[m     0.00%  sma      ld-2.30.so           [.] 0x00007f4818b9ede8
+            |
+            ---0x7f4818b9ede8
+               0x7f4818baefab
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               __x64_sys_mprotect
+               do_mprotect_pkey
+
+  [32m   4.32%[m     0.00%  sma      ld-2.30.so           [.] 0x00007f4818baefab
+            |
+            ---0x7f4818baefab
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               __x64_sys_mprotect
+               do_mprotect_pkey
+
+  [32m   4.32%[m     0.00%  sma      [kernel.kallsyms]    [k] __x64_sys_mprotect
+            |
+            ---__x64_sys_mprotect
+               do_mprotect_pkey
+
+  [32m   4.13%[m  [32m   4.13%[m  sma      [kernel.kallsyms]    [k] expand_files
+            |
+            ---0x7f4818b92107
+               0x7f4818b9303b
+               0x7f4818baca1a
+               0x7f4818b94c54
+               0x7f4818b9ff82
+               _dl_catch_exception
+               0x7f4818b9fb34
+               0x7f4818b9b3a7
+               0x7f4818b98d3f
+               0x7f4818baed08
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               __x64_sys_openat
+               do_sys_open
+               get_unused_fd_flags
+               __alloc_fd
+
+  [32m   4.13%[m     0.00%  sma      ld-2.30.so           [.] 0x00007f4818b94c54
+            |
+            ---0x7f4818b94c54
+               0x7f4818b9ff82
+               _dl_catch_exception
+               0x7f4818b9fb34
+               0x7f4818b9b3a7
+               0x7f4818b98d3f
+               0x7f4818baed08
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               __x64_sys_openat
+               do_sys_open
+               get_unused_fd_flags
+               __alloc_fd
+
+  [32m   4.13%[m     0.00%  sma      ld-2.30.so           [.] 0x00007f4818b9ff82
+            |
+            ---0x7f4818b9ff82
+               _dl_catch_exception
+               0x7f4818b9fb34
+               0x7f4818b9b3a7
+               0x7f4818b98d3f
+               0x7f4818baed08
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               __x64_sys_openat
+               do_sys_open
+               get_unused_fd_flags
+               __alloc_fd
+
+  [32m   4.13%[m     0.00%  sma      ld-2.30.so           [.] _dl_catch_exception
+            |
+            ---_dl_catch_exception
+               0x7f4818b9fb34
+               0x7f4818b9b3a7
+               0x7f4818b98d3f
+               0x7f4818baed08
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               __x64_sys_openat
+               do_sys_open
+               get_unused_fd_flags
+               __alloc_fd
+
+  [32m   4.13%[m     0.00%  sma      ld-2.30.so           [.] 0x00007f4818b9fb34
+            |
+            ---0x7f4818b9fb34
+               0x7f4818b9b3a7
+               0x7f4818b98d3f
+               0x7f4818baed08
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               __x64_sys_openat
+               do_sys_open
+               get_unused_fd_flags
+               __alloc_fd
+
+  [32m   4.13%[m     0.00%  sma      ld-2.30.so           [.] 0x00007f4818b9b3a7
+            |
+            ---0x7f4818b9b3a7
+               0x7f4818b98d3f
+               0x7f4818baed08
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               __x64_sys_openat
+               do_sys_open
+               get_unused_fd_flags
+               __alloc_fd
+
+  [32m   4.13%[m     0.00%  sma      ld-2.30.so           [.] 0x00007f4818b98d3f
+            |
+            ---0x7f4818b98d3f
+               0x7f4818baed08
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               __x64_sys_openat
+               do_sys_open
+               get_unused_fd_flags
+               __alloc_fd
+
+  [32m   4.13%[m     0.00%  sma      ld-2.30.so           [.] 0x00007f4818baed08
+            |
+            ---0x7f4818baed08
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               __x64_sys_openat
+               do_sys_open
+               get_unused_fd_flags
+               __alloc_fd
+
+  [32m   4.13%[m     0.00%  sma      [kernel.kallsyms]    [k] __x64_sys_openat
+            |
+            ---__x64_sys_openat
+               do_sys_open
+               get_unused_fd_flags
+               __alloc_fd
+
+  [32m   4.13%[m     0.00%  sma      [kernel.kallsyms]    [k] do_sys_open
+            |
+            ---do_sys_open
+               get_unused_fd_flags
+               __alloc_fd
+
+  [32m   4.13%[m     0.00%  sma      [kernel.kallsyms]    [k] get_unused_fd_flags
+            |
+            ---get_unused_fd_flags
+               __alloc_fd
+
+  [32m   4.13%[m     0.00%  sma      [kernel.kallsyms]    [k] __alloc_fd
+            |
+            ---__alloc_fd
+
+  [32m   4.09%[m     0.00%  sma      [heap]               [.] 0x000055a598d2e67f
+            |
+            ---0x55a598d2e67f
+               std::__ostream_insert<char, std::char_traits<char> >
+
+  [32m   4.02%[m  [32m   4.02%[m  sma      sma                  [.] std::vector<Point, std::allocator<Point> >::_M_realloc_insert<Point>
+            |
+            ---0xfffffffe
+               std::vector<Point, std::allocator<Point> >::_M_realloc_insert<Point>
+
+  [32m   4.02%[m     0.00%  sma      [unknown]            [.] 0x00000000fffffffe
+            |
+            ---0xfffffffe
+               std::vector<Point, std::allocator<Point> >::_M_realloc_insert<Point>
+
+  [32m   3.91%[m  [32m   3.91%[m  sma      [kernel.kallsyms]    [k] _raw_spin_lock_irqsave
+            |
+            ---_start
+               __libc_start_main
+               main
+               draw
+               operator<<
+               std::ostream::operator<< (inlined)
+               std::endl<char, std::char_traits<char> > (inlined)
+               std::ostream::put
+               _IO_file_overflow
+               _IO_do_write
+               _IO_file_write
+               __write (inlined)
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               __x64_sys_write
+               ksys_write
+               vfs_write
+               __vfs_write
+               tty_write
+               tty_write_unlock
+               __wake_up
+               __wake_up_common_lock
+               _raw_spin_lock_irqsave
+
+  [32m   3.91%[m     0.00%  sma      [kernel.kallsyms]    [k] tty_write_unlock
+            |
+            ---tty_write_unlock
+               __wake_up
+               __wake_up_common_lock
+               _raw_spin_lock_irqsave
+
+  [32m   3.91%[m     0.00%  sma      [kernel.kallsyms]    [k] __wake_up
+            |
+            ---__wake_up
+               __wake_up_common_lock
+               _raw_spin_lock_irqsave
+
+  [32m   3.91%[m     0.00%  sma      [kernel.kallsyms]    [k] __wake_up_common_lock
+            |
+            ---__wake_up_common_lock
+               _raw_spin_lock_irqsave
+
+  [32m   3.88%[m     0.00%  sma      sma                  [.] std::basic_ios<char, std::char_traits<char> >::widen (inlined)
+            |
+            ---std::basic_ios<char, std::char_traits<char> >::widen (inlined)
+
+  [32m   3.86%[m  [32m   3.86%[m  sma      sma                  [.] 0x00000000000023d4
+            |
+            ---_start
+               __libc_start_main
+               main
+               draw
+               operator<<
+               operator<<
+               std::operator<< <std::char_traits<char> > (inlined)
+               0x55a5984073d4
+
+  [32m   3.86%[m     0.00%  sma      sma                  [.] std::operator<< <std::char_traits<char> > (inlined)
+            |
+            ---std::operator<< <std::char_traits<char> > (inlined)
+               0x55a5984073d4
+
+  [32m   3.86%[m     0.00%  sma      sma                  [.] 0x000055a5984073d4
+            |
+            ---0x55a5984073d4
+
+  [32m   3.70%[m  [32m   3.36%[m  sma      [kernel.kallsyms]    [k] enqueue_task_fair
+            |          
+             --[32m3.36%[m--_start
+                       __libc_start_main
+                       main
+                       draw
+                       operator<<
+                       std::ostream::operator<< (inlined)
+                       std::endl<char, std::char_traits<char> > (inlined)
+                       std::ostream::put
+                       _IO_file_overflow
+                       _IO_do_write
+                       _IO_file_write
+                       __write (inlined)
+                       entry_SYSCALL_64_after_hwframe
+                       do_syscall_64
+                       __x64_sys_write
+                       ksys_write
+                       vfs_write
+                       __vfs_write
+                       tty_write
+                       n_tty_write
+                       pty_write
+                       tty_flip_buffer_push
+                       queue_work_on
+                       __queue_work
+                       insert_work
+                       wake_up_process
+                       try_to_wake_up
+                       ttwu_do_activate
+                       activate_task
+                       enqueue_task_fair
+
+  [32m   3.36%[m     0.00%  sma      sma                  [.] std::vector<Entity*, std::allocator<Entity*> >::operator[] (inlined)
+            |
+            ---std::vector<Entity*, std::allocator<Entity*> >::operator[] (inlined)
+
+  [32m   3.33%[m     0.00%  sma      sma                  [.] Hunter::update
+            |
+            ---Hunter::update
+               World::getEnvironment
+               World::operator[] (inlined)
+
+  [32m   3.13%[m  [32m   3.13%[m  sma      [kernel.kallsyms]    [k] kmem_cache_free
+            |
+            ---0x7f4818b92100
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               exit_to_usermode_loop
+               task_work_run
+               ____fput
+               __fput
+               security_file_free
+               kmem_cache_free
+
+  [32m   3.13%[m     0.00%  sma      ld-2.30.so           [.] 0x00007f4818b92100
+            |
+            ---0x7f4818b92100
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               exit_to_usermode_loop
+               task_work_run
+               ____fput
+               __fput
+               security_file_free
+               kmem_cache_free
+
+  [32m   3.13%[m     0.00%  sma      [kernel.kallsyms]    [k] exit_to_usermode_loop
+            |
+            ---exit_to_usermode_loop
+               task_work_run
+               ____fput
+               __fput
+               security_file_free
+               kmem_cache_free
+
+  [32m   3.13%[m     0.00%  sma      [kernel.kallsyms]    [k] task_work_run
+            |
+            ---task_work_run
+               ____fput
+               __fput
+               security_file_free
+               kmem_cache_free
+
+  [32m   3.13%[m     0.00%  sma      [kernel.kallsyms]    [k] ____fput
+            |
+            ---____fput
+               __fput
+               security_file_free
+               kmem_cache_free
+
+  [32m   3.13%[m     0.00%  sma      [kernel.kallsyms]    [k] __fput
+            |
+            ---__fput
+               security_file_free
+               kmem_cache_free
+
+  [32m   3.13%[m     0.00%  sma      [kernel.kallsyms]    [k] security_file_free
+            |
+            ---security_file_free
+               kmem_cache_free
+
+  [32m   2.93%[m  [32m   2.93%[m  sma      [kernel.kallsyms]    [k] unmap_single_vma
+            |
+            ---entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               __x64_sys_exit_group
+               do_group_exit
+               do_exit
+               mmput
+               exit_mmap
+               unmap_vmas
+               unmap_single_vma
+
+  [32m   2.93%[m     0.00%  sma      [kernel.kallsyms]    [k] __x64_sys_exit_group
+            |
+            ---__x64_sys_exit_group
+               do_group_exit
+               do_exit
+               mmput
+               exit_mmap
+               unmap_vmas
+               unmap_single_vma
+
+  [32m   2.93%[m     0.00%  sma      [kernel.kallsyms]    [k] do_group_exit
+            |
+            ---do_group_exit
+               do_exit
+               mmput
+               exit_mmap
+               unmap_vmas
+               unmap_single_vma
+
+  [32m   2.93%[m     0.00%  sma      [kernel.kallsyms]    [k] do_exit
+            |
+            ---do_exit
+               mmput
+               exit_mmap
+               unmap_vmas
+               unmap_single_vma
+
+  [32m   2.93%[m     0.00%  sma      [kernel.kallsyms]    [k] mmput
+            |
+            ---mmput
+               exit_mmap
+               unmap_vmas
+               unmap_single_vma
+
+  [32m   2.93%[m     0.00%  sma      [kernel.kallsyms]    [k] exit_mmap
+            |
+            ---exit_mmap
+               unmap_vmas
+               unmap_single_vma
+
+  [32m   2.93%[m     0.00%  sma      [kernel.kallsyms]    [k] unmap_vmas
+            |
+            ---unmap_vmas
+               unmap_single_vma
+
+  [32m   2.63%[m  [32m   2.63%[m  sma      [kernel.kallsyms]    [k] resched_curr
+            |
+            ---_start
+               __libc_start_main
+               main
+               std::ostream::operator<< (inlined)
+               std::endl<char, std::char_traits<char> > (inlined)
+               std::ostream::put
+               _IO_file_overflow
+               _IO_do_write
+               _IO_file_write
+               __write (inlined)
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               __x64_sys_write
+               ksys_write
+               vfs_write
+               __vfs_write
+               tty_write
+               n_tty_write
+               pty_write
+               tty_flip_buffer_push
+               queue_work_on
+               __queue_work
+               insert_work
+               wake_up_process
+               try_to_wake_up
+               ttwu_do_activate
+               ttwu_do_wakeup
+               check_preempt_curr
+               resched_curr
+
+  [32m   2.63%[m     0.00%  sma      sma                  [.] std::ostream::operator<< (inlined)
+            |
+            ---std::ostream::operator<< (inlined)
+               std::endl<char, std::char_traits<char> > (inlined)
+               std::ostream::put
+               _IO_file_overflow
+               _IO_do_write
+               _IO_file_write
+               __write (inlined)
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               __x64_sys_write
+               ksys_write
+               vfs_write
+               __vfs_write
+               tty_write
+               n_tty_write
+               pty_write
+               tty_flip_buffer_push
+               queue_work_on
+               __queue_work
+               insert_work
+               wake_up_process
+               try_to_wake_up
+               ttwu_do_activate
+               ttwu_do_wakeup
+               check_preempt_curr
+               resched_curr
+
+  [32m   2.63%[m     0.00%  sma      sma                  [.] std::endl<char, std::char_traits<char> > (inlined)
+            |
+            ---std::endl<char, std::char_traits<char> > (inlined)
+               std::ostream::put
+               _IO_file_overflow
+               _IO_do_write
+               _IO_file_write
+               __write (inlined)
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               __x64_sys_write
+               ksys_write
+               vfs_write
+               __vfs_write
+               tty_write
+               n_tty_write
+               pty_write
+               tty_flip_buffer_push
+               queue_work_on
+               __queue_work
+               insert_work
+               wake_up_process
+               try_to_wake_up
+               ttwu_do_activate
+               ttwu_do_wakeup
+               check_preempt_curr
+               resched_curr
+
+  [32m   2.63%[m     0.00%  sma      [kernel.kallsyms]    [k] ttwu_do_wakeup
+            |
+            ---ttwu_do_wakeup
+               check_preempt_curr
+               resched_curr
+
+  [32m   2.63%[m     0.00%  sma      [kernel.kallsyms]    [k] check_preempt_curr
+            |
+            ---check_preempt_curr
+               resched_curr
+
+  [32m   2.16%[m  [32m   2.16%[m  sma      [kernel.kallsyms]    [k] sched_clock
+            |
+            ---_start
+               __libc_start_main
+               main
+               draw
+               operator<<
+               std::ostream::operator<< (inlined)
+               std::endl<char, std::char_traits<char> > (inlined)
+               std::ostream::put
+               _IO_file_overflow
+               _IO_do_write
+               _IO_file_write
+               __write (inlined)
+               entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               __x64_sys_write
+               ksys_write
+               vfs_write
+               __vfs_write
+               tty_write
+               n_tty_write
+               pty_write
+               tty_flip_buffer_push
+               queue_work_on
+               __queue_work
+               insert_work
+               wake_up_process
+               try_to_wake_up
+               ttwu_do_activate
+               activate_task
+               psi_task_change
+               record_times
+               sched_clock_cpu
+
+  [32m   2.16%[m     0.00%  sma      [kernel.kallsyms]    [k] psi_task_change
+            |
+            ---psi_task_change
+               record_times
+               sched_clock_cpu
+
+  [32m   2.16%[m     0.00%  sma      [kernel.kallsyms]    [k] record_times
+            |
+            ---record_times
+               sched_clock_cpu
+
+  [32m   2.16%[m     0.00%  sma      [kernel.kallsyms]    [k] sched_clock_cpu
+            |
+            ---sched_clock_cpu
+
+  [32m   1.15%[m  [32m   1.15%[m  sma      [kernel.kallsyms]    [k] uncharge_page
+            |
+            ---entry_SYSCALL_64_after_hwframe
+               do_syscall_64
+               __x64_sys_execve
+               __do_execve_file.isra.0
+               search_binary_handler
+               load_elf_binary
+               setup_arg_pages
+               shift_arg_pages
+               tlb_finish_mmu
+               tlb_flush_mmu
+               free_pages_and_swap_cache
+               release_pages
+               mem_cgroup_uncharge_list
+               uncharge_page
+
+  [32m   1.15%[m     0.00%  sma      [kernel.kallsyms]    [k] __x64_sys_execve
+            |
+            ---__x64_sys_execve
+               __do_execve_file.isra.0
+               search_binary_handler
+               load_elf_binary
+               setup_arg_pages
+               shift_arg_pages
+               tlb_finish_mmu
+               tlb_flush_mmu
+               free_pages_and_swap_cache
+               release_pages
+               mem_cgroup_uncharge_list
+               uncharge_page
+
+  [32m   1.15%[m     0.00%  sma      [kernel.kallsyms]    [k] __do_execve_file.isra.0
+            |
+            ---__do_execve_file.isra.0
+               search_binary_handler
+               load_elf_binary
+               setup_arg_pages
+               shift_arg_pages
+               tlb_finish_mmu
+               tlb_flush_mmu
+               free_pages_and_swap_cache
+               release_pages
+               mem_cgroup_uncharge_list
+               uncharge_page
+
+  [32m   1.15%[m     0.00%  sma      [kernel.kallsyms]    [k] search_binary_handler
+            |
+            ---search_binary_handler
+               load_elf_binary
+               setup_arg_pages
+               shift_arg_pages
+               tlb_finish_mmu
+               tlb_flush_mmu
+               free_pages_and_swap_cache
+               release_pages
+               mem_cgroup_uncharge_list
+               uncharge_page
+
+  [32m   1.15%[m     0.00%  sma      [kernel.kallsyms]    [k] load_elf_binary
+            |
+            ---load_elf_binary
+               setup_arg_pages
+               shift_arg_pages
+               tlb_finish_mmu
+               tlb_flush_mmu
+               free_pages_and_swap_cache
+               release_pages
+               mem_cgroup_uncharge_list
+               uncharge_page
+
+  [32m   1.15%[m     0.00%  sma      [kernel.kallsyms]    [k] setup_arg_pages
+            |
+            ---setup_arg_pages
+               shift_arg_pages
+               tlb_finish_mmu
+               tlb_flush_mmu
+               free_pages_and_swap_cache
+               release_pages
+               mem_cgroup_uncharge_list
+               uncharge_page
+
+  [32m   1.15%[m     0.00%  sma      [kernel.kallsyms]    [k] shift_arg_pages
+            |
+            ---shift_arg_pages
+               tlb_finish_mmu
+               tlb_flush_mmu
+               free_pages_and_swap_cache
+               release_pages
+               mem_cgroup_uncharge_list
+               uncharge_page
+
+  [32m   1.15%[m     0.00%  sma      [kernel.kallsyms]    [k] tlb_finish_mmu
+            |
+            ---tlb_finish_mmu
+               tlb_flush_mmu
+               free_pages_and_swap_cache
+               release_pages
+               mem_cgroup_uncharge_list
+               uncharge_page
+
+  [32m   1.15%[m     0.00%  sma      [kernel.kallsyms]    [k] tlb_flush_mmu
+            |
+            ---tlb_flush_mmu
+               free_pages_and_swap_cache
+               release_pages
+               mem_cgroup_uncharge_list
+               uncharge_page
+
+  [32m   1.15%[m     0.00%  sma      [kernel.kallsyms]    [k] free_pages_and_swap_cache
+            |
+            ---free_pages_and_swap_cache
+               release_pages
+               mem_cgroup_uncharge_list
+               uncharge_page
+
+  [32m   1.15%[m     0.00%  sma      [kernel.kallsyms]    [k] release_pages
+            |
+            ---release_pages
+               mem_cgroup_uncharge_list
+               uncharge_page
+
+  [32m   1.15%[m     0.00%  sma      [kernel.kallsyms]    [k] mem_cgroup_uncharge_list
+            |
+            ---mem_cgroup_uncharge_list
+               uncharge_page
+
+  [32m   1.14%[m  [32m   1.14%[m  sma      libstdc++.so.6.0.28  [.] 0x000000000009dc54
+            |
+            ---_start
+               __libc_start_main
+               main
+               draw
+               operator<<
+               operator<<
+               std::operator<< <char, std::char_traits<char>, std::allocator<char> > (inlined)
+               std::__ostream_insert<char, std::char_traits<char> >
+               0x7f4818a1ec54
+
+  [32m   1.14%[m     0.00%  sma      sma                  [.] std::operator<< <char, std::char_traits<char>, std::allocator<char> > (inlined)
+            |
+            ---std::operator<< <char, std::char_traits<char>, std::allocator<char> > (inlined)
+               std::__ostream_insert<char, std::char_traits<char> >
+               0x7f4818a1ec54
+
+  [32m   1.14%[m     0.00%  sma      libstdc++.so.6.0.28  [.] 0x00007f4818a1ec54
+            |
+            ---0x7f4818a1ec54
+
+
+
+#
+# (Cannot load tips.txt file, please install perf!)
+#

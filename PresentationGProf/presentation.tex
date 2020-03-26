@@ -4,16 +4,49 @@
 \usepackage{listings}
 \usepackage[utf8]{inputenc}
 \usepackage[dvipsnames]{xcolor}
+
 \usepackage{mdframed}
 \usepackage{multicol}
 \usepackage{hyperref}
 \usepackage{geometry}
+\usepackage{mdframed}
+\usepackage{listings}
 
 \geometry{hmargin=2.2cm,vmargin=1.5cm}
 \definecolor{light-gray}{gray}{0.95} %the shade of grey that stack exchange uses
 
-\title{Présentation GProf}
+\title{Présentation Perf}
 \author{Jérémy ZANGLA}
+
+\lstset{
+  literate=
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {€}{{\EUR}}1 {£}{{\pounds}}1,
+  numbers=left,
+  numbersep=10pt,
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  stepnumber=1,
+  stringstyle=\color{gray},
+  tabsize=4,
+  basicstyle=\small,
+  keywordstyle=\bf\color{blue},
+  backgroundcolor=\color{light-gray},
+  commentstyle=\color{ForestGreen},
+  showstringspaces=false
+}
+
 
 \begin{document}
 
@@ -23,23 +56,44 @@
 \pagebreak
 \section{Présentation}
 \subsection{Profiling}
-Le \emph{profiling} est le processus qui analyse l'exécution d'un programme.
-Il permet d'étudier les performances de notre application, afin de trouver les points à améliorer.
-Les domaines que l'on peut étudier sont diverses : temps d'éxécution, espace mémoire, nombre et fréquence d'appel des fonctions.
-On appelle \emph{profiler} l'outil qui nous permet de faire du profiling.
+    Le \emph{profiling} est le processus qui analyse l'exécution d'un programme.
+    Il permet d'étudier les performances de notre application, afin de trouver les points à améliorer.
+    Les domaines que l'on peut étudier sont diverses : temps d'éxécution, espace mémoire, nombre et fréquence d'appel des fonctions.
+    On appelle \emph{profiler} l'outil qui nous permet de faire du profiling.
 \subsection{Outils}
-Il existe différents outils, appelés \emph{profilers}, permettant le profiling en fonction du langage de programmation choisis. On citera par exemple : 
-\begin{itemize}
-    \item C/C++ : Valgrind (Callgrind, Cachegrind, ...), ...
-    \item Java : Java Runtime Analysis Toolkit (JRAT), ...
-    \item Python : cProfile, ...
-\end{itemize}
-Certains de ces outils doivent être intégrés au programme, d'autres sont lancés indépendamment en donnant le programme (les sources dans le cas d'un langage interprété).
-\section{GProf}
-\subsection{Présentation}Le profiler traité ici est Gprof, il permet d'analyser l'analyse de programmes développés en C ou en C++.
-Il appartient à \emph{GNU Bininary Utilities} et est maintenu par le projet GNU.
+    Il existe différents outils, appelés \emph{profilers}, permettant le profiling en fonction du langage de programmation choisis. On citera par exemple : 
+    \begin{itemize}
+        \item C/C++ : Valgrind (Callgrind, Cachegrind, ...), ...
+        \item Java : Java Runtime Analysis Toolkit (JRAT), ...
+        \item Python : cProfile, ...
+    \end{itemize}
+    Certains de ces outils doivent être intégrés au programme, d'autres sont lancés indépendamment en donnant le programme (les sources dans le cas d'un langage interprété).
+\section{Perf}
+\subsection{Présentation}Le profiler traité ici est perf, il permet d'analyser des programmes développés dans plusieurs langages. Nous allons ici nous concentrer sur son utilisation sur des programmes en C++.
+    C'est un programme qui crée un sous-système linux, permettant ainsi d'avoir son propre noyau pour acquérir les données d'exécution du programme analysé. Il est maintenu en parallèle du noyau linux et reçoit donc des mises à jour régulières.
+    Il est séparé en plusieurs modules, chacun possédant des fonctions particulières. Cet utilitaire peut faire bien plus que ce qui sera présenté ici.
 \subsection{Installation}
-Ce logiciel n'est disponnible que sous Linux. La plupart des distributions permettent de l'installer directement depuis les repositories de leur gestionnaire de paquets. 
-Cependant on peut l'installer manuellement depuis un linux, en téléchargeant l'archive depuis le (\href{http://ftpmirror.gnu.org/binutils}{"site officiel de GNU"}) et en suivant les instructions du fichier \emph{README}.
+    Ce logiciel n'est disponnible que sous Linux. La plupart des distributions permettent de l'installer directement depuis les dépots de leur gestionnaire de paquets. 
+    Cependant on peut l'installer manuellement depuis un linux, en clonant le dépôt git suivant : \emph{git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git}. Il faut ensuite passer sur la branche correspondant au noyau du système utilisé.
+    On peut ensuite se rendre dans le sous-répertoire \emph{tools/perf}, et excécuter \emph{make}. Si une erreur est levée, il faut vérifier que les programmes suivant sont installés : \emph{make}, \emph{flex} et \emph{bisons}.
+\subsection{Configuration}
+    \subsubsection{Droits d'utilisation}
+        Pour pouvoir excécuter perf, il faut par défaut avoir des droits super-utilisateurs. 
+        Il est cependant possible de changer ce comportement en changeant le contenu du fichier de configuration : \emph{/proc/sys/kernel/perf\_event\_paranoid}. Il faudra également modifié le fichier \emph{/etc/sysctl.conf} pour que les changements soient permanents.
+        Le niveau par défaut est 3. Plus le niveau est faible, plus vous aurez accès à des parties du programme sans avoir besoin de droits supplémentaires (avec un minimum à -1 où l'accès est total).
+        Sur une installation neuve, l'utilisation de \emph{perf stat -a} vous indiquera les différents niveaux de privilèges possibles.
+        La commande \emph{perf test} permet de savoir quels évênements peuvent être analysés par perf dans la configuration actuelle.
+    \subsubsection{Compilation}
+        Vous pouvez utilisez perf sur tous les programmes. Cependant pour pouvoir avoir un lien avec le code source il faudra compilé en C++ avec les options -g et -pg.
+        Sans ces options les noms de fonctions seront remplacés par leur adresse mémoire (sous forme hexadécimale).
 \subsection{Utilisation}
+    \subsubsection{Affichage des statistiques systèmes}
+    \begin{mdframed}[backgroundcolor=light-gray, roundcorner=20pt,
+        innerleftmargin=20, innertopmargin=1, innerbottommargin=1, 
+        outerlinewidth=1, linecolor=darkgray]
+        \begin{lstlisting}[language=Bash]
+            perf stat executable
+        \end{lstlisting}
+    \end{mdframed}
+    
 \end{document}

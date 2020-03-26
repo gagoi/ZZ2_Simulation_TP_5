@@ -1,0 +1,333 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+ no time accumulated
+
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  Ts/call  Ts/call  name    
+  0.00      0.00     0.00     1344     0.00     0.00  void std::vector<Point, std::allocator<Point> >::_M_realloc_insert<Point>(__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, Point&&)
+  0.00      0.00     0.00     1214     0.00     0.00  std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()()
+  0.00      0.00     0.00     1184     0.00     0.00  unsigned long std::uniform_int_distribution<unsigned long>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_int_distribution<unsigned long>::param_type const&)
+  0.00      0.00     0.00     1087     0.00     0.00  void std::vector<int, std::allocator<int> >::_M_realloc_insert<int>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int&&)
+  0.00      0.00     0.00      875     0.00     0.00  World::getInstance()
+  0.00      0.00     0.00      723     0.00     0.00  Harvester::getType() const
+  0.00      0.00     0.00      548     0.00     0.00  World::getEnvironment(Point&, int)
+  0.00      0.00     0.00      334     0.00     0.00  operator<<(std::ostream&, Entity const&)
+  0.00      0.00     0.00      281     0.00     0.00  World::updateMove(Entity*, Point const&)
+  0.00      0.00     0.00      277     0.00     0.00  Agent::move(Point const&)
+  0.00      0.00     0.00      268     0.00     0.00  Harvester::getColor[abi:cxx11]() const
+  0.00      0.00     0.00      267     0.00     0.00  World::findRandomPositionInEnvironment(std::vector<Entity*, std::allocator<Entity*> >, int, Entity::ENTITY_TYPE, Point&)
+  0.00      0.00     0.00      267     0.00     0.00  void std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&)
+  0.00      0.00     0.00      257     0.00     0.00  Harvester::moveHarvester()
+  0.00      0.00     0.00      257     0.00     0.00  Harvester::update()
+  0.00      0.00     0.00       42     0.00     0.00  Hunter::getType() const
+  0.00      0.00     0.00       26     0.00     0.00  Hunter::getColor[abi:cxx11]() const
+  0.00      0.00     0.00       24     0.00     0.00  Hunter::update()
+  0.00      0.00     0.00       20     0.00     0.00  Base::getColor[abi:cxx11]() const
+  0.00      0.00     0.00       20     0.00     0.00  Resource::getColor[abi:cxx11]() const
+  0.00      0.00     0.00       20     0.00     0.00  void std::shuffle<__gnu_cxx::__normal_iterator<Agent**, std::vector<Agent*, std::allocator<Agent*> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&>(__gnu_cxx::__normal_iterator<Agent**, std::vector<Agent*, std::allocator<Agent*> > >, __gnu_cxx::__normal_iterator<Agent**, std::vector<Agent*, std::allocator<Agent*> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&)
+  0.00      0.00     0.00       20     0.00     0.00  operator<<(std::ostream&, World const&)
+  0.00      0.00     0.00       19     0.00     0.00  Entity::Entity(Point const&, char)
+  0.00      0.00     0.00       18     0.00     0.00  Entity::~Entity()
+  0.00      0.00     0.00       17     0.00     0.00  Agent::Agent(Point const&, char)
+  0.00      0.00     0.00       17     0.00     0.00  World::add(Entity*)
+  0.00      0.00     0.00       16     0.00     0.00  Agent::~Agent()
+  0.00      0.00     0.00       16     0.00     0.00  std::_Rb_tree<IObserver*, IObserver*, std::_Identity<IObserver*>, std::less<IObserver*>, std::allocator<IObserver*> >::_M_erase(std::_Rb_tree_node<IObserver*>*)
+  0.00      0.00     0.00       15     0.00     0.00  World::getDistances(Point const&, Point const&) const
+  0.00      0.00     0.00       14     0.00     0.00  Harvester::~Harvester()
+  0.00      0.00     0.00       11     0.00     0.00  World::getDirection(Point const&, Point const&) const
+  0.00      0.00     0.00       10     0.00     0.00  Base::getType() const
+  0.00      0.00     0.00       10     0.00     0.00  void std::vector<Agent*, std::allocator<Agent*> >::_M_realloc_insert<Agent* const&>(__gnu_cxx::__normal_iterator<Agent**, std::vector<Agent*, std::allocator<Agent*> > >, Agent* const&)
+  0.00      0.00     0.00        6     0.00     0.00  void std::vector<std::vector<Entity*, std::allocator<Entity*> >, std::allocator<std::vector<Entity*, std::allocator<Entity*> > > >::_M_realloc_insert<std::vector<Entity*, std::allocator<Entity*> > >(__gnu_cxx::__normal_iterator<std::vector<Entity*, std::allocator<Entity*> >*, std::vector<std::vector<Entity*, std::allocator<Entity*> >, std::allocator<std::vector<Entity*, std::allocator<Entity*> > > > >, std::vector<Entity*, std::allocator<Entity*> >&&)
+  0.00      0.00     0.00        5     0.00     0.00  Resource::getType() const
+  0.00      0.00     0.00        4     0.00     0.00  Agent::setPosition(Point const&)
+  0.00      0.00     0.00        4     0.00     0.00  World::updateKill(Entity*)
+  0.00      0.00     0.00        2     0.00     0.00  Hunter::~Hunter()
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN4BaseC2ERK5Pointic
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN5AgentC2ERK5Pointc
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN5World3genE
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN6EntityC2ERK5Pointc
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN6HunterC2ERK5Pointc
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN6System8instanceE
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN8ResourceC2ERK5Pointc
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN9HarvesterC2ERK5PointP4Basec
+  0.00      0.00     0.00        1     0.00     0.00  _GLOBAL__sub_I_dis_x
+  0.00      0.00     0.00        1     0.00     0.00  Base::~Base()
+  0.00      0.00     0.00        1     0.00     0.00  World::World()
+  0.00      0.00     0.00        1     0.00     0.00  World::~World()
+  0.00      0.00     0.00        1     0.00     0.00  System::getInstance()
+  0.00      0.00     0.00        1     0.00     0.00  System::addAgent(Agent*)
+  0.00      0.00     0.00        1     0.00     0.00  Resource::~Resource()
+
+			Call graph
+
+
+granularity: each sample hit covers 2 byte(s) no time propagated
+
+index % time    self  children    called     name
+                0.00    0.00    1344/1344        World::findRandomPositionInEnvironment(std::vector<Entity*, std::allocator<Entity*> >, int, Entity::ENTITY_TYPE, Point&) [19]
+[8]      0.0    0.00    0.00    1344         void std::vector<Point, std::allocator<Point> >::_M_realloc_insert<Point>(__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, Point&&) [8]
+-----------------------------------------------
+                0.00    0.00      30/1214        getDrawMode(int, char**) [61]
+                0.00    0.00    1184/1214        unsigned long std::uniform_int_distribution<unsigned long>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_int_distribution<unsigned long>::param_type const&) [10]
+[9]      0.0    0.00    0.00    1214         std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()() [9]
+-----------------------------------------------
+                0.00    0.00     140/1184        void std::shuffle<__gnu_cxx::__normal_iterator<Agent**, std::vector<Agent*, std::allocator<Agent*> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&>(__gnu_cxx::__normal_iterator<Agent**, std::vector<Agent*, std::allocator<Agent*> > >, __gnu_cxx::__normal_iterator<Agent**, std::vector<Agent*, std::allocator<Agent*> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [28]
+                0.00    0.00    1044/1184        void std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [20]
+[10]     0.0    0.00    0.00    1184         unsigned long std::uniform_int_distribution<unsigned long>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_int_distribution<unsigned long>::param_type const&) [10]
+                0.00    0.00    1184/1214        std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()() [9]
+-----------------------------------------------
+                0.00    0.00    1087/1087        World::findRandomPositionInEnvironment(std::vector<Entity*, std::allocator<Entity*> >, int, Entity::ENTITY_TYPE, Point&) [19]
+[11]     0.0    0.00    0.00    1087         void std::vector<int, std::allocator<int> >::_M_realloc_insert<int>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int&&) [11]
+-----------------------------------------------
+                0.00    0.00      17/875         Agent::Agent(Point const&, char) [32]
+                0.00    0.00      17/875         System::addAgent(Agent*) [59]
+                0.00    0.00      70/875         Hunter::update() [25]
+                0.00    0.00     257/875         Harvester::update() [22]
+                0.00    0.00     514/875         Harvester::moveHarvester() [21]
+[12]     0.0    0.00    0.00     875         World::getInstance() [12]
+                0.00    0.00       1/1           World::World() [56]
+-----------------------------------------------
+                0.00    0.00      15/723         Hunter::update() [25]
+                0.00    0.00     354/723         Harvester::update() [22]
+                0.00    0.00     354/723         World::findRandomPositionInEnvironment(std::vector<Entity*, std::allocator<Entity*> >, int, Entity::ENTITY_TYPE, Point&) [19]
+[13]     0.0    0.00    0.00     723         Harvester::getType() const [13]
+-----------------------------------------------
+                0.00    0.00      34/548         Hunter::update() [25]
+                0.00    0.00     257/548         Harvester::moveHarvester() [21]
+                0.00    0.00     257/548         Harvester::update() [22]
+[14]     0.0    0.00    0.00     548         World::getEnvironment(Point&, int) [14]
+-----------------------------------------------
+                0.00    0.00     334/334         operator<<(std::ostream&, World const&) [29]
+[15]     0.0    0.00    0.00     334         operator<<(std::ostream&, Entity const&) [15]
+                0.00    0.00     268/268         Harvester::getColor[abi:cxx11]() const [18]
+                0.00    0.00      26/26          Hunter::getColor[abi:cxx11]() const [24]
+                0.00    0.00      20/20          Resource::getColor[abi:cxx11]() const [27]
+                0.00    0.00      20/20          Base::getColor[abi:cxx11]() const [26]
+-----------------------------------------------
+                0.00    0.00       4/281         Agent::setPosition(Point const&) [43]
+                0.00    0.00     277/281         Agent::move(Point const&) [17]
+[16]     0.0    0.00    0.00     281         World::updateMove(Entity*, Point const&) [16]
+-----------------------------------------------
+                0.00    0.00      20/277         Hunter::update() [25]
+                0.00    0.00     257/277         Harvester::moveHarvester() [21]
+[17]     0.0    0.00    0.00     277         Agent::move(Point const&) [17]
+                0.00    0.00     277/281         World::updateMove(Entity*, Point const&) [16]
+-----------------------------------------------
+                0.00    0.00     268/268         operator<<(std::ostream&, Entity const&) [15]
+[18]     0.0    0.00    0.00     268         Harvester::getColor[abi:cxx11]() const [18]
+-----------------------------------------------
+                0.00    0.00      10/267         Hunter::update() [25]
+                0.00    0.00     257/267         Harvester::moveHarvester() [21]
+[19]     0.0    0.00    0.00     267         World::findRandomPositionInEnvironment(std::vector<Entity*, std::allocator<Entity*> >, int, Entity::ENTITY_TYPE, Point&) [19]
+                0.00    0.00    1344/1344        void std::vector<Point, std::allocator<Point> >::_M_realloc_insert<Point>(__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, Point&&) [8]
+                0.00    0.00    1087/1087        void std::vector<int, std::allocator<int> >::_M_realloc_insert<int>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int&&) [11]
+                0.00    0.00     354/723         Harvester::getType() const [13]
+                0.00    0.00     267/267         void std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [20]
+                0.00    0.00      20/42          Hunter::getType() const [23]
+                0.00    0.00       3/10          Base::getType() const [39]
+                0.00    0.00       2/5           Resource::getType() const [42]
+-----------------------------------------------
+                0.00    0.00     267/267         World::findRandomPositionInEnvironment(std::vector<Entity*, std::allocator<Entity*> >, int, Entity::ENTITY_TYPE, Point&) [19]
+[20]     0.0    0.00    0.00     267         void std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [20]
+                0.00    0.00    1044/1184        unsigned long std::uniform_int_distribution<unsigned long>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_int_distribution<unsigned long>::param_type const&) [10]
+-----------------------------------------------
+                0.00    0.00     257/257         Harvester::update() [22]
+[21]     0.0    0.00    0.00     257         Harvester::moveHarvester() [21]
+                0.00    0.00     514/875         World::getInstance() [12]
+                0.00    0.00     257/548         World::getEnvironment(Point&, int) [14]
+                0.00    0.00     257/267         World::findRandomPositionInEnvironment(std::vector<Entity*, std::allocator<Entity*> >, int, Entity::ENTITY_TYPE, Point&) [19]
+                0.00    0.00     257/277         Agent::move(Point const&) [17]
+-----------------------------------------------
+                0.00    0.00     257/257         System::update() [77]
+[22]     0.0    0.00    0.00     257         Harvester::update() [22]
+                0.00    0.00     354/723         Harvester::getType() const [13]
+                0.00    0.00     257/875         World::getInstance() [12]
+                0.00    0.00     257/548         World::getEnvironment(Point&, int) [14]
+                0.00    0.00     257/257         Harvester::moveHarvester() [21]
+                0.00    0.00      10/42          Hunter::getType() const [23]
+-----------------------------------------------
+                0.00    0.00      10/42          Harvester::update() [22]
+                0.00    0.00      12/42          Hunter::update() [25]
+                0.00    0.00      20/42          World::findRandomPositionInEnvironment(std::vector<Entity*, std::allocator<Entity*> >, int, Entity::ENTITY_TYPE, Point&) [19]
+[23]     0.0    0.00    0.00      42         Hunter::getType() const [23]
+-----------------------------------------------
+                0.00    0.00      26/26          operator<<(std::ostream&, Entity const&) [15]
+[24]     0.0    0.00    0.00      26         Hunter::getColor[abi:cxx11]() const [24]
+-----------------------------------------------
+                0.00    0.00      24/24          System::update() [77]
+[25]     0.0    0.00    0.00      24         Hunter::update() [25]
+                0.00    0.00      70/875         World::getInstance() [12]
+                0.00    0.00      34/548         World::getEnvironment(Point&, int) [14]
+                0.00    0.00      20/277         Agent::move(Point const&) [17]
+                0.00    0.00      15/723         Harvester::getType() const [13]
+                0.00    0.00      15/15          World::getDistances(Point const&, Point const&) const [36]
+                0.00    0.00      12/42          Hunter::getType() const [23]
+                0.00    0.00      11/11          World::getDirection(Point const&, Point const&) const [38]
+                0.00    0.00      10/267         World::findRandomPositionInEnvironment(std::vector<Entity*, std::allocator<Entity*> >, int, Entity::ENTITY_TYPE, Point&) [19]
+                0.00    0.00       7/10          Base::getType() const [39]
+                0.00    0.00       4/4           World::updateKill(Entity*) [44]
+                0.00    0.00       4/4           Agent::setPosition(Point const&) [43]
+                0.00    0.00       3/5           Resource::getType() const [42]
+                0.00    0.00       1/1           System::getInstance() [58]
+                0.00    0.00       1/17          Agent::Agent(Point const&, char) [32]
+                0.00    0.00       1/1           System::addAgent(Agent*) [59]
+-----------------------------------------------
+                0.00    0.00      20/20          operator<<(std::ostream&, Entity const&) [15]
+[26]     0.0    0.00    0.00      20         Base::getColor[abi:cxx11]() const [26]
+-----------------------------------------------
+                0.00    0.00      20/20          operator<<(std::ostream&, Entity const&) [15]
+[27]     0.0    0.00    0.00      20         Resource::getColor[abi:cxx11]() const [27]
+-----------------------------------------------
+                0.00    0.00      20/20          System::update() [77]
+[28]     0.0    0.00    0.00      20         void std::shuffle<__gnu_cxx::__normal_iterator<Agent**, std::vector<Agent*, std::allocator<Agent*> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&>(__gnu_cxx::__normal_iterator<Agent**, std::vector<Agent*, std::allocator<Agent*> > >, __gnu_cxx::__normal_iterator<Agent**, std::vector<Agent*, std::allocator<Agent*> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&) [28]
+                0.00    0.00     140/1184        unsigned long std::uniform_int_distribution<unsigned long>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_int_distribution<unsigned long>::param_type const&) [10]
+-----------------------------------------------
+                0.00    0.00      20/20          draw(World const&) [62]
+[29]     0.0    0.00    0.00      20         operator<<(std::ostream&, World const&) [29]
+                0.00    0.00     334/334         operator<<(std::ostream&, Entity const&) [15]
+-----------------------------------------------
+                0.00    0.00       1/19          Resource::Resource(Point const&, char) [80]
+                0.00    0.00       1/19          Base::Base(Point const&, int, char) [65]
+                0.00    0.00      17/19          Agent::Agent(Point const&, char) [32]
+[30]     0.0    0.00    0.00      19         Entity::Entity(Point const&, char) [30]
+-----------------------------------------------
+                0.00    0.00       1/18          Resource::~Resource() [60]
+                0.00    0.00       1/18          Base::~Base() [55]
+                0.00    0.00       2/18          Hunter::~Hunter() [45]
+                0.00    0.00      14/18          Harvester::~Harvester() [37]
+[31]     0.0    0.00    0.00      18         Entity::~Entity() [31]
+-----------------------------------------------
+                0.00    0.00       1/17          Hunter::update() [25]
+                0.00    0.00       1/17          Hunter::Hunter(Point const&, char) [74]
+                0.00    0.00      15/17          Harvester::Harvester(Point const&, Base*, char) [82]
+[32]     0.0    0.00    0.00      17         Agent::Agent(Point const&, char) [32]
+                0.00    0.00      17/19          Entity::Entity(Point const&, char) [30]
+                0.00    0.00      17/875         World::getInstance() [12]
+-----------------------------------------------
+                0.00    0.00      17/17          System::addAgent(Agent*) [59]
+[33]     0.0    0.00    0.00      17         World::add(Entity*) [33]
+-----------------------------------------------
+                0.00    0.00       2/16          Hunter::~Hunter() [45]
+                0.00    0.00      14/16          Harvester::~Harvester() [37]
+[34]     0.0    0.00    0.00      16         Agent::~Agent() [34]
+                0.00    0.00      16/16          std::_Rb_tree<IObserver*, IObserver*, std::_Identity<IObserver*>, std::less<IObserver*>, std::allocator<IObserver*> >::_M_erase(std::_Rb_tree_node<IObserver*>*) [35]
+-----------------------------------------------
+                0.00    0.00      16/16          Agent::~Agent() [34]
+[35]     0.0    0.00    0.00      16         std::_Rb_tree<IObserver*, IObserver*, std::_Identity<IObserver*>, std::less<IObserver*>, std::allocator<IObserver*> >::_M_erase(std::_Rb_tree_node<IObserver*>*) [35]
+-----------------------------------------------
+                0.00    0.00      15/15          Hunter::update() [25]
+[36]     0.0    0.00    0.00      15         World::getDistances(Point const&, Point const&) const [36]
+-----------------------------------------------
+                0.00    0.00       4/14          System::update() [77]
+                0.00    0.00      10/14          World::~World() [57]
+[37]     0.0    0.00    0.00      14         Harvester::~Harvester() [37]
+                0.00    0.00      14/18          Entity::~Entity() [31]
+                0.00    0.00      14/16          Agent::~Agent() [34]
+-----------------------------------------------
+                0.00    0.00      11/11          Hunter::update() [25]
+[38]     0.0    0.00    0.00      11         World::getDirection(Point const&, Point const&) const [38]
+-----------------------------------------------
+                0.00    0.00       3/10          World::findRandomPositionInEnvironment(std::vector<Entity*, std::allocator<Entity*> >, int, Entity::ENTITY_TYPE, Point&) [19]
+                0.00    0.00       7/10          Hunter::update() [25]
+[39]     0.0    0.00    0.00      10         Base::getType() const [39]
+-----------------------------------------------
+                0.00    0.00       5/10          System::addAgent(Agent*) [59]
+                0.00    0.00       5/10          System::update() [77]
+[40]     0.0    0.00    0.00      10         void std::vector<Agent*, std::allocator<Agent*> >::_M_realloc_insert<Agent* const&>(__gnu_cxx::__normal_iterator<Agent**, std::vector<Agent*, std::allocator<Agent*> > >, Agent* const&) [40]
+-----------------------------------------------
+                0.00    0.00       6/6           World::World() [56]
+[41]     0.0    0.00    0.00       6         void std::vector<std::vector<Entity*, std::allocator<Entity*> >, std::allocator<std::vector<Entity*, std::allocator<Entity*> > > >::_M_realloc_insert<std::vector<Entity*, std::allocator<Entity*> > >(__gnu_cxx::__normal_iterator<std::vector<Entity*, std::allocator<Entity*> >*, std::vector<std::vector<Entity*, std::allocator<Entity*> >, std::allocator<std::vector<Entity*, std::allocator<Entity*> > > > >, std::vector<Entity*, std::allocator<Entity*> >&&) [41]
+-----------------------------------------------
+                0.00    0.00       2/5           World::findRandomPositionInEnvironment(std::vector<Entity*, std::allocator<Entity*> >, int, Entity::ENTITY_TYPE, Point&) [19]
+                0.00    0.00       3/5           Hunter::update() [25]
+[42]     0.0    0.00    0.00       5         Resource::getType() const [42]
+-----------------------------------------------
+                0.00    0.00       4/4           Hunter::update() [25]
+[43]     0.0    0.00    0.00       4         Agent::setPosition(Point const&) [43]
+                0.00    0.00       4/281         World::updateMove(Entity*, Point const&) [16]
+-----------------------------------------------
+                0.00    0.00       4/4           Hunter::update() [25]
+[44]     0.0    0.00    0.00       4         World::updateKill(Entity*) [44]
+-----------------------------------------------
+                0.00    0.00       2/2           World::~World() [57]
+[45]     0.0    0.00    0.00       2         Hunter::~Hunter() [45]
+                0.00    0.00       2/18          Entity::~Entity() [31]
+                0.00    0.00       2/16          Agent::~Agent() [34]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [90]
+[46]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN4BaseC2ERK5Pointic [46]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [90]
+[47]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN5AgentC2ERK5Pointc [47]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [90]
+[48]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN5World3genE [48]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [90]
+[49]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN6EntityC2ERK5Pointc [49]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [90]
+[50]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN6HunterC2ERK5Pointc [50]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [90]
+[51]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN6System8instanceE [51]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [90]
+[52]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN8ResourceC2ERK5Pointc [52]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [90]
+[53]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN9HarvesterC2ERK5PointP4Basec [53]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [90]
+[54]     0.0    0.00    0.00       1         _GLOBAL__sub_I_dis_x [54]
+-----------------------------------------------
+                0.00    0.00       1/1           World::~World() [57]
+[55]     0.0    0.00    0.00       1         Base::~Base() [55]
+                0.00    0.00       1/18          Entity::~Entity() [31]
+-----------------------------------------------
+                0.00    0.00       1/1           World::getInstance() [12]
+[56]     0.0    0.00    0.00       1         World::World() [56]
+                0.00    0.00       6/6           void std::vector<std::vector<Entity*, std::allocator<Entity*> >, std::allocator<std::vector<Entity*, std::allocator<Entity*> > > >::_M_realloc_insert<std::vector<Entity*, std::allocator<Entity*> > >(__gnu_cxx::__normal_iterator<std::vector<Entity*, std::allocator<Entity*> >*, std::vector<std::vector<Entity*, std::allocator<Entity*> >, std::allocator<std::vector<Entity*, std::allocator<Entity*> > > > >, std::vector<Entity*, std::allocator<Entity*> >&&) [41]
+-----------------------------------------------
+                0.00    0.00       1/1           World::deleteInstance() [68]
+[57]     0.0    0.00    0.00       1         World::~World() [57]
+                0.00    0.00      10/14          Harvester::~Harvester() [37]
+                0.00    0.00       2/2           Hunter::~Hunter() [45]
+                0.00    0.00       1/1           Resource::~Resource() [60]
+                0.00    0.00       1/1           Base::~Base() [55]
+-----------------------------------------------
+                0.00    0.00       1/1           Hunter::update() [25]
+[58]     0.0    0.00    0.00       1         System::getInstance() [58]
+-----------------------------------------------
+                0.00    0.00       1/1           Hunter::update() [25]
+[59]     0.0    0.00    0.00       1         System::addAgent(Agent*) [59]
+                0.00    0.00      17/875         World::getInstance() [12]
+                0.00    0.00      17/17          World::add(Entity*) [33]
+                0.00    0.00       5/10          void std::vector<Agent*, std::allocator<Agent*> >::_M_realloc_insert<Agent* const&>(__gnu_cxx::__normal_iterator<Agent**, std::vector<Agent*, std::allocator<Agent*> > >, Agent* const&) [40]
+-----------------------------------------------
+                0.00    0.00       1/1           World::~World() [57]
+[60]     0.0    0.00    0.00       1         Resource::~Resource() [60]
+                0.00    0.00       1/18          Entity::~Entity() [31]
+-----------------------------------------------
+
+Index by function name
+
+  [46] _GLOBAL__sub_I__ZN4BaseC2ERK5Pointic (Base.cpp) [19] World::findRandomPositionInEnvironment(std::vector<Entity*, std::allocator<Entity*> >, int, Entity::ENTITY_TYPE, Point&) [23] Hunter::getType() const
+  [47] _GLOBAL__sub_I__ZN5AgentC2ERK5Pointc (Agent.cpp) [33] World::add(Entity*) [24] Hunter::getColor[abi:cxx11]() const
+  [48] _GLOBAL__sub_I__ZN5World3genE (World.cpp) [56] World::World() [42] Resource::getType() const
+  [49] _GLOBAL__sub_I__ZN6EntityC2ERK5Pointc (Entity.cpp) [57] World::~World() [27] Resource::getColor[abi:cxx11]() const
+  [50] _GLOBAL__sub_I__ZN6HunterC2ERK5Pointc (Hunter.cpp) [30] Entity::Entity(Point const&, char) [13] Harvester::getType() const
+  [51] _GLOBAL__sub_I__ZN6System8instanceE (System.cpp) [31] Entity::~Entity() [18] Harvester::getColor[abi:cxx11]() const
+  [52] _GLOBAL__sub_I__ZN8ResourceC2ERK5Pointc (Resource.cpp) [25] Hunter::update() [9] std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>::operator()()
+  [53] _GLOBAL__sub_I__ZN9HarvesterC2ERK5PointP4Basec (Harvester.cpp) [45] Hunter::~Hunter() [10] unsigned long std::uniform_int_distribution<unsigned long>::operator()<std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul> >(std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&, std::uniform_int_distribution<unsigned long>::param_type const&)
+  [54] _GLOBAL__sub_I_dis_x (main.cpp) [58] System::getInstance() [8] void std::vector<Point, std::allocator<Point> >::_M_realloc_insert<Point>(__gnu_cxx::__normal_iterator<Point*, std::vector<Point, std::allocator<Point> > >, Point&&)
+  [55] Base::~Base()          [59] System::addAgent(Agent*) [40] void std::vector<Agent*, std::allocator<Agent*> >::_M_realloc_insert<Agent* const&>(__gnu_cxx::__normal_iterator<Agent**, std::vector<Agent*, std::allocator<Agent*> > >, Agent* const&)
+  [43] Agent::setPosition(Point const&) [60] Resource::~Resource() [41] void std::vector<std::vector<Entity*, std::allocator<Entity*> >, std::allocator<std::vector<Entity*, std::allocator<Entity*> > > >::_M_realloc_insert<std::vector<Entity*, std::allocator<Entity*> > >(__gnu_cxx::__normal_iterator<std::vector<Entity*, std::allocator<Entity*> >*, std::vector<std::vector<Entity*, std::allocator<Entity*> >, std::allocator<std::vector<Entity*, std::allocator<Entity*> > > > >, std::vector<Entity*, std::allocator<Entity*> >&&)
+  [17] Agent::move(Point const&) [21] Harvester::moveHarvester() [11] void std::vector<int, std::allocator<int> >::_M_realloc_insert<int>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int&&)
+  [32] Agent::Agent(Point const&, char) [22] Harvester::update() [35] std::_Rb_tree<IObserver*, IObserver*, std::_Identity<IObserver*>, std::less<IObserver*>, std::allocator<IObserver*> >::_M_erase(std::_Rb_tree_node<IObserver*>*)
+  [34] Agent::~Agent()        [37] Harvester::~Harvester() [28] void std::shuffle<__gnu_cxx::__normal_iterator<Agent**, std::vector<Agent*, std::allocator<Agent*> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&>(__gnu_cxx::__normal_iterator<Agent**, std::vector<Agent*, std::allocator<Agent*> > >, __gnu_cxx::__normal_iterator<Agent**, std::vector<Agent*, std::allocator<Agent*> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&)
+  [44] World::updateKill(Entity*) [39] Base::getType() const [20] void std::shuffle<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, std::mersenne_twister_engine<unsigned long, 32ul, 624ul, 397ul, 31ul, 2567483615ul, 11ul, 4294967295ul, 7ul, 2636928640ul, 15ul, 4022730752ul, 18ul, 1812433253ul>&)
+  [16] World::updateMove(Entity*, Point const&) [26] Base::getColor[abi:cxx11]() const [29] operator<<(std::ostream&, World const&)
+  [12] World::getInstance()   [38] World::getDirection(Point const&, Point const&) const [15] operator<<(std::ostream&, Entity const&)
+  [14] World::getEnvironment(Point&, int) [36] World::getDistances(Point const&, Point const&) const
