@@ -4,9 +4,6 @@ OBJDIR = bin/obj/
 EXEC    = bin/sma
 DEPFILE = $(OBJDIR)mk.depend
 INCDIR = -I"."
-LIBDIR = 
-INCLIB = 
-#-lsfml-graphics -lsfml-window -lsfml-system
  
 #les programmes et leurs options
 MSQ = @
@@ -22,7 +19,6 @@ CFLAGS = -O3 -Wall -std=c++17 -g -pg
 LFLAGS = -O3 -Wall -std=c++17 -g -pg
  
 #variables automatiques
-#SRC = $(wildcard $(SRCDIR)*.cpp $(SRCDIR)*/*.cpp $(SRCDIR)*/*/*.cpp $(SRCDIR)*/*/*/*.cpp)
 SRC := $(shell find $(SRCDIR) -name '*.cpp')
 SRC_H := $(shell find $(SRCDIR) -name '*.hpp')
 OBJ := $(patsubst %.cpp,$(OBJDIR)%.o,$(notdir $(SRC)))
@@ -39,7 +35,7 @@ endif
 
 $(EXEC): $(OBJ)
 	$(MSG) "==== édition de liens ===== "
-	$(CC) $(LFLAGS) $(OBJ) -o $(EXEC) $(LIBDIR) $(INCLIB)
+	$(CC) $(LFLAGS) $(OBJ) -o $(EXEC)
 	$(MSG_BUILDOK)
 	#$(EXEC)
 
@@ -70,5 +66,3 @@ log-draw:
 
 log-file:
 	$(EXEC) --log-file
-
-#============ fin du makefile ========================

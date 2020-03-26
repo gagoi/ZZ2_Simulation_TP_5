@@ -27,7 +27,7 @@ std::uniform_int_distribution<> dis_x(0, World::WORLD_WIDTH);
 std::uniform_int_distribution<> dis_y(0, World::WORLD_HEIGHT);
 
 DRAW_MODE mode = MODE_LOG;
-std::fstream log_file;
+std::ofstream log_file;
 
 
 void getDrawMode(int, char **);
@@ -38,8 +38,8 @@ int main(int argc, char ** argv)
     getDrawMode(argc, argv);
 
     if (mode == MODE_LOG_FILE || mode == MODE_LOG_FILE_AND_DRAW)
-        log_file = std::fstream("output.log");
-
+        log_file = std::ofstream("output.log");
+        
     System& s = System::getInstance();
     World& w = World::getInstance();
 
@@ -53,7 +53,7 @@ int main(int argc, char ** argv)
     for (int i = 0; i < 15; i++)    
         w.add(new Resource(Point(dis_x(World::gen), dis_y(World::gen))));
 
-    for (int i = 0; /*i < 1000*/; i++)
+    for (int i = 0; i < 1000; i++)
     {
         s.update();
         std::cout << "UPDATE " << i << std::endl;
@@ -81,7 +81,7 @@ void draw(World const & w)
         system("clear");
         #endif 
         std::cout << w;
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
         break;
     case MODE_LOG:
         std::cout << w;
@@ -97,7 +97,7 @@ void draw(World const & w)
         system("clear");
         #endif
         std::cout << w;
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        std::this_thread::sleep_for(std::chrono::milliseconds(500));
         break;
     }
 }

@@ -198,23 +198,23 @@ Point World::getDirection(Point const & point, Point const & dest) const
 std::ostream& operator<<(std::ostream& out, World const & m)
 {
     int i = 0;
-    std::cout << "   ";
+    out << "   ";
     for (int j = 0; j < m._width; j++)
-        std::cout << std::setw(3) << j;
+        out << std::setw(3) << j;
     
-    std::cout << std::endl;
+    out << std::endl;
 
     for (auto &&line : m._world)
     {
-        std::cout << std::setw(2) << i++ << " ";
+        out << std::setw(2) << i++ << " ";
         for (auto &&o : line)
         {
             if (o)
-                std::cout << std::setw(7) << *o;
+                out << std::setw(7) << *o;
             else
-                std::cout << std::setw(3) << '.';
+                out << std::setw(3) << '.';
         }
-        std::cout << std::endl;
+        out << std::endl;
     }
     return out;
 }

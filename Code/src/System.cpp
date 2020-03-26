@@ -40,7 +40,6 @@ void System::addAgent(Agent* a)
 
 void System::update()
 {
-    std::vector<std::vector<Agent*>::iterator> toSuppr;
     // Updates
     std::shuffle(_agents.begin(), _agents.end(), World::gen);
     for (auto it = _agents.begin(); it != _agents.end(); it++)
@@ -48,8 +47,6 @@ void System::update()
         auto ptr = *it;
         if (!ptr->isDead())
             ptr->update();
-        else
-            toSuppr.push_back(it);
     }
 
     // Suppression des agents morts pendant cette update

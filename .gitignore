@@ -33,12 +33,14 @@
 bin/
 
 # Latex
-.aux
-.fdb_latexmk
-.fls
-.log
-.syntex.gz
-.toc
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.syntex.gz
+*.toc
+*.lof
+*.synctex.gz
 
 # Doxygen
 html/
