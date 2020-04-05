@@ -1,4 +1,4 @@
-\documentclass[a4paper]{article}
+\documentclass[a4paper, 12pt]{article}
 \usepackage{makeidx}
 \usepackage{formular}
 \usepackage{listings}
@@ -67,14 +67,14 @@
         \item Java : Java Runtime Analysis Toolkit (JRAT), ...
         \item Python : cProfile, ...
     \end{itemize}
-    Certains de ces outils doivent être intégrés au programme, d'autres sont lancés indépendamment en donnant le programme (les sources dans le cas d'un langage interprété).
+    Certains de ces outils doivent être intégrés au programme, d'autres sont lancés indépendamment en donnant le programme en paramêtre (les sources dans le cas d'un langage interprété).
 \section{Perf}
-\subsection{Présentation}Le profiler traité ici est perf, il permet d'analyser des programmes développés dans plusieurs langages. Nous allons ici nous concentrer sur son utilisation sur des programmes en C++.
+\subsection{Présentation}Le profiler traité ici est perf, il permet d'analyser des programmes développés dans plusieurs langages. Il ne fonctionne cependant que dans un environnement linux. Nous allons ici nous concentrer sur son utilisation sur des programmes en C++.
     C'est un programme qui crée un sous-système linux, permettant ainsi d'avoir son propre noyau pour acquérir les données d'exécution du programme analysé. Il est maintenu en parallèle du noyau linux et reçoit donc des mises à jour régulières.
     Il est séparé en plusieurs modules, chacun possédant des fonctions particulières. Cet utilitaire peut faire bien plus que ce qui sera présenté ici.
 \subsection{Installation}
-    Ce logiciel n'est disponnible que sous Linux. La plupart des distributions permettent de l'installer directement depuis les dépots de leur gestionnaire de paquets. 
-    Cependant on peut l'installer manuellement depuis un linux, en clonant le dépôt git suivant : \emph{git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git}. Il faut ensuite passer sur la branche correspondant au noyau du système utilisé.
+    Ce logiciel n'est disponnible que sous Linux. La plupart des distributions permettent de l'installer directement depuis les dépots de leur gestionnaire de paquets (sous ubuntu on installera \emph{linux-tools-common}). 
+    Cependant on peut l'installer manuellement depuis un linux, en clonant le dépôt git suivant : \emph{\center{git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git}}\\Il faut ensuite passer sur la branche correspondant au noyau du système utilisé.
     On peut ensuite se rendre dans le sous-répertoire \emph{tools/perf}, et excécuter \emph{make}. Si une erreur est levée, il faut vérifier que les programmes suivant sont installés : \emph{make}, \emph{flex} et \emph{bisons}.
 \subsection{Configuration}
     \subsubsection{Droits d'utilisation}
@@ -84,7 +84,7 @@
         Sur une installation neuve, l'utilisation de \emph{perf stat -a} vous indiquera les différents niveaux de privilèges possibles.
         La commande \emph{perf test} permet de savoir quels évênements peuvent être analysés par perf dans la configuration actuelle.
     \subsubsection{Compilation}
-        Vous pouvez utilisez perf sur tous les programmes. Cependant pour pouvoir avoir un lien avec le code source il faudra compilé en C++ avec les options -g et -pg.
+        Vous pouvez utilisez perf sur tous les programmes. Cependant pour pouvoir avoir un lien avec le code source il faudra compilé du C++ avec les options -g et -pg de g++.
         Sans ces options les noms de fonctions seront remplacés par leur adresse mémoire (sous forme hexadécimale).
 \subsection{Utilisation}
     \subsubsection{Affichage des statistiques systèmes}
@@ -92,8 +92,68 @@
         innerleftmargin=20, innertopmargin=1, innerbottommargin=1, 
         outerlinewidth=1, linecolor=darkgray]
         \begin{lstlisting}[language=Bash]
-            perf stat executable
+perf stat <executable>
         \end{lstlisting}
     \end{mdframed}
+
+    Cette commande exécutera alors le programme. Puis à la fin, il affichera quelques statistiques sur les resources utilisées.
+    Les informations affichées dépenderont alors des resources utilisées, par défaut le programme affichera ce qu'il juge de plus pertinent.
+    On aura donc par exemple le temps d'exécution du programme, le nombre de changement de contexte ou bien le nombre d'instructions processurs.
+
+    L'utilisation du paramêtre \emph{-d}, permet de rajouter du détail dans les informations affichées notemment l'utilisation du cache du processeur.
+    Il est possible de spécifier plus précisémment ce que l'on veut analyser, la page du manuel concernant la commande regorge d'informations.
     
+    \subsubsection{Analyse graphique}
+
+    L'analyse d'un programme se fait grâce à l'enregistrement d'un fichier contenant l'ensemble des informations.
+    \begin{mdframed}[backgroundcolor=light-gray, roundcorner=20pt,
+        innerleftmargin=20, innertopmargin=1, innerbottommargin=1, 
+        outerlinewidth=1, linecolor=darkgray]
+        \begin{lstlisting}[language=Bash]
+perf timechart record <executable>
+        \end{lstlisting}
+    \end{mdframed}
+    \par
+    Cette commande génère un fichier, qui sera utilsé pour afficher des informations sur l'éxécution du programme.
+    On peut ensuite générer une image vectorielle (au format svg) qui contiendra un graphique d'exécution du programme.
+    \begin{mdframed}[backgroundcolor=light-gray, roundcorner=20pt,
+        innerleftmargin=20, innertopmargin=1, innerbottommargin=1, 
+        outerlinewidth=1, linecolor=darkgray]
+        \begin{lstlisting}[language=Bash]
+perf timechart
+        \end{lstlisting}
+    \end{mdframed}
+    L'image peut ensuite être ouverte dans n'importe quel programme gérant les svg, chromium par exemple peut le faire.
+
+    \subsubsection{Analyse des appels}
+    Un second fichier peut être généré par perf pour analyser un programme. Il faut ensuite utiliser une autre partie de perf pour étudier ce fichier.
+    \begin{mdframed}[backgroundcolor=light-gray, roundcorner=20pt,
+        innerleftmargin=20, innertopmargin=1, innerbottommargin=1, 
+        outerlinewidth=1, linecolor=darkgray]
+        \begin{lstlisting}[language=Bash]
+perf record
+perf report 
+        \end{lstlisting}
+    \end{mdframed}
+
+    La seconde commande nous affichera alors sur quelles fonctions le processeurs a passé le plus de temps. L'interface que nous donnes le programme permet
+    la navigation dans ces différents appels. On notera la présence d'un plus sur la première colonne du terminal indiquant si la ligne peut être validé, avec la touche entrée, pour avoir plus de détails.
+    L'option \emph{--stdio} permettra d'afficher en texte uniquement le résultat de la commande, au lieu d'avoir une interface.
+
+    En ajoutant l'option \emph{-g} lors de l'utilisation de \emph{perf record} et avec \emph{-n -g folded} sur la seconde commande,
+    on obtient une liste des piles d'appels avec leur fréquence d'apparition.
+
+\subsection{Extensions}
+    Il existe des outils tels que FlameGraph qui permettent d'utiliser les fichiers de données brutes enregistrés par perf pour analyser différemment ces données.
+    Une description de cette outils est disponnible la page \url{http://www.brendangregg.com/FlameGraphs/cpuflamegraphs.html}
+
+\section{Sources}
+    Perf est une suite logiciel très complète qui permet d'avoir une analyse très précise d'un système ou d'un de ses programmes.
+    L'utilisation du manuel est très importante pour comprendre son fonctionnement plus en profondeur.
+
+    On peut également chercher sur internet. Les pages suivantes sont très utiles pour comprendre plus rapidement comment agencer les options de ce logiciel pour arriver à faire ce que l'on souhaite :
+    \begin{itemize}
+        \item \url{http://www.brendangregg.com/perf.html}
+        \item \url{https://www.fosslinux.com/7069/installing-and-using-perf-in-ubuntu-and-centos.htm}
+    \end{itemize}
 \end{document}
