@@ -7,10 +7,18 @@
 
 \usepackage{mdframed}
 \usepackage{multicol}
-\usepackage{hyperref}
 \usepackage{geometry}
 \usepackage{mdframed}
 \usepackage{listings}
+\usepackage{titling}
+
+\usepackage[colorlinks = true,
+            linkcolor = black,
+            urlcolor  = black,
+            citecolor = black,
+            anchorcolor = black]{hyperref}
+
+\newcommand{\changeurlcolor}[1]{\hypersetup{urlcolor=#1}}
 
 \geometry{hmargin=2.2cm,vmargin=1.5cm}
 \definecolor{light-gray}{gray}{0.95} %the shade of grey that stack exchange uses
@@ -145,7 +153,7 @@ perf report
 
 \subsection{Extensions}
     Il existe des outils tels que FlameGraph qui permettent d'utiliser les fichiers de données brutes enregistrés par perf pour analyser différemment ces données.
-    Une description de cette outils est disponnible la page \url{http://www.brendangregg.com/FlameGraphs/cpuflamegraphs.html}
+    Une description de cette outils est disponnible la page \changeurlcolor{blue}\href{http://www.brendangregg.com/FlameGraphs/cpuflamegraphs.html}{http://www.brendangregg.com/FlameGraphs/cpuflamegraphs.html}
 
 \section{Sources}
     Perf est une suite logiciel très complète qui permet d'avoir une analyse très précise d'un système ou d'un de ses programmes.
@@ -153,7 +161,7 @@ perf report
 
     On peut également chercher sur internet. Les pages suivantes sont très utiles pour comprendre plus rapidement comment agencer les options de ce logiciel pour arriver à faire ce que l'on souhaite :
     \begin{itemize}
-        \item \url{http://www.brendangregg.com/perf.html}
-        \item \url{https://www.fosslinux.com/7069/installing-and-using-perf-in-ubuntu-and-centos.htm}
+        \item \changeurlcolor{blue}\href{http://www.brendangregg.com/perf.html}{http://www.brendangregg.com/perf.html}
+        \item \changeurlcolor{blue}\href{https://www.fosslinux.com/7069/installing-and-using-perf-in-ubuntu-and-centos.htm}{https://www.fosslinux.com/7069/installing-and-using-perf-in-ubuntu-and-centos.htm}
     \end{itemize}
 \end{document}
