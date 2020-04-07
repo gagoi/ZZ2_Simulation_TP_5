@@ -143,4 +143,58 @@ g++ -Wcast-qual source.cpp
 g++ -Wduplicated-cond source.cpp
             \end{lstlisting}
         \end{mdframed}
+\section{Paramètres pour le debug}
+    Le compilateur permet de compiler le programme dans le but de le tester avec un debugger. Pour celà il faut changer l'exécutable pour qu'il contienne des informations sur le code source.
+    On peut utiliser plusieurs options pour ajouter ces informations.
+    \begin{mdframed}[backgroundcolor=light-gray, roundcorner=20pt,
+        innerleftmargin=20, innertopmargin=1, innerbottommargin=1, 
+        outerlinewidth=1, linecolor=darkgray]
+        \begin{lstlisting}
+g++ -g source.cpp -> Informations de debug dans le format natif
+g++ -ggdb source.cpp -> Informations de debug pour gdb
+g++ -gdwarf source.cpp -> Informations de debug pour dwarf 
+g++ -gstabs source.cpp -> Informations de debug pour stabs
+        \end{lstlisting}
+    \end{mdframed}
+    Il est également possible de spécifié la quantité d'informations ajoutées grâce à l'option suivante.
+    On peut mettre un niveau allant de 0 (aucune information) à 3 (toutes les informations).
+    Evidemment cette option fonctionne avec n'importe lequel des debugger choisis, et la description de chaque niveau est précisée dans le manuel.
+    \begin{mdframed}[backgroundcolor=light-gray, roundcorner=20pt,
+        innerleftmargin=20, innertopmargin=1, innerbottommargin=1, 
+        outerlinewidth=1, linecolor=darkgray]
+        \begin{lstlisting}
+g++ -g -glevel3 source.cpp
+        \end{lstlisting}
+    \end{mdframed}
+    
+\section{paramètres pour l'optimisation}
+Il est possible d'optimiser le programme de sortie selon plusieurs axes. Les premières options permettent de réduire le temps d'exécution du programme.
+On privilégiera le second niveau d'optimisation, le troisième pouvant causé des problèmes (surtout lorsque des calculs précis doivent être fais).
+Il existe donc les niveaux 1, 2 et 3.
+\begin{mdframed}[backgroundcolor=light-gray, roundcorner=20pt,
+    innerleftmargin=20, innertopmargin=1, innerbottommargin=1, 
+    outerlinewidth=1, linecolor=darkgray]
+    \begin{lstlisting}
+g++ -O2 source.cpp
+    \end{lstlisting}
+\end{mdframed}
+Un niveau spécial peut être utilisé lors du debug, il est d'ailleurs recommandé pour ce cas de figure. Il ajoutera toutes les optimisations de premier niveau qui n'interfèrent pas avec le debbug.
+\begin{mdframed}[backgroundcolor=light-gray, roundcorner=20pt,
+    innerleftmargin=20, innertopmargin=1, innerbottommargin=1, 
+    outerlinewidth=1, linecolor=darkgray]
+    \begin{lstlisting}
+g++ -Og -glevel3 source.cpp
+    \end{lstlisting}
+\end{mdframed}
+Enfin une dernière option existe pour réduire la taille de l'exécutable plutôt que de privilégier les performances.
+Cette option est surtout utilisée lors du développement dans le monde de l'embarqué ou de l'internet des objets.
+\begin{mdframed}[backgroundcolor=light-gray, roundcorner=20pt,
+    innerleftmargin=20, innertopmargin=1, innerbottommargin=1, 
+    outerlinewidth=1, linecolor=darkgray]
+    \begin{lstlisting}
+g++ -Os -glevel3 source.cpp
+    \end{lstlisting}
+\end{mdframed}
+L'ensemble des options présentées précédemment sont à la manière de -Wall et -Wextra, des raccourcis regroupand une grande quantité d'options.
+Il est donc possible de choisir exactement les options que l'on veut ajouter pour l'optimisation. Le manuel est encore une fois très utile pour avoir des renseignements plus complets.
 \end{document}
