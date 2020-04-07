@@ -32,7 +32,6 @@
   {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
   {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
   {€}{{\EUR}}1 {£}{{\pounds}}1,
-  numbers=left,
   numbersep=10pt,
   showspaces=false,
   showstringspaces=false,
@@ -67,8 +66,81 @@
     \begin{mdframed}[backgroundcolor=light-gray, roundcorner=20pt,
         innerleftmargin=20, innertopmargin=1, innerbottommargin=1, 
         outerlinewidth=1, linecolor=darkgray]
-        \begin{lstlisting}[language=Bash]
+        \begin{lstlisting}
 g++ source.cpp
         \end{lstlisting}
     \end{mdframed} 
+
+    En supposant que la compilation ne lévera pas d'erreur, cette commande créera un fichier de sortie appelé a.out (l'exécutable).
+    Une option permet de changer le nom du fichier de sortie.
+    \begin{mdframed}[backgroundcolor=light-gray, roundcorner=20pt,
+        innerleftmargin=20, innertopmargin=1, innerbottommargin=1, 
+        outerlinewidth=1, linecolor=darkgray]
+        \begin{lstlisting}
+g++ -o executable source.cpp
+        \end{lstlisting}
+    \end{mdframed}
+
+    On peut alors ajouter plusieurs fichiers sources en les rajoutants les uns à la suite des autres.
+    \begin{mdframed}[backgroundcolor=light-gray, roundcorner=20pt,
+        innerleftmargin=20, innertopmargin=1, innerbottommargin=1, 
+        outerlinewidth=1, linecolor=darkgray]
+        \begin{lstlisting}
+g++ -o executable source_1.cpp source_2.cpp
+        \end{lstlisting}
+    \end{mdframed}
+
+\section{Paramètres sur les avertissements}
+    Pour un développeur, les avertissements sont très important car ils font très souvent ressortir des erreurs de programmations que l'on n'a pas vu, et que le compilateur peut tout à fait compiler.
+    Il peut donc être intéressant de chercher à en activer plus que d'origine.
+    \subsection{Les options populaires}
+        On retrouvera ces options dans les chaînes de compilation de la majorité des projets. En effet elles permettent de montrer au développeur presque toutes les erreurs qui peuvent s'être glissées dans son code.
+        Ces options sont en réalité des raccourcis pour éviter d'ajouter plusieurs options. On peut trouver la liste complète des options activées par ces deux raccourcis dans le manuel.
+        \begin{mdframed}[backgroundcolor=light-gray, roundcorner=20pt,
+            innerleftmargin=20, innertopmargin=1, innerbottommargin=1, 
+            outerlinewidth=1, linecolor=darkgray]
+            \begin{lstlisting}
+g++ -Wall -Wextra source.cpp
+            \end{lstlisting}
+        \end{mdframed}
+        La première est contre intuitive puisqu'elle n'ajoute pas tous les avertissements possibles, mais seulement les plus courant.
+        Par exemple grâce à elle un avertissement sera affiché quand l'initialisation des attributs ne se fait pas dans le même ordre que leur déclaration.
+        Les variables et fonctions non utilisées causeront également des avertissements.
+        La seconde cependant correspond bien à son nom (enseignement appelé -W). On aura ici un avertissement si un bloc if/else ne contient aucune instruction.
+    \subsection{Version du langage}
+        Il est possible d'afficher des avertissements lorsque une fonctionnalité que vous utilisiez a été changé pour un standard du langage différent.
+        Cela perme de s'assurer préventivement qu'un changement de standard n'entrainera pas un problème majeur de compilation. Pour le C++, cette option existe pour 3 standards : 11, 14 et 17.
+        \begin{mdframed}[backgroundcolor=light-gray, roundcorner=20pt,
+            innerleftmargin=20, innertopmargin=1, innerbottommargin=1, 
+            outerlinewidth=1, linecolor=darkgray]
+            \begin{lstlisting}
+g++ -Wc++17-compat source.cpp
+            \end{lstlisting}
+        \end{mdframed}
+   
+    \subsection{Autres options utiles}
+        Cette option permet de prévenir qu'une fonction qui a été déclarée \emph{inline} n'a pas pu être compilée comme tel.
+        \begin{mdframed}[backgroundcolor=light-gray, roundcorner=20pt,
+            innerleftmargin=20, innertopmargin=1, innerbottommargin=1, 
+            outerlinewidth=1, linecolor=darkgray]
+            \begin{lstlisting}
+g++ -Winline source.cpp
+            \end{lstlisting}
+        \end{mdframed}
+        L'option suivante permet de s'assurer qu'aucune conversion dangereuse n'est faite sur des pointeurs.
+        \begin{mdframed}[backgroundcolor=light-gray, roundcorner=20pt,
+            innerleftmargin=20, innertopmargin=1, innerbottommargin=1, 
+            outerlinewidth=1, linecolor=darkgray]
+            \begin{lstlisting}
+g++ -Wcast-qual source.cpp
+            \end{lstlisting}
+        \end{mdframed}
+        Enfin cette dernière option permet de vérifier que les conditions de blocs if/else-if ne soient pas identiques.
+        \begin{mdframed}[backgroundcolor=light-gray, roundcorner=20pt,
+            innerleftmargin=20, innertopmargin=1, innerbottommargin=1, 
+            outerlinewidth=1, linecolor=darkgray]
+            \begin{lstlisting}
+g++ -Wduplicated-cond source.cpp
+            \end{lstlisting}
+        \end{mdframed}
 \end{document}
