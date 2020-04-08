@@ -7,11 +7,16 @@
 
 \usepackage{mdframed}
 \usepackage{multicol}
-\usepackage{hyperref}
 \usepackage{geometry}
 \usepackage{mdframed}
 \usepackage{listings}
+\usepackage{titling}
 
+\usepackage[colorlinks = true,
+            linkcolor = black,
+            urlcolor  = black,
+            citecolor = black,
+            anchorcolor = black]{hyperref}
 \geometry{hmargin=2.2cm,vmargin=1.5cm}
 \definecolor{light-gray}{gray}{0.95} %the shade of grey that stack exchange uses
 
@@ -167,7 +172,7 @@ g++ -g -glevel3 source.cpp
         \end{lstlisting}
     \end{mdframed}
     
-\section{paramètres pour l'optimisation}
+\section{Paramètres pour l'optimisation}
 Il est possible d'optimiser le programme de sortie selon plusieurs axes. Les premières options permettent de réduire le temps d'exécution du programme.
 On privilégiera le second niveau d'optimisation, le troisième pouvant causé des problèmes (surtout lorsque des calculs précis doivent être fais).
 Il existe donc les niveaux 1, 2 et 3.
