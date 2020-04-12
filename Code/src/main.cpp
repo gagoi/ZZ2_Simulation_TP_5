@@ -43,10 +43,8 @@ int main(int argc, char ** argv)
     System& s = System::getInstance();
     World& w = World::getInstance();
 
-    Hunter* hunter = new Hunter(Point(0, 0));
-    Hunter* hunter2 = new Hunter(Point(39, 39));
-    s.addAgent(hunter);
-    s.addAgent(hunter2);
+    for (int i = 0; i < 100; i++)    
+        s.addAgent(new Hunter(Point(dis_x(World::gen), dis_y(World::gen))));
 
     Base* base1 = new Base(Point(dis_x(World::gen), dis_y(World::gen)), 0);
     w.add(base1);
