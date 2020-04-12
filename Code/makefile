@@ -15,8 +15,8 @@ MSG_BUILDOK = $(MSG) "Le Projet a été construit!"
 RM  = $(MSQ)rm -rf
 CC  = $(MSQ)g++
 SED = sed -e "s/\(.*\.o:\)/$(subst /,\/,$(OBJDIR))\1/g"
-CFLAGS = -O3 -Wall -std=c++17 -g -pg
-LFLAGS = -O3 -Wall -std=c++17 -g -pg
+CFLAGS = -Ofast -Wall -std=c++17 -g -pg
+LFLAGS = -Ofast -Wall -std=c++17 -g -pg
  
 #variables automatiques
 SRC := $(shell find $(SRCDIR) -name '*.cpp')

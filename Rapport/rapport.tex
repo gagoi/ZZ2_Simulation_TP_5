@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[a4paper, 12pt]{article}
 
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
@@ -13,6 +13,8 @@
 \usepackage{titling}
 \usepackage{graphicx}
 \usepackage{csquotes}
+\usepackage{mdframed}
+\definecolor{light-gray}{gray}{0.95}
 \usepackage[colorlinks = true,
             linkcolor = black,
             urlcolor  = black,
@@ -310,6 +312,36 @@ désire ajouter et lorsqu'on a fini les updates, on ajoute tous le contenu du bu
   \caption{Méthodes d'ajout et \emph{update} de la classe \emph{System}}
   \lstinputlisting[language=c++, firstline=35, lastline=71]{../Code/src/System.cpp}
 \end{figure}
+
+\newpage
+\section{Analyse de performances}
+Nous avons décidé d'étudier l'impact des options d'optimisations de g++ sur la rapidité d'exécution de notre simulation multi agents.
+Pour celà nous avons compilé le programme avec l'option -O0 et avec l'option -O3, en renommant à chaque fois le nom de l'exécutable. Nous avons ensuite exécuté le programme en passant par l'outil perf.
+\begin{mdframed}[backgroundcolor=light-gray, roundcorner=20pt,
+  innerleftmargin=20, innertopmargin=1, innerbottommargin=1, 
+  outerlinewidth=1, linecolor=darkgray]
+  \begin{lstlisting}[language=Bash]
+perf stat ./bin/sma_O0 --log-file
+perf stat ./bin/sma_O3 --log-file\end{lstlisting}
+\end{mdframed}
+Il a été choisi de lancer la simulation avec une sortie sur un fichier.
+Nous avons également modifié les paramètres initiaux de la simulation pour qu'elle s'exécute pendant un temps assez long, quelques secondes. Cela permettant sûrement de refléter un peu plus un changement sur les performances, même minim.
+\subsection{Mesures}
+L'ensemble des mesures effectuées sont disponnibles dans un fichier, ouvrable avec le programme libre office. Voici tout de même un graphique résumant les valeurs mesurées.
+\begin{figure}[!h]
+  \centering
+  \caption{Temps d'exécution de la simulation selon différentes options de compilation}
+  \includegraphics[width=\textwidth]{img/exec_plot.png}
+\end{figure}
+\subsection{Interprétation des résultats}
+On remarque très nettement une différence entre une compilation sans optimisations (-O0) et une compilation avec (-O2 et -O3).
+Nous ne nous attendions pas à une différence si marquée. Cependant la différence entre les deux dernières options est très faible.
+Le calcul de leur intervalle de confiance, nous indique même qu'ils n'y a statistiquement aucune différence. En effet, ils se chevauchent.
+Les valeurs exactes sont également dans le document joint.
+
+Il est intéressant de noté que chaque exécution donne le même résultat, même si les options de compilation ne sont pas les mêmes.
+
+On peut aussi relevé que le fait d'avoir une sortie à notre programme impose un ralentissement. Une utilisation de la simulation comme une boite noir ne donnant que le résultat final, aurait certainement permi de bien meilleure performance. L'impact des options d'optimisation aurait certainement était d'autant plus notable, et les temps d'exécution plus proche de la moyenne.
 
 \newpage
 \appendix
