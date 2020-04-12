@@ -50,9 +50,9 @@ int main(int argc, char ** argv)
 
     Base* base1 = new Base(Point(dis_x(World::gen), dis_y(World::gen)), 0);
     w.add(base1);
-    for (int i = 0; i < 30; i++)    
+    for (int i = 0; i < 4000; i++)    
         s.addAgent(new Harvester(Point(dis_x(World::gen), dis_y(World::gen)), base1));
-
+/*
     Base* base2 = new Base(Point(dis_x(World::gen), dis_y(World::gen)), 0);
     w.add(base2);
     for (int i = 0; i < 30; i++)    
@@ -62,14 +62,14 @@ int main(int argc, char ** argv)
     w.add(base3);
     for (int i = 0; i < 30; i++)    
         s.addAgent(new Harvester(Point(dis_x(World::gen), dis_y(World::gen)), base3));
-
-    for (int i = 0; i < 60; i++)    
+*/
+    for (int i = 0; i < 8000; i++)    
         w.add(new Resource(Point(dis_x(World::gen), dis_y(World::gen))));
 
-    for (int i = 0; i < 50; i++)
+    for (int i = 0; i < 500; i++)
     {
         s.update();
-        std::cout << "UPDATE " << i << std::endl;
+        //std::cout << "UPDATE " << i << std::endl;
         draw(w);
     }
     

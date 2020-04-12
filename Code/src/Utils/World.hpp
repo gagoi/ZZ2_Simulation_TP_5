@@ -38,8 +38,8 @@ private:
     static World* instance; /*!< instance de World (singleton) */
 
 public:
-    static constexpr int WORLD_WIDTH = 50; /*!< Longueur du monde 2D */
-    static constexpr int WORLD_HEIGHT = 50; /*!< Hauteur du monde 2D */
+    static constexpr int WORLD_WIDTH = 500; /*!< Longueur du monde 2D */
+    static constexpr int WORLD_HEIGHT = 500; /*!< Hauteur du monde 2D */
 
     static std::mt19937 gen; /*!< générateur de nombre aléatoire Mersenne Twister */
 
